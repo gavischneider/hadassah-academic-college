@@ -1,0 +1,42 @@
+File: ex5a.cc 
+Finding the greatest row and column
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a matrix from the user and finds the greatest row and column.
+
+Compile: g++ -Wall ex5a.cc –o ex5a
+Run: ex5a
+Input: a matrix with 20 numbers 
+
+Output: two ints, the greatest row and the greatest column 
+
+File: ex5b.cc 
+Finding an array that contains a matrix
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a matrix from the user and searches for a simgle row that contains all the numbers from the other rows. 
+
+Compile: g++ -Wall ex5b.cc –o ex5b
+Run: ex5b
+Input: a matrix with 20 numbers 
+
+Output: two ints, the two containing arrays, if they exist, otherwise -1.
+
+Runtime: (ROWS^2 * COLS^2) 
+
+File: ex5c.cc 
+Upper left monotone corner
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a matrix from the user and checks if its upper left corner is monotone
+
+Compile: g++ -Wall ex5c.cc –o ex5c
+Run: ex5c
+Input: a matrix with 20 numbers 
+
+Output: one int, the number of the diagonal row. 
+
+Runtime: (ROWS * COLS)

@@ -1,0 +1,7 @@
+modprog1, 2017a
+Ex #2a This program gets 4 numbers from the user and returns 5 different calculations: How may odd numbers, how many even numbers, How many real positive numbers, how many zeros and how many real negative numbers.
+Ex #2b This program receives 3 numbers from the users and calculates the greatest result while using one + operator and one * operator.
+Ex #2c This program receives a date from the user and adds an ending to the day, changes the month to a word and makes sure the input is legitimate.
+Written by: Gavriel Schneider
+
+Class: a

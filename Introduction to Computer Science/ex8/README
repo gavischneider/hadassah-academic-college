@@ -1,0 +1,41 @@
+File: ex8a.cc 
+Recursive Functions
+========================================
+Writen by: Gavriel Schneider
+
+This program allows the user to perform 13 different operations on arrays,
+all of which are performed by recursive functions.
+ * 1: Enter numbers
+ * 2: Find a number
+ * 3: Bubble sort
+ * 4. Binary search
+ * 5. Count a number
+ * 6. Print the array
+ * 7. Print the array backwards
+ * 8. Check if sorted
+ * 9. Check if palindrome
+ * 10. Check if is equal
+ * 11. Check if appears once
+ * 12. Check primes
+ * 13. Exit
+
+Compile: g++ -Wall ex8a.cc –o ex8a
+Run: ex8a
+Input: Array of 10 numbers, and the number of the desired function
+
+Output:  
+ * 1: -- 
+ * 2: 1 if found, 0 if not
+ * 3: --
+ * 4. 1 if found, 0 if not
+ * 5. number- how many times the number appears
+ * 6. ten numbers - the array
+ * 7. ten numbers - the array backwards
+ * 8. 1 if sorted, 0 if not
+ * 9. 1 if palindrome, 0 if not
+ * 10. how many numbers are equal to the sum of the numbers to their left
+ * 11. prints the numbers that appear once
+ * 12. prints the prime numbers
+ * 13. -- 
+
+

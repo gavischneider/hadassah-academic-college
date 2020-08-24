@@ -1,0 +1,45 @@
+File: ex7a.cc 
+Basic functions on strings
+========================================
+Writen by: Gavriel Schneider
+
+This program receives two string from the user, and then does two things:
+ 1) Removes all the non letters from the string, and replaces all the lower case letters with upper case letters.
+ 2) Removes all the letters that appear in string 2 from string 1.
+
+Compile: g++ -Wall ex7a.cc –o ex7a
+Run: ex7a
+Input: two strings
+
+Output: two strings 
+
+File: ex7b.cc 
+Finding an array that contains a matrix
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a 'dictionary' of up to ten words and a separate string (text). The program then runs over text and searches for the words it contains inside of the dictionary. The program searches for the longest sequence of words and prints where the sequence started, and how long it was. 
+
+Compile: g++ -Wall ex7b.cc –o ex7b
+Run: ex7b
+Input: dictionary - a matrix [10x8] of chars, and text, a string[100]
+
+Output: 2 ints, length and index
+
+Runtime: MAX_TEXT_LEN * MAX_TEXT_LEN * MAX_STRS
+
+
+
+File: ex7c.cc 
+Finding mutual substrings
+========================================
+Writen by: Gavriel Schneider
+
+This program receives two strings from the user. The program then searches for the longest occurring substring found in both strings, and then prints the length of that substring.
+
+Compile: g++ -Wall ex7c.cc –o ex7c
+Run: ex7c
+Input: two strings
+
+Output: an int = length of the longest substring
+

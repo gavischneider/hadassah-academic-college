@@ -1,0 +1,38 @@
+File: ex9a.cc 
+Sudoku
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a sudoku board from the user, finds a solution and prints it. This is accomplished with recursive functions and backtracking.
+
+Compile: g++ -Wall ex9a.cc –o ex9a
+Run: ex9a
+Input: 	3 numbers per input: row / column / value
+
+Output: Sudoku board solution
+
+File: ex9b.cc 
+Plus One, Times Two
+========================================
+Writen by: Gavriel Schneider
+
+This program receives 2 numbers from the user and then finds the quickest route from the first number two the second number while only using two different moves: multiplying by two or adding one. This is accomplished by using backtracking in a recursive function.
+
+Compile: g++ -Wall ex9b.cc –o ex9b
+Run: ex9b
+Input: 2 numbers 
+
+Output: Int - ammount of moves (lowest ammount possible)
+
+File: ex9c.cc 
+Golden Bars
+========================================
+Writen by: Gavriel Schneider
+
+This program receives 5 'gold bars' (numbers) from the user, and tries to find a way to divide them evenly between 2 groups (meaning the sum of the 2 groups should be equal). This is accomplished via backtracking.
+
+Compile: g++ -Wall ex9b.cc –o ex9b
+Run: ex9c
+Input: 5 numbers 
+
+Output: The two groups, if a solution is found, otherwise nothing

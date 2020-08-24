@@ -1,0 +1,55 @@
+File: ex6a.cc 
+Finding the greatest row and column
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a matrix from the user and finds the greatest row and column.
+
+Compile: g++ -Wall ex6a.cc –o ex6a
+Run: ex6a
+Input: a matrix with 20 numbers 
+
+Output: two ints, the greatest row and the greatest column 
+
+File: ex6b.cc 
+Finding an array that contains a matrix
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a matrix from the user and searches for a simgle row that contains all the numbers from the other rows. 
+
+Compile: g++ -Wall ex6b.cc –o ex6b
+Run: ex6b
+Input: a matrix with 20 numbers 
+
+Output: two ints, the two containing arrays, if they exist, otherwise -1.
+
+ROWS = rows of matrix
+COLS = columns of matrix
+
+runtime of getnums: (ROWS * COLS)
+runtime of searchmat: ROWS
+runtime of searchrow: ROWS 
+runtime of comparecol: (COLS^2) 
+runtime of searchmat2: ROWS
+runtime of searchrow2: ROWS
+runtime of comparecol2: (COLS^3) 
+
+Runtime: (ROWS * COLS) + (ROWS^2 * COLS^2) + (ROWS^2 * COLS^3) = (ROWS^2 * COLS^3)
+
+File: ex6c.cc 
+Upper left monotone corner
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a sudoku board (matrix) from the user and checks if it's legitimate
+
+Compile: g++ -Wall ex6c.cc –o ex6c
+Run: ex6c
+Input: a matrix with 20 numbers 
+
+Output: one int, 1 if the board is good, otherwise 0
+
+N = Height and length of a sudoku square 
+
+Runtime: N^8
