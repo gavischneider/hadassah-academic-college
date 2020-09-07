@@ -1,0 +1,55 @@
+File: ex1a.cc 
+Calculating an average in a dynamic matrix
+========================================
+Writen by: Gavriel Schneider
+
+This program dynamically allocates a matrix, according to the size the user 
+inputs. The first number is the amount of rows, and after that the user 
+enters the size of each individual row. The user then inputs the actual 
+values. Afterwards, the program calculates and returns the average of all 
+the values in the matrix.
+
+Compile: g++ -Wall ex1a.cc –o ex1a
+Run: ex1a
+Input: The dimensions of the matrix, and it values
+
+Output: The average of all the values
+
+File: ex1b.cc 
+The sum of two dynamic matrices
+========================================
+Writen by: Gavriel Schneider
+
+This program receives two dynamically allocated matrices, and then combines 
+them by adding the sum of the values and printing them.
+
+Compile: g++ -Wall ex1b.cc –o ex1b
+Run: ex1b
+Input: The names of the two files
+
+Output: The combined matrix
+
+File: ex1c.cc 
+Functions on dynamically allocated matrices
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a dynamically allocated matrix from the user, 
+and then gives them the option of performing different functions on the matrix.
+ * al: add line
+ * dl: delete line
+ * jl: join line
+ * sl: split line
+ * av: add value
+ * dv: delete value
+ * pr: print array
+ * pg: clean array
+ * e: exit
+
+Compile: g++ -Wall ex1c.cc –o ex1c
+Run: ex1c
+Input: The name of the desired function, and then the relevant information that
+	the function requires 
+
+Output: pr - prints the matrix, 
+	the other functions don't print

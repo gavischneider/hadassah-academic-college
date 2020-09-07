@@ -1,0 +1,49 @@
+File: ex3a.cc 
+Finding the smallest value and the branches
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a binary search tree from the user. The program finds
+the smallest value in the tree and prints it. The program then searches for
+all the branches and prints all their values.
+
+Compile: g++ -Wall ex3a.cc –o ex3a
+Run: ex3a
+Input: A list of numbers, until 0
+
+Output: The smallest value in the tree, and all the values in the branches
+
+
+File: ex3b.cc 
+Finding the leaf with the shortest distance from the root
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a list of numbers from the user, and enters them into a
+binary tree. The program then finds the leaf with the shortest distance from
+the root, and prints its value.
+
+Compile: g++ -Wall ex3b.cc –o ex3b
+Run: ex3b
+Input: A list of numbers
+
+Output: The value of the leaf with the shortest distance from the root
+
+
+File: ex3c.cc 
+Convert binary tree to a linked list
+========================================
+Writen by: Gavriel Schneider
+
+This program receives values from, the user and enters them into a binary
+tree. The program then 'converts' the tree to a linked list, my moving all the
+values to a linked list in ascending order. The program then prints the new
+linked list.
+
+Compile: g++ -Wall ex3c.cc –o ex3c
+Run: ex3c
+Input: A list of numbers
+
+Output: The linked list - all the numbers in ascending order 
+
+Runtime: Number of values in tree

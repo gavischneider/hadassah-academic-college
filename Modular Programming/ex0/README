@@ -1,0 +1,28 @@
+File: ex0a.cc 
+Input / Output and Strings
+========================================
+Writen by: Gavriel Schneider
+
+This program receives an input file with strings and prints a's, 0's and x's based on the input into an output file. The program also prints how many groups of letters, numbers and a mix of both there are.
+
+Compile: g++ -Wall ex0a.cc –o ex0a
+Run: ex0a
+Input: file with multiple strings
+
+Output: the updated strings, and how many sets of letters, numbers and a mix of both there are
+
+
+File: ex0b.cc 
+Comments remover Comments remover 
+========================================
+Writen by: Gavriel Schneider
+
+This program receives multiple strings and removes all the text thats in comments- either after // or in between slash-asterix's. The program prints the end result after all the comments have been removed. 
+
+Compile: g++ -Wall ex0b.cc –o ex0b
+Run: ex0b
+Input: multiple strings
+
+Output: the updated string after the comments have been removed
+
+

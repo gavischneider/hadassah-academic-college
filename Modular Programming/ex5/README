@@ -1,0 +1,44 @@
+File: ex5a.cc points.h points.cc rectangles.h rectangles.cc util.h util.cc 
+Pointers to functions - sorting
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a list of points and a list of rectangles from the user,
+including their coordinates. The user will then choose one of four ways to sort
+the points and one of three ways to sort the rectangles. The user also chooses 
+one of two ways in which the points and rectangles will be printed.
+The program is now divided into separate files.
+
+Compile: make
+Run: ex5a
+Input: 1. Print option (char)
+       2. How many points (int)
+       3. Point data
+       4. How many rectangles (int)
+       5. Rectangle data
+       6. Point sort option (char)
+       7. Rectangle sort option (char)
+
+Output: List of point data and list of rectangle data, after being sorted
+
+
+File: ex5b.cc pointsb.h pointsb.cc circles.h circles.cc rectanglesb.h 
+rectanglesb.cc bst.h bst.cc gen_arr.h gen_arr.cc makefile 
+Functions to pointers 2 - largest area
+========================================
+Writen by: Gavriel Schneider
+
+This program receives a list of circles and a list of rectangles from the user,
+including their coordinates. The circles and the rectangles will be sorted into
+2 separate binary trees. The program then creates 2 arrays to go over the
+binary trees and search for the shapes with the largest areas, which are also
+calculated. The arrays will then be printed.
+The program is now divided into separate files.
+
+Compile: make
+Run: ex5b
+Input: circle data (until 0 0) and rectangle data (until 0 0 0 0)
+
+Output: list of the circles and rectangles with the largest areas
+
+

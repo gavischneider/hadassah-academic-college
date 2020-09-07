@@ -1,0 +1,39 @@
+File: ex2a.cc 
+Removing Even Numbers from Linked Lists
+========================================
+Writen by: Gavriel Schneider
+
+This program creates a linked list with values that it receives from the user. The program then prints the average of those values, removes the even numbers from the list, and then prints the average again.
+
+Compile: g++ -Wall ex2a.cc –o ex2a
+Run: ex2a
+Input: A list of numbers
+
+Output: The sum of all the values in the list,
+	the sum of all the odd values in the list
+
+File: ex2b.cc 
+Next Odd / Even
+========================================
+Writen by: Gavriel Schneider
+
+This program creates a linked list with values that it receives from the user. The program then runs on the list and points every even number to the next even number in the list, and every odd number to the next odd number in the list. If there is no next even or odd number, the number will point to NULL. The program then prints every number, and the number it's pointing at (or "-" if nothing).
+
+Compile: g++ -Wall ex2b.cc –o ex2b
+Run: ex2b
+Input: A list of numbers
+
+Output: All the values in the list, as well as their next oe
+
+File: ex2c.cc 
+Linked Lists - Prime Numbers
+========================================
+Writen by: Gavriel Schneider
+
+This program receives numbers from the user until the end of the file. every number is added to a row based on the smallest prime number that divides it. If that row already exists, the number is added to that row. Otherwise, a new row for that prime number is created. The program then prints the list.
+
+Compile: g++ -Wall ex9c.cc –o ex9c
+Run: ex2c
+Input: A list of numbers
+
+Output: The list, sorted into rows based on theior prime number
