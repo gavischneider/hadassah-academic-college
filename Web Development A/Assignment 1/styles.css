@@ -25,3 +25,11 @@ td,
 th {
   text-align: center;
 }
+
+.content-grid {
+  width: 100%;
+}
+
+.sub-header {
+  color: blue;
+}
