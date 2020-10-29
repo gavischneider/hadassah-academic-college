@@ -16,16 +16,13 @@
   width: 100%;
 }
 
-table,
-th,
-td {
-  width: 100%;
-  border: 1px solid black;
-}
-
 table {
   margin-top: 20px;
 }
+
+/* tbody {
+  width: 100%;
+} */
 
 td,
 th {
