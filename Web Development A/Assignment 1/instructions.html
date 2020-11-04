@@ -53,12 +53,12 @@
         </div>
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <h2 class="sub-header">רשימת טעויות נפוצות</h2>
                 <br>
+                <button type="button" class="btn btn-primary" id="commonMistakes">פתח</button>
                 <br>
-                <button id="commonMistakes">פתח</button>
-
+                <br>
                 <ol id="listOfMistakes">
                     <li>אתר לא רספונסיבי (איך לבדוק) [-3]</li>
                     <li>קוד לא רלוונטי לפתרון (לדוגמא קוד מועתק מדוגמאות קוד של חומר הקורס) [-1]</li>
@@ -103,12 +103,13 @@
                 listOfMistakes.style.display = 'none';
                 button.innerHTML = 'פתח';
             }
-        }
+        };
 
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('commonMistakes').addEventListener('click', toggleText);
             document.getElementById('listOfMistakes').style.display = 'none';
-        })
+        });
+
     </script>
 
   </body>
