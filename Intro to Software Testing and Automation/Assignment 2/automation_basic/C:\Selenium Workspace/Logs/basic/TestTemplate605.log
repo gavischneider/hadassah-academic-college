@@ -1,0 +1,22 @@
+INFO  16:52:39  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate605.log
+INFO  16:52:39  (TestBase.java:157) - *************************************************************************
+INFO  16:52:39  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  16:52:39  (TestBase.java:159) - Start time: 17/11/2020 16:52:39
+INFO  16:52:39  (TestBase.java:160) - *************************************************************************
+FATAL 16:52:55  (TestBase.java:125) - element not interactable
+  (Session info: chrome=86.0.4240.198)
+  (Driver info: chromedriver=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}),platform=Mac OS X 10.15.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Gavriels-MacBook-Air.local', ip: 'fe80:0:0:0:1073:64bb:5865:2906%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.6', java.version: '1.8.0_73'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/l0/r0v7l6q91ml...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:57057}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 86.0.4240.198, webStorageEnabled: true, webauthn:virtualAuthenticators: true}
+Session ID: c88b2580072f2ed3c862ceb51ec03c84
+INFO  16:52:56  (ApplicationManager1.java:116) - Application screenshot is saved in: C:\Selenium Workspace/Screenshots/basic/Failure screenshot for TestTemplate1711201652800.png
+INFO  16:52:56  (TestBase.java:180) - *************************************************************************
+INFO  16:52:56  (TestBase.java:181) - The 'TestTemplate' test has ended with error.
+INFO  16:52:56  (TestBase.java:182) - Start time: 17/11/2020 16:52:39
+INFO  16:52:56  (TestBase.java:183) - End time:       17/11/2020 16:52:56.
+INFO  16:52:56  (TestBase.java:184) - -------------------------------------------------------------------------
+INFO  16:52:56  (TestBase.java:185) - Total run time: 0 days, 0 hours, 0 minutes, 16.479 seconds.
+INFO  16:52:56  (TestBase.java:186) - *************************************************************************

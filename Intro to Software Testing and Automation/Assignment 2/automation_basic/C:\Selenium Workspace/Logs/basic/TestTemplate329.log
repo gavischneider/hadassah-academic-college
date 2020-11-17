@@ -1,0 +1,14 @@
+INFO  16:41:34  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate329.log
+INFO  16:41:34  (TestBase.java:157) - *************************************************************************
+INFO  16:41:34  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  16:41:34  (TestBase.java:159) - Start time: 17/11/2020 16:41:34
+INFO  16:41:34  (TestBase.java:160) - *************************************************************************
+FATAL 16:41:34  (TestBase.java:125) - 
+INFO  16:41:34  (ApplicationManager1.java:116) - Application screenshot is saved in: C:\Selenium Workspace/Screenshots/basic/Failure screenshot for TestTemplate1711201641560.png
+INFO  16:41:34  (TestBase.java:180) - *************************************************************************
+INFO  16:41:34  (TestBase.java:181) - The 'TestTemplate' test has ended with error.
+INFO  16:41:34  (TestBase.java:182) - Start time: 17/11/2020 16:41:34
+INFO  16:41:34  (TestBase.java:183) - End time:       17/11/2020 16:41:34.
+INFO  16:41:34  (TestBase.java:184) - -------------------------------------------------------------------------
+INFO  16:41:34  (TestBase.java:185) - Total run time: 0 days, 0 hours, 0 minutes, 0.451 seconds.
+INFO  16:41:34  (TestBase.java:186) - *************************************************************************
