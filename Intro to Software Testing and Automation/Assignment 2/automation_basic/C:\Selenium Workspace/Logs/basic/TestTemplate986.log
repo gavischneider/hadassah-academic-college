@@ -1,0 +1,18 @@
+INFO  21:08:29  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate986.log
+INFO  21:08:29  (TestBase.java:216) - Starting to record the test
+INFO  21:08:29  (FileUtilis.java:30) - Created dir: C:\Selenium Workspace/Recordings/basic/TestTemplate
+INFO  21:08:29  (TestBase.java:222) - Saving recording to: 'C:\Selenium Workspace/Recordings/basic/TestTemplate'.
+INFO  21:08:30  (TestBase.java:157) - *************************************************************************
+INFO  21:08:30  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  21:08:30  (TestBase.java:159) - Start time: 17/11/2020 21:08:30
+INFO  21:08:30  (TestBase.java:160) - *************************************************************************
+FATAL 21:08:42  (TestBase.java:125) - no such window: window was already closed
+  (Session info: chrome=86.0.4240.198)
+  (Driver info: chromedriver=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}),platform=Mac OS X 10.15.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Gavriels-MacBook-Air.local', ip: 'fe80:0:0:0:1073:64bb:5865:2906%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.6', java.version: '1.8.0_73'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/l0/r0v7l6q91ml...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:50555}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 86.0.4240.198, webStorageEnabled: true, webauthn:virtualAuthenticators: true}
+Session ID: 1c196b52557713f18a0cffb43b66c70a
+*** Element info: {Using=css selector, value=#price-value-1}

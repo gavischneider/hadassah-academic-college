@@ -1,0 +1,12 @@
+INFO  19:58:55  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate443.log
+INFO  19:58:55  (TestBase.java:157) - *************************************************************************
+INFO  19:58:55  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  19:58:55  (TestBase.java:159) - Start time: 17/11/2020 19:58:55
+INFO  19:58:55  (TestBase.java:160) - *************************************************************************
+INFO  19:59:44  (TestBase.java:168) - *************************************************************************
+INFO  19:59:44  (TestBase.java:169) - The 'TestTemplate' test has ended successfully.
+INFO  19:59:44  (TestBase.java:170) - Start time: 17/11/2020 19:58:55
+INFO  19:59:44  (TestBase.java:171) - End time:       17/11/2020 19:59:44.
+INFO  19:59:44  (TestBase.java:172) - -------------------------------------------------------------------------
+INFO  19:59:44  (TestBase.java:173) - Total run time: 0 days, 0 hours, 0 minutes, 49.63 seconds.
+INFO  19:59:44  (TestBase.java:174) - *************************************************************************

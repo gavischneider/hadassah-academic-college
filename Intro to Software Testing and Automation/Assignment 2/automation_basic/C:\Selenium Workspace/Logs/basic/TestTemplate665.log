@@ -1,0 +1,17 @@
+INFO  21:12:07  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate665.log
+INFO  21:12:07  (TestBase.java:216) - Starting to record the test
+INFO  21:12:07  (FileUtilis.java:30) - Created dir: C:\Selenium Workspace/Recordings/basic/TestTemplate
+INFO  21:12:07  (TestBase.java:222) - Saving recording to: 'C:\Selenium Workspace/Recordings/basic/TestTemplate'.
+INFO  21:12:08  (TestBase.java:157) - *************************************************************************
+INFO  21:12:08  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  21:12:08  (TestBase.java:159) - Start time: 17/11/2020 21:12:08
+INFO  21:12:08  (TestBase.java:160) - *************************************************************************
+INFO  21:12:57  (TestBase.java:240) - Stop the recording of the test
+INFO  21:12:57  (TestBase.java:269) - Recording is saved in: /Users/gavischneider/eclipse-workspace/automation_basic/C:\Selenium Workspace/Recordings/basic/TestTemplate/TestTemplate1711202112.avi
+INFO  21:12:57  (TestBase.java:168) - *************************************************************************
+INFO  21:12:57  (TestBase.java:169) - The 'TestTemplate' test has ended successfully.
+INFO  21:12:57  (TestBase.java:170) - Start time: 17/11/2020 21:12:08
+INFO  21:12:57  (TestBase.java:171) - End time:       17/11/2020 21:12:57.
+INFO  21:12:57  (TestBase.java:172) - -------------------------------------------------------------------------
+INFO  21:12:57  (TestBase.java:173) - Total run time: 0 days, 0 hours, 0 minutes, 49.83 seconds.
+INFO  21:12:57  (TestBase.java:174) - *************************************************************************

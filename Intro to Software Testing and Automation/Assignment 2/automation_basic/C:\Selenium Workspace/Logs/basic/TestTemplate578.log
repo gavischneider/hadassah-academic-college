@@ -1,0 +1,14 @@
+INFO  18:43:50  (TestBase.java:96) - Writing debug log to: C:\Selenium Workspace/Logs/basic/TestTemplate578.log
+INFO  18:43:50  (TestBase.java:157) - *************************************************************************
+INFO  18:43:50  (TestBase.java:158) - The 'TestTemplate' test has started.
+INFO  18:43:50  (TestBase.java:159) - Start time: 17/11/2020 18:43:50
+INFO  18:43:50  (TestBase.java:160) - *************************************************************************
+FATAL 18:44:15  (TestBase.java:125) - Item Price and Cart total do not match!
+INFO  18:44:15  (ApplicationManager1.java:116) - Application screenshot is saved in: C:\Selenium Workspace/Screenshots/basic/Failure screenshot for TestTemplate1711201844067.png
+INFO  18:44:15  (TestBase.java:180) - *************************************************************************
+INFO  18:44:15  (TestBase.java:181) - The 'TestTemplate' test has ended with error.
+INFO  18:44:15  (TestBase.java:182) - Start time: 17/11/2020 18:43:50
+INFO  18:44:15  (TestBase.java:183) - End time:       17/11/2020 18:44:15.
+INFO  18:44:15  (TestBase.java:184) - -------------------------------------------------------------------------
+INFO  18:44:15  (TestBase.java:185) - Total run time: 0 days, 0 hours, 0 minutes, 24.758 seconds.
+INFO  18:44:15  (TestBase.java:186) - *************************************************************************
