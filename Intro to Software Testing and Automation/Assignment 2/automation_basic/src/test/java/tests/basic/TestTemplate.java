@@ -38,7 +38,7 @@ public class TestTemplate extends TestBase {
 	@Test
 	public void test() {
 		try {
-			System.out.println("Starting test");
+			log.info("Starting test");
 			app.driver.get("https://demo.nopcommerce.com/");
 		    app.driver.manage().window().setSize(new Dimension(1920, 1080));
 		    app.driver.findElement(By.linkText("Log in")).click();
@@ -47,13 +47,13 @@ public class TestTemplate extends TestBase {
 		    app.driver.findElement(By.id("Password")).click();
 		    app.driver.findElement(By.id("Password")).sendKeys("123456");
 		    app.driver.findElement(By.cssSelector(".login-button")).click();
-		    System.out.println("Logged in");
+		    log.info("Logged in");
 		    app.driver.findElement(By.linkText("Computers")).click();
 		    app.driver.findElement(By.cssSelector(".item-box:nth-child(1) img")).click();
 		    app.driver.findElement(By.cssSelector(".item-box:nth-child(1) img")).click();
 		    app.driver.findElement(By.cssSelector("#product_attribute_input_3 li:nth-child(1) > label")).click();
 		    app.driver.findElement(By.id("add-to-cart-button-1")).click();
-		    System.out.println("Product added to cart");
+		    log.info("Product added to cart");
 		    
 		    Thread.sleep(3000);
 		    String itemPrice = app.driver.findElement(By.cssSelector("#price-value-1")).getText();
@@ -75,7 +75,7 @@ public class TestTemplate extends TestBase {
 		    
 		    app.driver.findElement(By.id("termsofservice")).click();
 		    app.driver.findElement(By.id("checkout")).click();
-		    System.out.println("Checking out");
+		    log.info("Checking out");
 		    app.driver.findElement(By.cssSelector(".new-address-next-step-button:nth-child(1)")).click();
 		    Thread.sleep(3000);
 		    app.driver.findElement(By.cssSelector(".shipping-method-next-step-button")).click();
@@ -102,7 +102,7 @@ public class TestTemplate extends TestBase {
 		    	throw new Exception("Message does not say thank you!");
 		    }
 		    
-		    System.out.println("Order completed");
+		    log.info("Order completed");
 		    Thread.sleep(3000);
 		    app.driver.findElement(By.cssSelector(".order-completed-continue-button")).click();
 		    String newMessage = app.driver.findElement(By.cssSelector("body > div.master-wrapper-page > div.master-wrapper-content > div > div > div > div > div.topic-block > div.topic-block-title > h2")).getText();
@@ -116,7 +116,7 @@ public class TestTemplate extends TestBase {
 		    if (!newCartQuantity.equals("(0)")) {
 		    	throw new Exception("New cart quantity does not equal 0!");
 		    }
-		    System.out.println("Everything was successful, exiting test");
+		    log.info("Everything was successful, exiting test");
 		    app.driver.close();
 		  
 
