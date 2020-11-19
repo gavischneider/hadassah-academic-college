@@ -31,7 +31,9 @@
 
       <div class="content-grid" id="grid">
         <div class="row justify-content-between">
-          <div class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div
+            class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4 align-self-start"
+          >
             <form onsubmit="return false">
               <h2>Personal Information</h2>
               <div class="form-group">
@@ -54,11 +56,15 @@
                   id="immigration-year-input"
                 />
               </div>
-              <button id="button" class="btn btn-primary">Submit</button>
+              <button id="button" class="btn btn-primary d-none d-lg-block">
+                Submit
+              </button>
             </form>
           </div>
 
-          <div class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          <div
+            class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4 align-self-start"
+          >
             <form id="children-form">
               <h2>Children</h2>
               <div class="form-group">
@@ -75,14 +81,21 @@
         </div>
       </div>
 
-      <div id="summary" class="m-3">
+      <div id="summary" class="mt-3">
         <h2>Summary of your data</h2>
       </div>
-      <div id="children-summary" class m-3>
+      <div id="children-summary" class="mt-3">
         <h2>Children</h2>
       </div>
-      <div id="done">
-        <button id="done" class="btn btn-primary">done</button>
+      <div id="button2">
+        <button
+          class="btn btn-primary mt-3 d-none d-xs-block d-sm-block d-md-block d-lg-none d-xl-none"
+        >
+          Submit
+        </button>
+      </div>
+      <div id="done" class="mt-3">
+        <button id="done" class="btn btn-primary">Done</button>
       </div>
     </div>
     <script src="./script.js"></script>
