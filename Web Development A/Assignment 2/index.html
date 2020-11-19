@@ -25,10 +25,14 @@
         <h5>Please complete this form</h5>
       </div>
 
+      <div class="bg-danger p-2 m-2" id="warning-message">
+        <h2>Please Correct the following items:</h2>
+      </div>
+
       <div class="content-grid">
         <div class="row justify-content-between">
           <div class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-            <form>
+            <form onsubmit="return false">
               <h2>Personal Information</h2>
               <div class="form-group">
                 <label>First Name</label>
@@ -40,42 +44,38 @@
               </div>
               <div class="form-group">
                 <label>Birth Year</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  id="birth-year-input"
-                />
+                <input type="text" class="form-control" id="birth-year-input" />
               </div>
               <div class="form-group">
                 <label>Immigration Year</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="immigration-year-input"
                 />
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button id="button" class="btn btn-primary">Submit</button>
             </form>
           </div>
 
           <div class="bg-light mt-4 p-2 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-            <form>
+            <form id="children-form">
               <h2>Children</h2>
               <div class="form-group">
                 <p>Enter the number of children and their respective names</p>
                 <label>Number of children</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="num-of-children-input"
                 />
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>
       </div>
     </div>
+    <script src="./script.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
