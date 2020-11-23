@@ -9,11 +9,11 @@
     document.getElementById("done").style.display = "none";
     document.getElementById("button").addEventListener("click", handleSubmit);
     document.getElementById("button2").addEventListener("click", handleSubmit);
-    window.addEventListener("keyup", handleKeyUp);
     document.getElementById("done").addEventListener("click", () => {
       location.reload();
       return false;
     });
+    window.addEventListener("keyup", handleKeyUp);
   });
 
   function handleSubmit() {
