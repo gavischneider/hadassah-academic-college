@@ -2,6 +2,7 @@
   let NUM_OF_CHILDREN_DIVS = 0;
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Add event listeners and hide objects that should not be seen
     document.getElementById("warning-message").style.display = "none";
     document.getElementById("summary").style.display = "none";
     document.getElementById("children-summary").style.display = "none";
