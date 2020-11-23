@@ -79,8 +79,6 @@
       if (child.value === "") {
         needChildError = true;
       }
-      console.log("CHILD VALUE");
-      console.log(child);
     });
     if (needChildError) {
       errors.push("Child name is missing");
@@ -200,8 +198,6 @@
         // We need to delete children divs
         while (numOfChildren < NUM_OF_CHILDREN_DIVS) {
           let childDivs = document.querySelectorAll(".child-div");
-          console.log("CHILD DIVS");
-          console.log(childDivs);
           let lastChild = childDivs[childDivs.length - 1];
           lastChild.parentNode.removeChild(lastChild);
           NUM_OF_CHILDREN_DIVS--;
