@@ -77,7 +77,8 @@
     // Check if a child name is missing
     let needChildError = false;
     childInputs.map((child) => {
-      if (child.value === "") {
+      console.log("Child: " + child);
+      if (!child) {
         needChildError = true;
       }
     });
