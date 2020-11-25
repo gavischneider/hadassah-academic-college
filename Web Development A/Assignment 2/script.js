@@ -150,6 +150,7 @@
       // Now add them to the DOM
       summary.appendChild(listGroup);
 
+      childInputs = childInputs.sort();
       let listGroup2 = document.createElement("ul");
       listGroup2.setAttribute("class", "list-group");
       listGroup2.setAttribute("class", "w-100");
