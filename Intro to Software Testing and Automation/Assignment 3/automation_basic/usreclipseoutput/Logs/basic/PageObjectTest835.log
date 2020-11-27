@@ -1,0 +1,47 @@
+INFO  22:35:17  (TestBase.java:96) - Writing debug log to: usreclipseoutput/Logs/basic/PageObjectTest835.log
+INFO  22:35:18  (TestBase.java:157) - *************************************************************************
+INFO  22:35:18  (TestBase.java:158) - The 'PageObjectTest' test has started.
+INFO  22:35:18  (TestBase.java:159) - Start time: 24/11/2020 22:35:18
+INFO  22:35:18  (TestBase.java:160) - *************************************************************************
+INFO  22:35:20  (MenusPage.java:31) - Click Register link.
+INFO  22:35:22  (RegisterPage.java:28) - Select gender male
+INFO  22:35:23  (RegisterPage.java:37) - Enter first name
+INFO  22:35:23  (RegisterPage.java:43) - Enter last name
+INFO  22:35:23  (RegisterPage.java:49) - Select birthday day.
+INFO  22:35:23  (RegisterPage.java:57) - Select birthday month.
+INFO  22:35:23  (RegisterPage.java:65) - Select birthday year.
+INFO  22:35:23  (RegisterPage.java:72) - Set email randomEmail2411202235323@gmail.com
+INFO  22:35:24  (RegisterPage.java:78) - Type password 123456
+INFO  22:35:24  (RegisterPage.java:84) - Type password verification.
+INFO  22:35:24  (RegisterPage.java:90) - Click register button
+INFO  22:35:26  (RegisterSuccessPage.java:30) - Verify message: Your registration completed
+INFO  22:35:29  (MenusPage.java:37) - Click logout button
+INFO  22:35:31  (MenusPage.java:43) - Click login button
+INFO  22:35:32  (LoginPage.java:22) - Set email randomEmail2411202235323@gmail.com
+INFO  22:35:32  (LoginPage.java:28) - Set password 123456
+INFO  22:35:34  (MenusPage.java:49) - Go to the 'Apparel' category
+INFO  22:35:35  (ClothingCategories.java:25) - Go to the 'Shoes' category
+INFO  22:35:38  (ShoesPage.java:33) - Click on picture
+INFO  22:35:49  (AdidasShoesPage.java:35) - Check correct amount of items in cart
+INFO  22:35:49  (AdidasShoesPage.java:44) - Go to cart and confirm price
+INFO  22:35:53  (CartPage.java:33) - Click on box verification if not already clicked
+INFO  22:35:53  (CartPage.java:37) - Click on 'checkout' button
+FATAL 22:35:59  (TestBase.java:125) - no such element: Unable to locate element: {"method":"id","selector":"termsofservice"}
+  (Session info: chrome=87.0.4280.67)
+  (Driver info: chromedriver=86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}),platform=Mac OS X 10.15.6 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'Gavriels-MacBook-Air.local', ip: 'fe80:0:0:0:1c6f:d022:143c:5c78%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.15.6', java.version: '1.8.0_73'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: /var/folders/l0/r0v7l6q91ml...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:55719}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), rotatable: false, setWindowRect: true, strictFileInteractability: false, takesHeapSnapshot: true, takesScreenshot: true, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unexpectedAlertBehaviour: ignore, unhandledPromptBehavior: ignore, version: 87.0.4280.67, webStorageEnabled: true, webauthn:virtualAuthenticators: true}
+Session ID: 27efc8535caa3b71882e050b438afa07
+*** Element info: {Using=id, value=termsofservice}
+INFO  22:36:00  (ApplicationManager1.java:116) - Application screenshot is saved in: usreclipseoutput/Screenshots/basic/Failure screenshot for PageObjectTest2411202235562.png
+INFO  22:36:00  (TestBase.java:180) - *************************************************************************
+INFO  22:36:00  (TestBase.java:181) - The 'PageObjectTest' test has ended with error.
+INFO  22:36:00  (TestBase.java:182) - Start time: 24/11/2020 22:35:18
+INFO  22:36:00  (TestBase.java:183) - End time:       24/11/2020 22:36:00.
+INFO  22:36:00  (TestBase.java:184) - -------------------------------------------------------------------------
+INFO  22:36:00  (TestBase.java:185) - Total run time: 0 days, 0 hours, 0 minutes, 41.803 seconds.
+INFO  22:36:00  (TestBase.java:186) - *************************************************************************

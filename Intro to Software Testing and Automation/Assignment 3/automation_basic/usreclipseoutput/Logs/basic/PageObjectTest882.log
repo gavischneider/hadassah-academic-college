@@ -1,0 +1,46 @@
+INFO  23:46:19  (TestBase.java:96) - Writing debug log to: usreclipseoutput/Logs/basic/PageObjectTest882.log
+INFO  23:46:20  (TestBase.java:157) - *************************************************************************
+INFO  23:46:20  (TestBase.java:158) - The 'PageObjectTest' test has started.
+INFO  23:46:20  (TestBase.java:159) - Start time: 24/11/2020 23:46:20
+INFO  23:46:20  (TestBase.java:160) - *************************************************************************
+INFO  23:46:22  (MenusPage.java:31) - Click Register link.
+INFO  23:46:24  (RegisterPage.java:28) - Select gender male
+INFO  23:46:24  (RegisterPage.java:37) - Enter first name
+INFO  23:46:24  (RegisterPage.java:43) - Enter last name
+INFO  23:46:25  (RegisterPage.java:49) - Select birthday day.
+INFO  23:46:25  (RegisterPage.java:57) - Select birthday month.
+INFO  23:46:25  (RegisterPage.java:65) - Select birthday year.
+INFO  23:46:25  (RegisterPage.java:72) - Set email randomEmail2411202346176@gmail.com
+INFO  23:46:25  (RegisterPage.java:78) - Type password 123456
+INFO  23:46:25  (RegisterPage.java:84) - Type password verification.
+INFO  23:46:25  (RegisterPage.java:90) - Click register button
+INFO  23:46:27  (RegisterSuccessPage.java:30) - Verify message: Your registration completed
+INFO  23:46:29  (MenusPage.java:37) - Click logout button
+INFO  23:46:30  (MenusPage.java:43) - Click login button
+INFO  23:46:31  (LoginPage.java:22) - Set email randomEmail2411202346176@gmail.com
+INFO  23:46:31  (LoginPage.java:28) - Set password 123456
+INFO  23:46:33  (MenusPage.java:49) - Go to the 'Apparel' category
+INFO  23:46:33  (ClothingCategories.java:25) - Go to the 'Shoes' category
+INFO  23:46:36  (ShoesPage.java:33) - Click on picture
+INFO  23:46:48  (AdidasShoesPage.java:35) - Check correct amount of items in cart
+INFO  23:46:48  (AdidasShoesPage.java:44) - Go to cart and confirm price
+INFO  23:46:55  (CartPage.java:35) - Click on box verification if not already clicked
+INFO  23:46:58  (CartPage.java:40) - Click on 'checkout' button
+INFO  23:46:58  (CartPage.java:41) - ---------LINE 41--------
+INFO  23:46:59  (CartPage.java:43) - ---------LINE 43--------
+INFO  23:47:02  (CartPage.java:45) - ---------LINE 45--------
+INFO  23:47:02  (CheckoutPage.java:27) - ---------------------- MADE IT TO CHECKOUT PAGE--------------------------
+INFO  23:47:02  (CheckoutPage.java:28) - Enter address
+INFO  23:47:07  (CheckoutPage.java:46) - Accept current shipping method
+INFO  23:47:09  (CheckoutPage.java:50) - Accept current payment method
+INFO  23:47:11  (CheckoutPage.java:54) - Accept address confirmation
+INFO  23:47:13  (CheckoutPage.java:62) - Check order total and confirm order
+INFO  23:47:16  (CheckoutPage.java:73) - Check that proper confirmation text has been received and click continue
+INFO  23:47:18  (ThankYouPage.java:40) - Check that we've returned to the main page and that the cart is empty
+INFO  23:47:20  (TestBase.java:168) - *************************************************************************
+INFO  23:47:20  (TestBase.java:169) - The 'PageObjectTest' test has ended successfully.
+INFO  23:47:20  (TestBase.java:170) - Start time: 24/11/2020 23:46:20
+INFO  23:47:20  (TestBase.java:171) - End time:       24/11/2020 23:47:20.
+INFO  23:47:20  (TestBase.java:172) - -------------------------------------------------------------------------
+INFO  23:47:20  (TestBase.java:173) - Total run time: 0 days, 0 hours, 1 minutes, 0.793 seconds.
+INFO  23:47:20  (TestBase.java:174) - *************************************************************************
