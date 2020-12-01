@@ -1,0 +1,30 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<build>
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>admin</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <hudson.scm.SCMRevisionState_-None/>
+  </actions>
+  <queueId>4</queueId>
+  <timestamp>1606822578271</timestamp>
+  <startTime>1606822578300</startTime>
+  <result>SUCCESS</result>
+  <duration>86286</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <builtOn></builtOn>
+  <workspace>/Users/gavischneider/.jenkins/workspace/My first job</workspace>
+  <hudsonVersion>2.249.3</hudsonVersion>
+  <scm class="hudson.plugins.filesystem_scm.ChangelogSet$XMLSerializer" plugin="filesystem_scm@2.1"/>
+  <culprits class="com.google.common.collect.RegularImmutableSortedSet">
+    <string>unknown</string>
+  </culprits>
+</build>

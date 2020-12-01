@@ -1,0 +1,39 @@
+<log plugin="filesystem_scm@2.1">
+  <run class="hudson.model.FreeStyleBuild">
+    <actions>
+      <hudson.model.CauseAction>
+        <causeBag class="linked-hash-map">
+          <entry>
+            <hudson.model.Cause_-UserIdCause>
+              <userId>admin</userId>
+            </hudson.model.Cause_-UserIdCause>
+            <int>1</int>
+          </entry>
+        </causeBag>
+      </hudson.model.CauseAction>
+    </actions>
+    <queueId>4</queueId>
+    <timestamp>1606822578271</timestamp>
+    <startTime>1606822578300</startTime>
+    <duration>0</duration>
+    <charset>UTF-8</charset>
+    <keepLog>false</keepLog>
+    <builtOn></builtOn>
+    <workspace>/Users/gavischneider/.jenkins/workspace/My first job</workspace>
+    <hudsonVersion>2.249.3</hudsonVersion>
+    <scm class="hudson.scm.NullChangeLogParser"/>
+  </run>
+  <browser class="hudson.plugins.filesystem_scm.FilesystemRepositoryBrowser"/>
+  <logs>
+    <changelog>
+      <parent reference="../../.."/>
+      <paths>
+        <path>
+          <value>C:\Selenium Workspace/Logs/basic/PageObjectTest285.log</value>
+          <action>ADD</action>
+          <changelog reference="../../.."/>
+        </path>
+      </paths>
+    </changelog>
+  </logs>
+</log>

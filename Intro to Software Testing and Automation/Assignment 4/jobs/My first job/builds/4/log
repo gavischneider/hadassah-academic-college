@@ -1,0 +1,131 @@
+Started by user [8mha:////4Ibr06OvUWNIayMXygJ8SYQyq92rWba+WVDsB1PAa29BAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /Users/gavischneider/.jenkins/workspace/My first job
+FSSCM.checkout /Users/gavischneider/eclipse-workspace/automation_basic to /Users/gavischneider/.jenkins/workspace/My first job
+New file: C:\Selenium Workspace/Logs/basic/PageObjectTest285.log
+
+FSSCM.check completed in 149 milliseconds
+No emails were triggered.
+[My first job] $ /Users/gavischneider/.jenkins/tools/hudson.tasks.Maven_MavenInstallation/Maven_3.6.3/bin/mvn -f pom.xml clean install test -DsuiteXmlFile=src/test/resources/testng.xml "-Dworkspace=/Users/gavischneider/eclipse-workspace/automation_basic/C:\Selenium Workspace"
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< com.ilana.ilana2:automation_basic_project >--------------
+[INFO] Building automation_basic_project basic
+[INFO] --------------------------------[ jar ]---------------------------------
+[8mha:////4O35tHpoLwe5oRnPFjE77Ba8ngagkHX+ajejCkfy0akMAAAAYx+LCAAAAAAAAP9b85aBtbiIQSWjNKU4P0+vJLE4u1gvPjexLDVPzxdEhicW5WXmpfvll6S2fNly5fzGzauYGBgqihikoFqS8/OK83NS9ZwhNEghAwQwghQWAACwxA+XYgAAAA==[0m[WARNING] The POM for com.sun.xml.bind:jaxb-osgi:jar:2.2.10 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ automation_basic_project ---
+[INFO] Deleting /Users/gavischneider/.jenkins/workspace/My first job/target
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ automation_basic_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ automation_basic_project ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 30 source files to /Users/gavischneider/.jenkins/workspace/My first job/target/classes
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ automation_basic_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ automation_basic_project ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to /Users/gavischneider/.jenkins/workspace/My first job/target/test-classes
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-surefire-plugin:2.16:test (default-test) @ automation_basic_project ---
+[INFO] Surefire report directory: /Users/gavischneider/.jenkins/workspace/My first job/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running TestSuite
+Starting ChromeDriver 86.0.4240.22 (398b0743353ff36fb1b82468f63a3a93b4e2e89e-refs/branch-heads/4240@{#378}) on port 32293
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+[1606822593.876][WARNING]: Deprecated chrome option is ignored: useAutomationExtension
+[1606822596.382][WARNING]: This version of ChromeDriver has not been tested with Chrome version 87.
+Dec 01, 2020 1:36:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+INFO  13:36:37  (TestBase.java:96) - Writing debug log to: /Users/gavischneider/eclipse-workspace/automation_basic/C:\Selenium Workspace/Logs/basic/PageObjectTest940.log
+INFO  13:36:37  (TestBase.java:157) - *************************************************************************
+INFO  13:36:37  (TestBase.java:158) - The 'PageObjectTest' test has started.
+INFO  13:36:37  (TestBase.java:159) - Start time: 01/12/2020 13:36:37
+INFO  13:36:37  (TestBase.java:160) - *************************************************************************
+INFO  13:36:39  (MenusPage.java:31) - Click Register link.
+INFO  13:36:43  (RegisterPage.java:28) - Select gender male
+INFO  13:36:43  (RegisterPage.java:37) - Enter first name
+INFO  13:36:43  (RegisterPage.java:43) - Enter last name
+INFO  13:36:43  (RegisterPage.java:49) - Select birthday day.
+INFO  13:36:43  (RegisterPage.java:57) - Select birthday month.
+INFO  13:36:43  (RegisterPage.java:65) - Select birthday year.
+INFO  13:36:44  (RegisterPage.java:72) - Set email randomEmail0112201336101@gmail.com
+INFO  13:36:44  (RegisterPage.java:78) - Type password 123456
+INFO  13:36:44  (RegisterPage.java:84) - Type password verification.
+INFO  13:36:44  (RegisterPage.java:90) - Click register button
+INFO  13:36:46  (RegisterSuccessPage.java:30) - Verify message: Your registration completed
+INFO  13:36:48  (MenusPage.java:37) - Click logout button
+INFO  13:36:49  (MenusPage.java:43) - Click login button
+INFO  13:36:49  (LoginPage.java:22) - Set email randomEmail0112201336101@gmail.com
+INFO  13:36:50  (LoginPage.java:28) - Set password 123456
+INFO  13:36:52  (MenusPage.java:49) - Go to the 'Apparel' category
+INFO  13:36:53  (ClothingCategories.java:26) - Go to the 'Shoes' category
+INFO  13:36:57  (ShoesPage.java:34) - Click on picture
+INFO  13:37:10  (AdidasShoesPage.java:36) - Check correct amount of items in cart
+INFO  13:37:10  (AdidasShoesPage.java:45) - Go to cart and confirm price
+INFO  13:37:17  (CartPage.java:36) - Click on box verification if not already clicked
+INFO  13:37:20  (CartPage.java:41) - Click on 'checkout' button
+INFO  13:37:26  (CheckoutPage.java:28) - ---------------------- MADE IT TO CHECKOUT PAGE--------------------------
+INFO  13:37:26  (CheckoutPage.java:29) - Enter address
+INFO  13:37:30  (CheckoutPage.java:47) - Accept current shipping method
+INFO  13:37:32  (CheckoutPage.java:51) - Accept current payment method
+INFO  13:37:34  (CheckoutPage.java:55) - Accept address confirmation
+INFO  13:37:36  (CheckoutPage.java:63) - Check order total and confirm order
+INFO  13:37:38  (CheckoutPage.java:74) - Check that proper confirmation text has been received and click continue
+INFO  13:37:41  (ThankYouPage.java:40) - Check that we've returned to the main page and that the cart is empty
+INFO  13:37:43  (TestBase.java:168) - *************************************************************************
+INFO  13:37:43  (TestBase.java:169) - The 'PageObjectTest' test has ended successfully.
+INFO  13:37:43  (TestBase.java:170) - Start time: 01/12/2020 13:36:37
+INFO  13:37:43  (TestBase.java:171) - End time:       01/12/2020 13:37:43.
+INFO  13:37:43  (TestBase.java:172) - -------------------------------------------------------------------------
+INFO  13:37:43  (TestBase.java:173) - Total run time: 0 days, 0 hours, 1 minutes, 6.681 seconds.
+INFO  13:37:43  (TestBase.java:174) - *************************************************************************
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 72.256 sec - in TestSuite
+
+Results :
+
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ automation_basic_project ---
+[INFO] Building jar: /Users/gavischneider/.jenkins/workspace/My first job/target/automation_basic_project-basic.jar
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-install-plugin:2.4:install (default-install) @ automation_basic_project ---
+[INFO] Installing /Users/gavischneider/.jenkins/workspace/My first job/target/automation_basic_project-basic.jar to /Users/gavischneider/.m2/repository/com/ilana/ilana2/automation_basic_project/basic/automation_basic_project-basic.jar
+[INFO] Installing /Users/gavischneider/.jenkins/workspace/My first job/pom.xml to /Users/gavischneider/.m2/repository/com/ilana/ilana2/automation_basic_project/basic/automation_basic_project-basic.pom
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ automation_basic_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ automation_basic_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ automation_basic_project ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ automation_basic_project ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[8mha:////4Dh4VYPsNyqUuC7C1ztDfArFb9UUtpjS7k6UNFNkSN57AAAAYB+LCAAAAAAAAP9b85aBtbiIQSmjNKU4P0+vJLE4u1gvPjexLDVPzxdEGvvmZ+X75ZekLlOVfvTjc8FPJgaGiiIGKaiG5Py84vycVD1nCA1SyAABjCCFBQCV27OjYAAAAA==[0m[INFO] --- maven-surefire-plugin:2.16:test (default-test) @ automation_basic_project ---
+[INFO] Skipping execution of surefire because it has already been run for this configuration
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:23 min
+[INFO] Finished at: 2020-12-01T13:37:44+02:00
+[INFO] ------------------------------------------------------------------------
+No emails were triggered.
+Finished: SUCCESS
