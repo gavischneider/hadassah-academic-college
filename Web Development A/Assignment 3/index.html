@@ -27,23 +27,49 @@
         id="imageContainer"
         class="border border-dark p-4 rounded shadow mb-4"
       >
-        <img
-          src=""
-          alt="Weather Forecast"
-          id="weatherImage"
-          class="mx-auto d-block"
-        />
+        <div class="row">
+          <img
+            src=""
+            alt="Weather Forecast"
+            id="weatherImage"
+            class="col-xl-8 col-lg-8 col-md-12 col-sm-12 mx-auto d-block"
+          />
+          <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="weatherList list-group-item list-group-item-success">
+                  Today's Weather
+                </li>
+                <li class="weatherList list-group-item">Cras justo odio</li>
+                <li class="weatherList list-group-item">
+                  Dapibus ac facilisis in
+                </li>
+                <li class="weatherList list-group-item">Vestibulum at eros</li>
+                <li class="weatherList list-group-item list-group-item-warning">
+                  Tomorrows's Weather
+                </li>
+                <li class="weatherList list-group-item">Cras justo odio</li>
+                <li class="weatherList list-group-item">
+                  Dapibus ac facilisis in
+                </li>
+                <li class="weatherList list-group-item">Vestibulum at eros</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="border border-dark p-4 rounded shadow">
         <div class="row mt-4 mb-4">
-          <div class="col-5 align-self-start">
+          <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 align-self-start">
             <h2>List of Locations</h2>
           </div>
-          <div class="col-4 align-self-center"></div>
+          <div
+            class="col-xl-4 col-lg-4 col-md-0 col-sm-0 align-self-center"
+          ></div>
           <button
             type="button"
-            class="btn btn-primary col-3 align-self-end btn-md"
+            class="btn btn-primary col-xl-3 col-lg-3 col-md-12 col-sm-12 align-self-end btn-md"
             id="showWeatherButton"
           >
             Display Weather Forecast
@@ -61,7 +87,7 @@
         class="alert alert-danger mt-4 border border-dark p-4 rounded shadow"
         id="warningMessage"
       >
-        <h2>Please Correct the following items:</h2>
+        <h2>Please Correct the Following Items:</h2>
       </div>
 
       <!-- Form to add location -->
@@ -99,7 +125,7 @@
           />
         </div>
         <button type="submit" class="btn btn-primary" id="submitButton">
-          Submit
+          Add
         </button>
       </form>
     </div>

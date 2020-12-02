@@ -53,7 +53,13 @@ function validateForm(name, latitude, longitude) {
     errors.push("Latitude must be a number");
   }
   if (isNaN(longitude)) {
-    errors.push("longitude must be a number");
+    errors.push("Longitude must be a number");
+  }
+  if (latitude && (latitude > 90 || latitude < -90)) {
+    errors.push("Latitude must be a number between +90 and -90");
+  }
+  if (longitude && (longitude > 180 || longitude < -180)) {
+    errors.push("Longitude must be a number between +180 and -180");
   }
   return errors;
 }
@@ -131,6 +137,35 @@ async function fetchWeather() {
         let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
         document.getElementById("weatherImage").setAttribute("src", imageURL);
         document.getElementById("imageContainer").style.display = "block";
+
+        // Add today's and tommorow's weather to DOM
+        let dataSeries = weatherJson.dataseries;
+        console.log("-----DATASERIES-----");
+        console.log(dataSeries);
+
+        const todayWeather = dataSeries[0].weather;
+        const todayTempMin = dataSeries[0].temp2m.min;
+        const todayTempMax = dataSeries[0].temp2m.max;
+        const todayWind = dataSeries[0].wind10m_max;
+
+        const tomorrowWeather = dataSeries[1].weather;
+        const tomorrowTempMin = dataSeries[1].temp2m.min;
+        const tomorrowTempMax = dataSeries[1].temp2m.max;
+        const tomorrowWind = dataSeries[1].wind10m_max;
+
+        let weatherList = Array.from(document.querySelectorAll(".weatherList"));
+
+        //weatherList[0].textContent = `Today's Weather: ${todayDate}`;
+        weatherList[1].textContent = `Weather Forecast: ${todayWeather}`;
+        weatherList[2].textContent = `Temperature: Between ${todayTempMin} and ${todayTempMax} (Cel)`;
+        weatherList[3].textContent = `Wind Factor: ${todayWind}`;
+
+        //weatherList[4].textContent = `Tomorrow's Weather: ${tomorrowDate}`;
+        weatherList[5].textContent = `Weather Forecast: ${tomorrowWeather}`;
+        weatherList[6].textContent = `Temperature: Between ${tomorrowTempMin} and ${tomorrowTempMax} (Cel)`;
+        weatherList[7].textContent = `Wind Factor: ${tomorrowWind}`;
+
+        console.log(arr);
       } catch (error) {
         console.log(console.error());
       }
