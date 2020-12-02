@@ -3,6 +3,9 @@ window.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("submitButton")
     .addEventListener("click", handleSubmit);
+  document
+    .getElementById("showWeatherButton")
+    .addEventListener("click", fetchWeather);
 });
 
 function handleSubmit() {
@@ -18,6 +21,7 @@ function handleSubmit() {
   } else {
     // If we get here, there are no errors, add the new location to list
     addNewLocationToList(name, latitude, longitude);
+    cleanInputs();
   }
 }
 
@@ -83,6 +87,9 @@ function addNewLocationToList(name, latitude, longitude) {
   button.addEventListener("click", removeLocation);
   button.textContent = "Remove";
   location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
+  location.setAttribute("name", name);
+  location.setAttribute("latitude", latitude);
+  location.setAttribute("longitude", longitude);
   location.appendChild(button);
   locationList.appendChild(location);
 }
@@ -92,3 +99,46 @@ function removeLocation(event) {
     event.target.parentElement
   );
 }
+
+function cleanInputs() {
+  document.getElementById("nameInput").value = "";
+  document.getElementById("latitudeInput").value = "";
+  document.getElementById("longitudeInput").value = "";
+}
+
+async function fetchWeather() {
+  // 1. Check if a list item is 'active'
+  let locationItems = Array.from(document.querySelectorAll(".locationItem"));
+  if (locationItems.length > 0) {
+    let activeItem = locationItems.filter((location) => {
+      return location.classList.contains("active");
+    });
+    if (activeItem) {
+      // fix this
+      // We found an 'active' item
+      const name = activeItem[0].attributes.name.nodeValue;
+      const latitude = activeItem[0].attributes.latitude.nodeValue;
+      const longitude = activeItem[0].attributes.longitude.nodeValue;
+      const weather = await getWeather(name, latitude, longitude);
+      const weatherJson = await weather.json();
+      console.log("-----WEATHER-----");
+      console.log(JSON.stringify(weatherJson));
+    }
+  }
+}
+
+async function getWeather(name, latitude, longitude) {
+  let response = await fetch(
+    "http://www.7timer.info/bin/api.pl?" +
+      new URLSearchParams({
+        lon: longitude,
+        lat: latitude,
+        product: "civillight",
+        output: "json",
+      })
+  );
+  return response;
+}
+// http://www.7timer.info/bin/api.pl?lon=35.213618&amp;lat=31.771959&amp;product=civillight&amp;output=json
+// lon= 35.213618
+// lat= 31.771959
