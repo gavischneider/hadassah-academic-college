@@ -80,9 +80,15 @@ function addNewLocationToList(name, latitude, longitude) {
   button.setAttribute("type", "button");
   button.classList.add("btn");
   button.classList.add("btn-danger");
+  button.addEventListener("click", removeLocation);
   button.textContent = "Remove";
   location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
   location.appendChild(button);
-
   locationList.appendChild(location);
+}
+
+function removeLocation(event) {
+  event.target.parentElement.parentElement.removeChild(
+    event.target.parentElement
+  );
 }
