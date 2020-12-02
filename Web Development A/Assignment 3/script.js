@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("imageContainer").style.display = "none";
   document.getElementById("warningMessage").style.display = "none";
   document
     .getElementById("submitButton")
@@ -87,7 +88,6 @@ function addNewLocationToList(name, latitude, longitude) {
   button.addEventListener("click", removeLocation);
   button.textContent = "Remove";
   location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
-  location.setAttribute("name", name);
   location.setAttribute("latitude", latitude);
   location.setAttribute("longitude", longitude);
   location.appendChild(button);
@@ -107,7 +107,7 @@ function cleanInputs() {
 }
 
 async function fetchWeather() {
-  // 1. Check if a list item is 'active'
+  // Check if a list item is 'active'
   let locationItems = Array.from(document.querySelectorAll(".locationItem"));
   if (locationItems.length > 0) {
     let activeItem = locationItems.filter((location) => {
@@ -116,18 +116,22 @@ async function fetchWeather() {
     if (activeItem) {
       // fix this
       // We found an 'active' item
-      const name = activeItem[0].attributes.name.nodeValue;
       const latitude = activeItem[0].attributes.latitude.nodeValue;
       const longitude = activeItem[0].attributes.longitude.nodeValue;
-      const weather = await getWeather(name, latitude, longitude);
+      const weather = await getWeather(latitude, longitude);
       const weatherJson = await weather.json();
       console.log("-----WEATHER-----");
       console.log(JSON.stringify(weatherJson));
+
+      // Build the image url and place it in the DOM
+      let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
+      document.getElementById("weatherImage").setAttribute("src", imageURL);
+      document.getElementById("imageContainer").style.display = "block";
     }
   }
 }
 
-async function getWeather(name, latitude, longitude) {
+async function getWeather(latitude, longitude) {
   let response = await fetch(
     "http://www.7timer.info/bin/api.pl?" +
       new URLSearchParams({
@@ -142,3 +146,6 @@ async function getWeather(name, latitude, longitude) {
 // http://www.7timer.info/bin/api.pl?lon=35.213618&amp;lat=31.771959&amp;product=civillight&amp;output=json
 // lon= 35.213618
 // lat= 31.771959
+
+// pic url
+// http://www.7timer.info/bin/astro.php?lon=35.213618&amp;lat=31.771959&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0
