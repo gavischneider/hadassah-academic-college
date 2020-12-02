@@ -21,6 +21,7 @@ function handleSubmit() {
     displayErrors(errors);
   } else {
     // If we get here, there are no errors, add the new location to list
+    document.getElementById("message").style.display = "none";
     addNewLocationToList(name, latitude, longitude);
     cleanInputs();
   }
@@ -118,15 +119,21 @@ async function fetchWeather() {
       // We found an 'active' item
       const latitude = activeItem[0].attributes.latitude.nodeValue;
       const longitude = activeItem[0].attributes.longitude.nodeValue;
-      const weather = await getWeather(latitude, longitude);
-      const weatherJson = await weather.json();
-      console.log("-----WEATHER-----");
-      console.log(JSON.stringify(weatherJson));
+      try {
+        const weather = await getWeather(latitude, longitude);
+        const weatherJson = await weather.json();
+        console.log("-----WEATHER-----");
+        console.log(weatherJson);
+        console.log("-----------------");
+        console.log(JSON.stringify(weatherJson));
 
-      // Build the image url and place it in the DOM
-      let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
-      document.getElementById("weatherImage").setAttribute("src", imageURL);
-      document.getElementById("imageContainer").style.display = "block";
+        // Build the image url and place it in the DOM
+        let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
+        document.getElementById("weatherImage").setAttribute("src", imageURL);
+        document.getElementById("imageContainer").style.display = "block";
+      } catch (error) {
+        console.log(console.error());
+      }
     }
   }
 }

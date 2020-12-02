@@ -21,14 +21,19 @@
 
   <body>
     <div class="container">
-      <h1>Check the Weather</h1>
+      <h1 class="mt-4 mb-4 text-center">Check the Weather</h1>
 
       <div id="imageContainer">
-        <img src="" alt="Weather Forecast" id="weatherImage" />
+        <img
+          src=""
+          alt="Weather Forecast"
+          id="weatherImage"
+          class="mx-auto d-block"
+        />
       </div>
 
-      <div>
-        <div class="row">
+      <div class="border border-dark p-4 rounded shadow">
+        <div class="row mt-4 mb-4">
           <div class="col align-self-start">
             <h2>List of Locations</h2>
           </div>
@@ -42,15 +47,25 @@
           </button>
         </div>
 
-        <div class="list-group" id="list-tab" role="tablist"></div>
+        <div class="list-group" id="list-tab" role="tablist">
+          <div class="list-group-item list-group-item-action" id="message">
+            Add a location!
+          </div>
+        </div>
       </div>
 
-      <div class="alert alert-danger p-2 m-2" id="warningMessage">
+      <div
+        class="alert alert-danger mt-4 border border-dark p-4 rounded shadow"
+        id="warningMessage"
+      >
         <h2>Please Correct the following items:</h2>
       </div>
 
       <!-- Form to add location -->
-      <form onsubmit="return false">
+      <form
+        onsubmit="return false"
+        class="mt-4 mb-4 border border-dark p-4 rounded shadow"
+      >
         <div class="form-group">
           <label for="nameInput">Name</label>
           <input
