@@ -33,6 +33,7 @@
             alt="Weather Forecast"
             id="weatherImage"
             class="col-xl-8 col-lg-8 col-md-12 col-sm-12 mx-auto d-block"
+            onerror="handleError()"
           />
           <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
             <div class="card">
@@ -147,6 +148,12 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script>
+      function handleError() {
+        document.getElementById("weatherImage").src =
+          "https://res.cloudinary.com/practicaldev/image/fetch/s--cOqFsKal--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/i/eadmrxp8a87d3wlalfcb.png";
+      }
+    </script>
     <script src="script.js"></script>
   </body>
 </html>

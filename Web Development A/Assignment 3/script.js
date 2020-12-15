@@ -168,11 +168,17 @@
           const todayTempMin = dataSeries[0].temp2m.min;
           const todayTempMax = dataSeries[0].temp2m.max;
           const todayWind = dataSeries[0].wind10m_max;
+          if (todayWind == 1) {
+            todayWind = "None";
+          }
 
           const tomorrowWeather = dataSeries[1].weather;
           const tomorrowTempMin = dataSeries[1].temp2m.min;
           const tomorrowTempMax = dataSeries[1].temp2m.max;
           const tomorrowWind = dataSeries[1].wind10m_max;
+          if (tomorrowWind == 1) {
+            tomorrowWind = "None";
+          }
 
           let weatherList = Array.from(
             document.querySelectorAll(".weatherList")
