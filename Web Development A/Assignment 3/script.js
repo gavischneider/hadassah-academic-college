@@ -96,12 +96,14 @@
   function addNewLocationToList(name, latitude, longitude) {
     let locationList = document.getElementById("list-tab");
     let location = document.createElement("div");
-    location.classList.add("locationItem");
-    location.classList.add("list-group-item");
-    location.classList.add("list-group-item-action");
-    location.classList.add("d-flex");
-    location.classList.add("align-items-center");
-    location.classList.add("justify-content-between");
+    location.classList.add(
+      "locationItem",
+      "list-group-item",
+      "list-group-item-action",
+      "d-flex",
+      "align-items-center",
+      "justify-content-between"
+    );
     location.setAttribute("data-toggle", "list");
     location.setAttribute("role", "tab");
     let button = document.createElement("button");
@@ -148,7 +150,6 @@
         return location.classList.contains("active");
       });
       if (activeItem) {
-        // fix this
         // We found an 'active' item
         const latitude = activeItem[0].attributes.latitude.nodeValue;
         const longitude = activeItem[0].attributes.longitude.nodeValue;
