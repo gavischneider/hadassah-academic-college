@@ -15,13 +15,13 @@
     console.log(`email: ${email}`);
     console.log(`password: ${password}`);
 
-    let errors = validateForm(password, verifyPassword);
+    let errors = validateForm(email, password);
     if (errors.length > 0) {
       displayErrors(errors);
     } else {
       // If we get here, there are no errors, send data to server for validation
       //.....
-      //window.location.replace("http://localhost:3000/auth/login");
+      window.location.replace("http://localhost:3000");
     }
   }
 

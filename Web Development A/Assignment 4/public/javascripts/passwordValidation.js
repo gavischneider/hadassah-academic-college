@@ -51,7 +51,7 @@
     if (password.length < 8 || verifyPassword.length < 8) {
       errors.push("Password must be at least 8 characters");
     }
-    if (password.localCompare(verifyPassword) !== 0) {
+    if (password.localeCompare(verifyPassword) !== 0) {
       errors.push("Passwords must match");
     }
 
