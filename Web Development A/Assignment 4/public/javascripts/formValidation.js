@@ -7,7 +7,9 @@
   });
 })();
 
+// When the user clickd submit
 function handleSubmit() {
+  removeErrorsFromDOM();
   let email = document.getElementById("emailInput").value.trim();
   let firstName = document.getElementById("firstNameInput").value.trim();
   let lastName = document.getElementById("lastNameInput").value.trim();
@@ -18,6 +20,16 @@ function handleSubmit() {
   } else {
     // If we get here, there are no errors, send data to server for validation
     //.....
+  }
+}
+
+// Clean up all visible errors
+function removeErrorsFromDOM() {
+  warningMessage = document.getElementById("warningMessage").style.display =
+    "none";
+  let listOfErrors = document.getElementById("list-of-errors");
+  if (listOfErrors) {
+    listOfErrors.parentElement.removeChild(listOfErrors);
   }
 }
 
