@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const auth = require("./routes/auth");
 app.use("/auth", auth);
 
+// TODO: Add first name
 // Home route
 app.get("/", (req, res) => {
   res.render("index", { title: "express" });

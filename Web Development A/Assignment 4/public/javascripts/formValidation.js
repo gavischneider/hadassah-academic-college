@@ -7,12 +7,16 @@
   });
 })();
 
-// When the user clickd submit
+// When the user clicked submit
 function handleSubmit() {
   removeErrorsFromDOM();
   let email = document.getElementById("emailInput").value.trim();
   let firstName = document.getElementById("firstNameInput").value.trim();
   let lastName = document.getElementById("lastNameInput").value.trim();
+
+  console.log(`email: ${email}`);
+  console.log(`first name: ${firstName}`);
+  console.log(`last name: ${lastName}`);
 
   let errors = validateForm(email, firstName, lastName);
   if (errors.length > 0) {
@@ -20,6 +24,7 @@ function handleSubmit() {
   } else {
     // If we get here, there are no errors, send data to server for validation
     //.....
+    window.location.replace("http://localhost:3000/auth/password");
   }
 }
 
@@ -38,21 +43,21 @@ function validateForm(email, firstName, lastName) {
   // Validate
   let errors = [];
 
-  if (!email) {
+  if (email === "") {
     errors.push("Email is missing");
   }
   if (!firstName) {
     errors.push("First name is missing");
   }
   if (!lastName) {
-    errors.push("Email is missing");
+    errors.push("Last name is missing");
   }
 
-  if (firstName && !validName(firstName)) {
+  if (firstName && validName(firstName)) {
     errors.push("First name may not contain numbers");
   }
 
-  if (lastName && !validName(lastName)) {
+  if (lastName && validName(lastName)) {
     errors.push("Last name may not contain numbers");
   }
 
