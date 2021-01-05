@@ -30,7 +30,9 @@ app.use(logger("dev"));
 
 app.use(
   session({
+    name: "appSession",
     secret: "my-secret",
+    cookie: { secure: false, maxAge: 60 * 1000 * 60 }, // 1 hour
   })
 );
 
@@ -43,6 +45,10 @@ app.use("/auth", auth);
 // Home route
 app.get("/", (req, res) => {
   res.render("index", { title: "express" });
+});
+
+app.get("/sessioninfo", (req, res) => {
+  res.json(req.session);
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

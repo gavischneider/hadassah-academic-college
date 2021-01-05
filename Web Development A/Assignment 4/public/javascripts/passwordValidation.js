@@ -57,12 +57,6 @@
             email: email,
             password: password,
           }),
-          query: {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password,
-          },
         })
           .then((res) => res.json())
           .then((data) => {

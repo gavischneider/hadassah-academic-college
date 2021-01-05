@@ -38,6 +38,8 @@ router.post("/password", (req, res) => {
     password: password,
   })
     .then((res) => {
+      // Store the user in the session
+      req.session.user = req.body;
       res.send(res);
     })
     .catch((err) => {
