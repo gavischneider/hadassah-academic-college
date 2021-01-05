@@ -1,6 +1,17 @@
 (() => {
   let date;
+  let firstName;
+  let lastName;
+  let email;
   window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log("PARAMS");
+    console.log(urlParams.get("firstName"));
+    console.log(urlParams.get("lastName"));
+    console.log(urlParams.get("email"));
+    firstName = urlParams.get("firstName");
+    lastName = urlParams.get("lastName");
+    email = urlParams.get("email");
     date = getDate();
     document
       .getElementById("submitPasswordButton")
@@ -31,30 +42,41 @@
       } else {
         // If we get here, there are no errors, send data to server
         const urlParams = new URLSearchParams(window.location.search);
-        const firstName = urlParams.get("firstName");
-        const lastName = urlParams.get("lastName");
-        const email = urlParams.get("email");
-        fetch("http://localhost:3000/auth/register", {
+
+        console.log("Right before the fetch");
+        fetch("http://localhost:3000/auth/password", {
           method: "POST",
-          body: {
-            firstName,
-            lastName,
-            email,
-            password,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Origin": "*",
+          },
+          body: JSON.stringify({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+          }),
+          query: {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
           },
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log("Successfully added new user");
             console.log(data);
             //JSON.stringify(data);
             window.location.replace(
-              "http://localhost:3000/auth/login" + "success"
+              "http://localhost:3000/auth/login?message=success"
             );
           })
           .catch((err) => {
             console.log("Error registering new user: ", err);
             window.location.replace(
-              "http://localhost:3000/auth/login" + "failure"
+              "http://localhost:3000/auth/login?message=failure"
             );
           });
       }

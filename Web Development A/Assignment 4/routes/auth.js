@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user");
+const User = require("../models").User;
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
@@ -19,15 +19,23 @@ router.get("/password", (req, res) => {
 
 // Create new user
 router.post("/password", (req, res) => {
-  const firstName = req.query.firstName;
-  const lastName = req.query.lastName;
-  const email = req.query.email;
-  const password = req.query.password;
+  console.log("-----req: =====");
+  console.log(req);
+  console.log("-----req.body: =====");
+  console.log(req.body);
+  console.log("-----req.query: =====");
+  console.log(req.query);
+  console.log("-----req.params: =====");
+  console.log(req.params);
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const email = req.body.email;
+  const password = req.body.password;
   User.create({
-    firstName,
-    lastName,
-    email,
-    password,
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+    password: password,
   })
     .then((res) => {
       res.send(res);
