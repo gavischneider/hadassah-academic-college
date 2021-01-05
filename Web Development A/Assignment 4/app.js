@@ -1,11 +1,18 @@
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-const cookieParser = require("cookie-parser");
+//const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const { Sequelize } = require("sequelize");
 
 const app = express();
+
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "./database.sqlite3",
+});
 
 const PORT = process.env.PORT || 3000;
 
@@ -17,7 +24,14 @@ app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+//app.use(cookieParser());
+
+app.use(
+  session({
+    secret: "my-secret",
+  })
+);
+
 app.use(express.static(path.join(__dirname, "public")));
 
 const auth = require("./routes/auth");
