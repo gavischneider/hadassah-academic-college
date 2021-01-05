@@ -1,5 +1,7 @@
 (() => {
+  let date;
   window.addEventListener("DOMContentLoaded", () => {
+    date = getDate();
     document
       .getElementById("submitPasswordButton")
       .addEventListener("click", handleSubmit);
@@ -17,13 +19,45 @@
     console.log(`password: ${password}`);
     console.log(`verify password: ${verifyPassword}`);
 
-    let errors = validateForm(password, verifyPassword);
-    if (errors.length > 0) {
-      displayErrors(errors);
+    // Check if a minute has passed since page loaded
+    const oneMinute = 60 * 1000;
+    if (date - new Date() > oneMinute) {
+      console.log("User took longer than one minute");
+      window.location.replace("http://localhost:3000/auth/register");
     } else {
-      // If we get here, there are no errors, send data to server for validation
-      //.....
-      window.location.replace("http://localhost:3000/auth/login");
+      let errors = validateForm(password, verifyPassword);
+      if (errors.length > 0) {
+        displayErrors(errors);
+      } else {
+        // If we get here, there are no errors, send data to server
+        const urlParams = new URLSearchParams(window.location.search);
+        const firstName = urlParams.get("firstName");
+        const lastName = urlParams.get("lastName");
+        const email = urlParams.get("email");
+        fetch("http://localhost:3000/auth/register", {
+          method: "POST",
+          body: {
+            firstName,
+            lastName,
+            email,
+            password,
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            //JSON.stringify(data);
+            window.location.replace(
+              "http://localhost:3000/auth/login" + "success"
+            );
+          })
+          .catch((err) => {
+            console.log("Error registering new user: ", err);
+            window.location.replace(
+              "http://localhost:3000/auth/login" + "failure"
+            );
+          });
+      }
     }
   }
 
@@ -70,5 +104,9 @@
     let warningMessage = document.getElementById("warningMessage");
     warningMessage.appendChild(listOfErrors);
     warningMessage.style.display = "block";
+  }
+
+  function getDate() {
+    return new Date();
   }
 })();

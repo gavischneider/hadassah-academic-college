@@ -24,7 +24,9 @@ function handleSubmit() {
   } else {
     // If we get here, there are no errors, send data to server for validation
     //.....
-    window.location.replace("http://localhost:3000/auth/password");
+    window.location.replace(
+      `http://localhost:3000/auth/password?firstName=${firstName}&lastName=${lastName}&email=${email}`
+    );
   }
 }
 
