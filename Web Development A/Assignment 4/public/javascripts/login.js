@@ -20,8 +20,20 @@
       displayErrors(errors);
     } else {
       // If we get here, there are no errors, send data to server for validation
-      //.....
-      window.location.replace("http://localhost:3000");
+      fetch("http://localhost:3000/auth/login", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Origin": "*",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      }).then(res);
+
+      //window.location.replace("http://localhost:3000");
     }
   }
 

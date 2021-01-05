@@ -49,9 +49,47 @@ router.post("/password", (req, res) => {
 
 // Login route
 router.get("/login", (req, res) => {
-  res.render("login", {
-    title: "login",
-    message: "You have successfully registered. Please login:",
+  const email = req.body.email;
+  const password = req.body.password;
+  User.findOne({
+    where: { email },
+  })
+    .then((user) => {
+      if (user) {
+        if (user.password.localeCompare(password) === 0) {
+          // Email and password match
+          req.session.user = user;
+          res.render("index", { title: "Home", userName: user.firstName });
+        } else {
+          // Passwords dont match
+          res.render("login", {
+            title: "login",
+            message: "The password is incorrect",
+          });
+        }
+      } else {
+        // We could not find a user with email
+        res.render("login", {
+          title: "login",
+          message: "We could not find a user registered with that email",
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(`Error while searching for user: ${err}`);
+    });
+
+  // res.render("login", {
+  //   title: "login",
+  //   message: "You have successfully registered. Please login:",
+  // });
+});
+
+// Logout route
+router.get("/logout", (req, res) => {
+  //req.logOut();
+  req.session.destroy(function (err) {
+    res.render("login", { title: "login", message: "login-message" });
   });
 });
 

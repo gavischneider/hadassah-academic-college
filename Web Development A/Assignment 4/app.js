@@ -41,10 +41,22 @@ app.use(express.static(path.join(__dirname, "public")));
 const auth = require("./routes/auth");
 app.use("/auth", auth);
 
+function userIsAuthenticated(session) {
+  if (session.user) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 // TODO: Add first name
 // Home route
 app.get("/", (req, res) => {
-  res.render("index", { title: "express" });
+  if (userIsAuthenticated(req.session)) {
+    res.render("index", { title: "express", user: req.session.user });
+  } else {
+    res.render("login", { title: "login", message: "login message" });
+  }
 });
 
 app.get("/sessioninfo", (req, res) => {
