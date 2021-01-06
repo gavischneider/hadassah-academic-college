@@ -77,6 +77,7 @@
           </button>
         </div>
 
+        <%if (locations.length > 0) { %>
         <div class="list-group" id="list-tab" role="tablist">
           <% for (var i = 0; i < locations.length; i++) { %>
           <div
@@ -86,14 +87,17 @@
           >
             <%= locations[i].name %>: Latitude: <%= locations[i].lat %>,
             Longitude: <%= locations[i].lon %>
-            <button type="button" class="btn btn-danger">Remove</button>
+            <button type="button" class="btn btn-danger delete-button">
+              Remove
+            </button>
           </div>
           <% } %>
-
-          <div class="list-group-item list-group-item-action" id="message">
-            Add a location!
-          </div>
         </div>
+        <% } else {%>
+        <div class="list-group-item list-group-item-action" id="message">
+          Add a location!
+        </div>
+        <% } %>
       </div>
 
       <div

@@ -8,6 +8,10 @@
     document
       .getElementById("showWeatherButton")
       .addEventListener("click", fetchWeather);
+    let delButtons = document.querySelectorAll(".delete-button");
+    for (let i = 0; i < delButtons.length; i++) {
+      delButtons[i].addEventListener("click", removeLocation);
+    }
   });
 
   // Data structure to hold locations
@@ -95,36 +99,36 @@
   // Add a new location to DOM and to data structure
   function addNewLocationToList(name, latitude, longitude) {
     let locationList = document.getElementById("list-tab");
-    let location = document.createElement("div");
-    location.classList.add(
-      "locationItem",
-      "list-group-item",
-      "list-group-item-action",
-      "d-flex",
-      "align-items-center",
-      "justify-content-between"
-    );
-    location.setAttribute("data-toggle", "list");
-    location.setAttribute("role", "tab");
-    let button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.classList.add("btn");
-    button.classList.add("btn-danger");
-    button.addEventListener("click", removeLocation);
-    button.textContent = "Remove";
-    location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
+    // let location = document.createElement("div");
+    // location.classList.add(
+    //   "locationItem",
+    //   "list-group-item",
+    //   "list-group-item-action",
+    //   "d-flex",
+    //   "align-items-center",
+    //   "justify-content-between"
+    // );
+    // location.setAttribute("data-toggle", "list");
+    // location.setAttribute("role", "tab");
+    // let button = document.createElement("button");
+    // button.setAttribute("type", "button");
+    // button.classList.add("btn");
+    // button.classList.add("btn-danger");
+    // button.addEventListener("click", removeLocation); // ADD THIS
+    // button.textContent = "Remove";
+    // location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
     location.setAttribute("latitude", latitude);
     location.setAttribute("longitude", longitude);
-    location.appendChild(button);
-    locationList.appendChild(location);
+    // location.appendChild(button);
+    // locationList.appendChild(location);
 
-    let newLocation = {
-      name: name,
-      latitude: latitude,
-      longitude: longitude,
-    };
+    // let newLocation = {
+    //   name: name,
+    //   latitude: latitude,
+    //   longitude: longitude,
+    // };
 
-    locations.push(newLocation);
+    // locations.push(newLocation);
   }
 
   // When the user removes a location
