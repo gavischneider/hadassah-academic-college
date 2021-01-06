@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models").User;
+const Location = require("../models").Location;
 
 /* GET users listing. */
 router.get("/", (req, res, next) => {
@@ -54,15 +55,26 @@ router.post("/login", (req, res) => {
   User.findOne({
     where: { email, password },
   })
-    .then((user) => {
+    .then(async (user) => {
       if (user) {
         console.log("Success");
         console.log(user);
         // Email and password match
         req.session.user = user;
         console.log(user.dataValues.firstName);
-        //res.send(user.dataValues.firstName);
-        res.render("index", { title: "Home", userName: user.firstName });
+
+        // We got the user, now we need to get their locations
+        const locations = await Location.findAll({
+          where: { userId: user.dataValues.id },
+        });
+        console.log("LOCATIONS!");
+        console.log(locations);
+
+        res.render("index", {
+          title: "Home",
+          userName: user.firstName,
+          locations: locations,
+        });
       } else {
         console.log("Failure");
         console.log(user);
