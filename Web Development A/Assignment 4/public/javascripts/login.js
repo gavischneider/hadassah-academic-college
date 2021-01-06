@@ -7,7 +7,9 @@
   });
 
   // When the user clicked submit
-  function handleSubmit() {
+  function handleSubmit(e) {
+    console.log("E");
+    console.log(e);
     removeErrorsFromDOM();
     let email = document.getElementById("emailInput").value.trim();
     let password = document.getElementById("passwordInput").value.trim();
@@ -16,24 +18,10 @@
     console.log(`password: ${password}`);
 
     let errors = validateForm(email, password);
+    console.log("------------------------");
     if (errors.length > 0) {
       displayErrors(errors);
-    } else {
-      // If we get here, there are no errors, send data to server for validation
-      fetch("http://localhost:3000/auth/login", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Origin": "*",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      }).then(res);
-
-      //window.location.replace("http://localhost:3000");
+      e.preventDefault();
     }
   }
 

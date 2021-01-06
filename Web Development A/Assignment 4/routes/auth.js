@@ -48,31 +48,27 @@ router.post("/password", (req, res) => {
 });
 
 // Login route
-router.get("/login", (req, res) => {
+router.post("/login", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   User.findOne({
-    where: { email },
+    where: { email, password },
   })
     .then((user) => {
       if (user) {
-        if (user.password.localeCompare(password) === 0) {
-          // Email and password match
-          req.session.user = user;
-          res.render("index", { title: "Home", userName: user.firstName });
-        } else {
-          // Passwords dont match
-          res.render("login", {
-            title: "login",
-            message: "The password is incorrect",
-          });
-        }
+        console.log("Success");
+        console.log(user);
+        // Email and password match
+        req.session.user = user;
+        console.log(user.dataValues.firstName);
+        //res.send(user.dataValues.firstName);
+        res.render("index", { title: "Home", userName: user.firstName });
       } else {
-        // We could not find a user with email
-        res.render("login", {
-          title: "login",
-          message: "We could not find a user registered with that email",
-        });
+        console.log("Failure");
+        console.log(user);
+        // We could not find a user with that email/password
+        //res.send(null);
+        res.render("login", { title: "login", message: "Error logging in" });
       }
     })
     .catch((err) => {
