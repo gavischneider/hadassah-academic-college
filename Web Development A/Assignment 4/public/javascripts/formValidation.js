@@ -8,7 +8,8 @@
 })();
 
 // When the user clicked submit
-function handleSubmit() {
+function handleSubmit(e) {
+  console.log(e);
   removeErrorsFromDOM();
   let email = document.getElementById("emailInput").value.trim();
   let firstName = document.getElementById("firstNameInput").value.trim();
@@ -20,6 +21,7 @@ function handleSubmit() {
 
   let errors = validateForm(email, firstName, lastName);
   if (errors.length > 0) {
+    e.preventDefault();
     displayErrors(errors);
   } else {
     // If we get here, there are no errors, send data to server for validation

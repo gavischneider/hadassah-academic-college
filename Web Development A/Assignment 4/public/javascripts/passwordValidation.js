@@ -20,7 +20,7 @@
   });
 
   // When the user clicked submit
-  function handleSubmit() {
+  function handleSubmit(e) {
     removeErrorsFromDOM();
     let password = document.getElementById("passwordInput").value.trim();
     let verifyPassword = document
@@ -32,16 +32,22 @@
 
     // Check if a minute has passed since page loaded
     const oneMinute = 60 * 1000;
-    if (date - new Date() > oneMinute) {
+    console.log("DATES");
+    console.log(date);
+    console.log(new Date());
+    console.log(Math.abs(date - new Date()));
+    if (Math.abs(date - new Date()) > oneMinute) {
       console.log("User took longer than one minute");
+
       window.location.replace("http://localhost:3000/auth/register");
+      //return;
     } else {
       let errors = validateForm(password, verifyPassword);
       if (errors.length > 0) {
+        e.preventDefault();
         displayErrors(errors);
       } else {
         // If we get here, there are no errors, send data to server
-        const urlParams = new URLSearchParams(window.location.search);
 
         console.log("Right before the fetch");
         fetch("http://localhost:3000/auth/password", {
