@@ -22,6 +22,7 @@
 
   // When the user submits a new location
   function handleSubmit() {
+    console.log("Handle submit - new locations");
     removeErrorsFromDOM();
 
     let name = document.getElementById("nameInput").value.trim();
@@ -33,7 +34,7 @@
       displayErrors(errors);
     } else {
       // If we get here, there are no errors, add the new location to list
-      document.getElementById("message").style.display = "none";
+      //document.getElementById("message").style.display = "none";
       addNewLocationToList(name, latitude, longitude);
       cleanInputs();
     }
@@ -42,11 +43,11 @@
   function handleLogout() {
     fetch("http://localhost:3000/auth/logout", {
       method: "GET",
-    }).then(window.location.replace("http://localhost:3000/auth/login"));
-    // .then((res) => console.log(`User logged out, ${res}`))
-    // .catch((err) => {
-    //   console.log(`Error logging user our, ${err}`);
-    // });
+    })
+      .then(window.location.replace("http://localhost:3000/auth/login"))
+      .catch((err) => {
+        console.log(`Error logging user our, ${err}`);
+      });
   }
 
   // Clean up all visible errors
@@ -112,6 +113,30 @@
   // Add a new location to DOM and to data structure
   function addNewLocationToList(name, latitude, longitude) {
     let locationList = document.getElementById("list-tab");
+
+    fetch("http://localhost:3000/location/add", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Origin": "*",
+      },
+      body: JSON.stringify({
+        name: name,
+        latitude: latitude,
+        longitude: longitude,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Added new location: ");
+        console.log(data);
+        window.location.replace("http://localhost:3000");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     // let location = document.createElement("div");
     // location.classList.add(
     //   "locationItem",
@@ -130,8 +155,10 @@
     // button.addEventListener("click", removeLocation); // ADD THIS
     // button.textContent = "Remove";
     // location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
-    location.setAttribute("latitude", latitude);
-    location.setAttribute("longitude", longitude);
+    //0000
+    //location.setAttribute("latitude", latitude);
+    //location.setAttribute("longitude", longitude);
+    //0000
     // location.appendChild(button);
     // locationList.appendChild(location);
 

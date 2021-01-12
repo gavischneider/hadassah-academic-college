@@ -39,7 +39,9 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 const auth = require("./routes/auth");
+const location = require("./routes/locations");
 app.use("/auth", auth);
+app.use("/location", location);
 
 function userIsAuthenticated(session) {
   console.log("IN THE USER IS AUTH FUNCTION!");

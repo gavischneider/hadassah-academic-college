@@ -40,6 +40,9 @@
         .then((data) => {
           console.log("Logged user in: ");
           console.log(data);
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   }
