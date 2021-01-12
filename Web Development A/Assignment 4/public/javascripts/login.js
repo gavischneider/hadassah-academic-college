@@ -22,6 +22,25 @@
     if (errors.length > 0) {
       displayErrors(errors);
       e.preventDefault();
+    } else {
+      // If we get here, there are no errors, send data to server
+      fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Origin": "*",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Logged user in: ");
+          console.log(data);
+        });
     }
   }
 
@@ -46,7 +65,7 @@
     if (!password) {
       errors.push("Please enter password");
     }
-    if (password.length < 8) {
+    if (password && password.length < 8) {
       errors.push("Password must be at least 8 characters");
     }
 
