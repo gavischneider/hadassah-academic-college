@@ -42,6 +42,7 @@ const auth = require("./routes/auth");
 app.use("/auth", auth);
 
 function userIsAuthenticated(session) {
+  console.log("IN THE USER IS AUTH FUNCTION!");
   if (session.user) {
     return true;
   } else {
@@ -52,10 +53,17 @@ function userIsAuthenticated(session) {
 // TODO: Add first name
 // Home route
 app.get("/", (req, res) => {
+  console.log("IN THE / FUNCTION <<<<<<<<<<<<<<<<<<");
+  //console.log(req.session.user.firstName);
+
   if (userIsAuthenticated(req.session)) {
-    res.render("index", { title: "express", user: req.session.user });
+    res.render("index", {
+      title: "express",
+      userName: req.session.user.dataValues.firstName || "",
+      locations: req.session.user.locations || [],
+    });
   } else {
-    res.render("login", { title: "login", message: "login message" });
+    return res.redirect("auth/login");
   }
 });
 

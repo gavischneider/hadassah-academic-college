@@ -22,6 +22,9 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %>, <%= userName %></p>
+    <button type="button" class="btn btn-primary" id="logout-button">
+      Logout
+    </button>
 
     <!-- ----------------- CODE FROM ASSIGNMENT 3 --------------- -->
     <div class="container">
@@ -37,7 +40,6 @@
             alt="Weather Forecast"
             id="weatherImage"
             class="col-xl-8 col-lg-8 col-md-12 col-sm-12 mx-auto d-block"
-            onerror="handleError()"
           />
           <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
             <div class="card">

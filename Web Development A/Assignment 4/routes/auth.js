@@ -18,6 +18,10 @@ router.get("/password", (req, res) => {
   res.render("password", { title: "password" });
 });
 
+router.get("/login", (req, res) => {
+  res.render("login", { title: "login", message: "login-message" });
+});
+
 // Create new user
 router.post("/password", (req, res) => {
   console.log("-----req: =====");
@@ -67,14 +71,37 @@ router.post("/login", (req, res) => {
         const locations = await Location.findAll({
           where: { userId: user.dataValues.id },
         });
-        console.log("LOCATIONS!");
-        console.log(locations);
 
-        res.render("index", {
-          title: "Home",
-          userName: user.firstName,
-          locations: locations,
-        });
+        //locations = await locations.json();
+
+        //console.log("LOCATIONS!");
+        //console.log(locations);
+        req.session.user.locations = Array.from(locations);
+
+        let newUser = {
+          ...req.session.user,
+          locations: Array.from(locations),
+        };
+
+        req.session.user = newUser;
+
+        console.log("req session user location");
+        console.log(req.session.user.locations);
+
+        console.log("REQ SESSION USERLOCATIONS LENGTH-------");
+        console.log(req.session.user.locations.length);
+
+        console.log("REQ SESSION USER NAME");
+        console.log(req.session.user.dataValues);
+
+        //console.log("LOCATIONS DATAVALUES");
+        //console.log(locations.dataValues);
+
+        return res.redirect("/"); //, {
+        //   title: "Home",
+        //   userName: user.firstName,
+        //   locations: locations,
+        // });
       } else {
         console.log("Failure");
         console.log(user);
@@ -95,9 +122,17 @@ router.post("/login", (req, res) => {
 
 // Logout route
 router.get("/logout", (req, res) => {
+  console.log("LOGOUT CONTROLLER");
   //req.logOut();
   req.session.destroy(function (err) {
-    res.render("login", { title: "login", message: "login-message" });
+    req.session = null;
+    if (err) {
+      console.log(err);
+    } else {
+      //res.redirect(200, "login", { title: "login", message: "login-message" });
+      return res.redirect("/");
+      //res.render("login", { title: "login", message: "Some Message" });
+    }
   });
 });
 

@@ -6,6 +6,9 @@
       .getElementById("submitButton")
       .addEventListener("click", handleSubmit);
     document
+      .getElementById("logout-button")
+      .addEventListener("click", handleLogout);
+    document
       .getElementById("showWeatherButton")
       .addEventListener("click", fetchWeather);
     let delButtons = document.querySelectorAll(".delete-button");
@@ -34,6 +37,16 @@
       addNewLocationToList(name, latitude, longitude);
       cleanInputs();
     }
+  }
+
+  function handleLogout() {
+    fetch("http://localhost:3000/auth/logout", {
+      method: "GET",
+    });
+    // .then((res) => console.log(`User logged out, ${res}`))
+    // .catch((err) => {
+    //   console.log(`Error logging user our, ${err}`);
+    // });
   }
 
   // Clean up all visible errors
