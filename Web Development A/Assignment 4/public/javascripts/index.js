@@ -42,7 +42,7 @@
   function handleLogout() {
     fetch("http://localhost:3000/auth/logout", {
       method: "GET",
-    });
+    }).then(window.location.replace("http://localhost:3000/auth/login"));
     // .then((res) => console.log(`User logged out, ${res}`))
     // .catch((err) => {
     //   console.log(`Error logging user our, ${err}`);

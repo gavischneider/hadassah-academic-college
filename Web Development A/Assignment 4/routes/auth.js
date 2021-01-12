@@ -61,11 +61,11 @@ router.post("/login", (req, res) => {
   })
     .then(async (user) => {
       if (user) {
-        console.log("Success");
-        console.log(user);
+        //console.log("Success");
+        //console.log(user);
         // Email and password match
         req.session.user = user;
-        console.log(user.dataValues.firstName);
+        //console.log(user.dataValues.firstName);
 
         // We got the user, now we need to get their locations
         const locations = await Location.findAll({
@@ -85,14 +85,14 @@ router.post("/login", (req, res) => {
 
         req.session.user = newUser;
 
-        console.log("req session user location");
-        console.log(req.session.user.locations);
+        //console.log("req session user location");
+        //console.log(req.session.user.locations);
 
-        console.log("REQ SESSION USERLOCATIONS LENGTH-------");
-        console.log(req.session.user.locations.length);
+        //console.log("REQ SESSION USERLOCATIONS LENGTH-------");
+        //console.log(req.session.user.locations.length);
 
-        console.log("REQ SESSION USER NAME");
-        console.log(req.session.user.dataValues);
+        //console.log("REQ SESSION USER NAME");
+        //console.log(req.session.user.dataValues);
 
         //console.log("LOCATIONS DATAVALUES");
         //console.log(locations.dataValues);
@@ -103,8 +103,8 @@ router.post("/login", (req, res) => {
         //   locations: locations,
         // });
       } else {
-        console.log("Failure");
-        console.log(user);
+        //console.log("Failure");
+        //console.log(user);
         // We could not find a user with that email/password
         //res.send(null);
         res.render("login", { title: "login", message: "Error logging in" });

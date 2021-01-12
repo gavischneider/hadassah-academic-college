@@ -44,8 +44,11 @@ app.use("/auth", auth);
 function userIsAuthenticated(session) {
   console.log("IN THE USER IS AUTH FUNCTION!");
   if (session.user) {
+    console.log("Session User !!!!!!!!");
+    console.log(session.user);
     return true;
   } else {
+    console.log("FALSE");
     return false;
   }
 }
@@ -63,6 +66,7 @@ app.get("/", (req, res) => {
       locations: req.session.user.locations || [],
     });
   } else {
+    console.log("redirecting to login *****");
     return res.redirect("auth/login");
   }
 });
