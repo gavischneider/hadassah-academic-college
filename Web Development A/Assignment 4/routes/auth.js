@@ -24,14 +24,14 @@ router.get("/login", (req, res) => {
 
 // Create new user
 router.post("/password", (req, res) => {
-  console.log("-----req: =====");
-  console.log(req);
-  console.log("-----req.body: =====");
-  console.log(req.body);
-  console.log("-----req.query: =====");
-  console.log(req.query);
-  console.log("-----req.params: =====");
-  console.log(req.params);
+  // console.log("-----req: =====");
+  // console.log(req);
+  // console.log("-----req.body: =====");
+  // console.log(req.body);
+  // console.log("-----req.query: =====");
+  // console.log(req.query);
+  // console.log("-----req.params: =====");
+  // console.log(req.params);
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
@@ -45,6 +45,8 @@ router.post("/password", (req, res) => {
     .then((res) => {
       // Store the user in the session
       req.session.user = req.body;
+      // Remove password so its not in the session
+      req.session.user.dataValues.password = null;
       res.send(res);
     })
     .catch((err) => {
@@ -78,8 +80,21 @@ router.post("/login", (req, res) => {
         //console.log(locations);
         req.session.user.locations = Array.from(locations);
 
+        let id = req.session.user.dataValues.id;
+        let firstName = req.session.user.dataValues.firstName;
+        let lastName = req.session.user.dataValues.lastName;
+        let email = req.session.user.dataValues.email;
+
+        // let newUser = {
+        //   ...req.session.user,
+        //   locations: Array.from(locations),
+        // };
+
         let newUser = {
-          ...req.session.user,
+          id,
+          firstName,
+          lastName,
+          email,
           locations: Array.from(locations),
         };
 
@@ -97,6 +112,7 @@ router.post("/login", (req, res) => {
         //console.log("LOCATIONS DATAVALUES");
         //console.log(locations.dataValues);
 
+        console.log("Login success, redirecting to index");
         return res.redirect("/"); //, {
         //   title: "Home",
         //   userName: user.firstName,

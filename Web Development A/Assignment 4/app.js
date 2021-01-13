@@ -59,12 +59,18 @@ function userIsAuthenticated(session) {
 // Home route
 app.get("/", (req, res) => {
   console.log("IN THE / FUNCTION <<<<<<<<<<<<<<<<<<");
-  //console.log(req.session.user.firstName);
+  //console.log(req.session);
 
   if (userIsAuthenticated(req.session)) {
+    console.log("******************** BOOLEN RESPONSE ******************");
+    console.log(userIsAuthenticated(req.session));
+
+    console.log(
+      "---------------------------- USER IS AUTHENTICATED ------------------------------"
+    );
     res.render("index", {
       title: "express",
-      userName: req.session.user.dataValues.firstName || "",
+      userName: req.session.user.firstName || "",
       locations: req.session.user.locations || [],
     });
   } else {
