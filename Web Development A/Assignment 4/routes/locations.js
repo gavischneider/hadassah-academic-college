@@ -11,7 +11,7 @@ router.post("/add", (req, res, next) => {
   const name = req.body.name;
   const latitude = req.body.latitude;
   const longitude = req.body.longitude;
-  const userId = req.session.user.dataValues.id;
+  const userId = req.session.user.id;
 
   Location.create({
     name: name,
@@ -33,6 +33,38 @@ router.post("/add", (req, res, next) => {
       res.send(res);
     })
     .catch((err) => {
+      res.send(err);
+    });
+});
+
+router.post("/remove", (req, res, next) => {
+  console.log(" -------> /remove route");
+  const name = req.body.name;
+  const userId = req.session.user.id;
+
+  Location.destroy({
+    where: { name, userId },
+  })
+    .then((response) => {
+      console.log(`Location removed from DB, ${response}`);
+
+      // Remove the location from session
+      let newLocations = req.session.user.locations.filter((loc) => {
+        return loc.name.localeCompare(name) !== 0;
+      });
+
+      console.log("++++++++++++++++++ NEW LOCATIONS +++++++++++++++++++");
+      console.log(newLocations);
+
+      let newUser = {
+        ...req.session.user,
+        locations: [...newLocations],
+      };
+      req.session.user = newUser;
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(`Error removing location from DB, ${err}`);
       res.send(err);
     });
 });

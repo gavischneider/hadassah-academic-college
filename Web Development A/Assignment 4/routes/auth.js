@@ -44,9 +44,25 @@ router.post("/password", (req, res) => {
   })
     .then((res) => {
       // Store the user in the session
-      req.session.user = req.body;
+      //req.session.user = req.body;
       // Remove password so its not in the session
-      req.session.user.dataValues.password = null;
+      //req.session.user.dataValues.password = null;
+
+      // const id = req.session.user.dataValues.id;
+      // const firstName = req.session.user.dataValues.firstName;
+      // const lastName = req.session.user.dataValues.lastName;
+      // const email = req.session.user.dataValues.email;
+
+      // const newUser = {
+      //   id,
+      //   firstName,
+      //   lastName,
+      //   email,
+      //   locations: Array.from(locations),
+      // };
+
+      // req.session.user = newUser;
+
       res.send(res);
     })
     .catch((err) => {
@@ -80,17 +96,12 @@ router.post("/login", (req, res) => {
         //console.log(locations);
         req.session.user.locations = Array.from(locations);
 
-        let id = req.session.user.dataValues.id;
-        let firstName = req.session.user.dataValues.firstName;
-        let lastName = req.session.user.dataValues.lastName;
-        let email = req.session.user.dataValues.email;
+        const id = req.session.user.dataValues.id;
+        const firstName = req.session.user.dataValues.firstName;
+        const lastName = req.session.user.dataValues.lastName;
+        const email = req.session.user.dataValues.email;
 
-        // let newUser = {
-        //   ...req.session.user,
-        //   locations: Array.from(locations),
-        // };
-
-        let newUser = {
+        const newUser = {
           id,
           firstName,
           lastName,

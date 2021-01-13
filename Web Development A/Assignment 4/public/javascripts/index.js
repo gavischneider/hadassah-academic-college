@@ -173,9 +173,30 @@
 
   // When the user removes a location
   function removeLocation(event) {
-    event.target.parentElement.parentElement.removeChild(
-      event.target.parentElement
-    );
+    console.log("EVENT.PATH['body']");
+    console.log(event.currentTarget.getAttribute("id"));
+
+    const loactionName = event.currentTarget.getAttribute("id");
+
+    fetch("http://localhost:3000/location/remove", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Origin": "*",
+      },
+      body: JSON.stringify({
+        name: loactionName,
+      }),
+    })
+      .then((data) => {
+        console.log("Location removed ");
+        console.log(data);
+        window.location.replace("http://localhost:3000");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   // Empty out the inputs

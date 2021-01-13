@@ -89,7 +89,11 @@
           >
             <%= locations[i].name %>: Latitude: <%= locations[i].lat %>,
             Longitude: <%= locations[i].lon %>
-            <button type="button" class="btn btn-danger delete-button">
+            <button
+              id="<%= locations[i].name %>"
+              type="button"
+              class="btn btn-danger delete-button"
+            >
               Remove
             </button>
           </div>
