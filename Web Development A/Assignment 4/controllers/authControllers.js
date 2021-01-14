@@ -35,7 +35,10 @@ const authController = {
         res.send(res);
       })
       .catch((err) => {
-        res.send(err);
+        res.render("register", {
+          title: "The Weather App",
+          message: `Error registering, ${err}`,
+        });
       });
   },
 
@@ -81,7 +84,10 @@ const authController = {
         }
       })
       .catch((err) => {
-        console.log(`Error while searching for user: ${err}`);
+        res.render("login", {
+          title: "The Weather App",
+          message: `Error logging in, ${err}`,
+        });
       });
   },
 

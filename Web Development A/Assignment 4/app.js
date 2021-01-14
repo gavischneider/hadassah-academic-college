@@ -67,7 +67,10 @@ app.get("/sessioninfo", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.send("404 Page not found");
+  res.render("error", {
+    message: "The page does not exist",
+    error: 404,
+  });
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
