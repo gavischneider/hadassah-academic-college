@@ -21,7 +21,11 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Register for <%= title %></p>
+    <br />
+
+    <div id="mes"></div>
+    <br />
 
     <div
       class="alert alert-danger mt-4 border border-dark p-4 rounded shadow"
@@ -65,9 +69,17 @@
       <div class="form-check"></div>
       <br />
       <button type="submit" class="btn btn-primary" id="submitButton">
-        Submit
+        Register
       </button>
     </form>
+
+    <br />
+    <br />
+    <br />
+
+    <h3>Already have an account?</h3>
+    <br />
+    <a href="http://localhost:3000/auth/login" class="btn btn-primary">Login</a>
 
     <script src="/javascripts/formValidation.js"></script>
     <!-- Optional JavaScript -->

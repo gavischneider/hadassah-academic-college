@@ -11,17 +11,19 @@ router.get("/", (req, res, next) => {
 
 // Register route
 router.get("/register", (req, res) => {
-  res.render("register", { title: "register" });
+  res.render("register", { title: "The Weather App" });
 });
 
 // Password route
 router.get("/password", (req, res) => {
-  res.render("password", { title: "password" });
+  res.render("password", { title: "The Weather App" });
 });
 
 router.get("/login", (req, res) => {
-  res.render("login", { title: "login", message: "login-message" });
+  res.render("login", { title: "The Weather App", message: "" });
 });
+
+router.post("/lookup", authController.lookup);
 
 // Create new user
 router.post("/password", authController.password);

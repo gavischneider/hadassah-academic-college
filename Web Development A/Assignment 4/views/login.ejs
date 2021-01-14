@@ -23,6 +23,10 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <h2><%= message %></h2>
+    <br />
+
+    <div id="mes"></div>
+    <br />
 
     <div
       class="alert alert-danger mt-4 border border-dark p-4 rounded shadow"
@@ -60,9 +64,19 @@
       <div class="form-check"></div>
       <br />
       <button type="submit" class="btn btn-primary" id="loginButton">
-        Submit
+        Login
       </button>
     </form>
+
+    <br />
+    <br />
+    <br />
+
+    <h3>Don't have an account yet?</h3>
+    <br />
+    <a href="http://localhost:3000/auth/register" class="btn btn-primary"
+      >Register</a
+    >
 
     <script src="/javascripts/login.js"></script>
     <!-- Optional JavaScript -->

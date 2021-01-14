@@ -4,6 +4,7 @@
       .getElementById("loginButton")
       .addEventListener("click", handleSubmit);
     document.getElementById("warningMessage").style.display = "none";
+    addMessage();
   });
 
   // When the user clicked submit
@@ -45,6 +46,28 @@
           console.log(err);
         });
     }
+  }
+
+  // Add relevant message to screen
+  function addMessage() {
+    console.log("IN THE ADD MESSAGE FUNCTION");
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get("registered");
+    let response = "";
+
+    console.log("THE REGISTERED MESSAGE");
+    console.log(message);
+
+    message.localeCompare("success") === 0
+      ? (response = "You have succseefully registered! Please log in.")
+      : message.localeCompare("failure") === 0
+      ? (response = "You took to long to register, please try again.")
+      : "";
+
+    let parent = document.getElementById("mes");
+    let mes = document.createElement("h2");
+    mes.textContent = response;
+    parent.append(mes);
   }
 
   // Clean up all visible errors

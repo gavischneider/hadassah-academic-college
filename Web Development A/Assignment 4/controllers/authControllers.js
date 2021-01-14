@@ -2,6 +2,25 @@ const User = require("../models").User;
 const Location = require("../models").Location;
 
 const authController = {
+  // Check if an email is already in use
+  lookup(req, res) {
+    const email = req.body.email;
+    User.findOne({
+      where: { email },
+    })
+      .then((user) => {
+        console.log("Heres the user - after lookup: ");
+        console.log(user);
+        if (user) {
+          // Email is already in use
+          res.sendStatus(403);
+        } else {
+          res.sendStatus(200);
+        }
+      })
+      .catch((err) => console.log(`Error looking user up, ${err}`));
+  },
+
   password(req, res) {
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;

@@ -68,7 +68,7 @@ app.get("/", (req, res) => {
       "---------------------------- USER IS AUTHENTICATED ------------------------------"
     );
     res.render("index", {
-      title: "express",
+      title: "The Weather App",
       userName: req.session.user.firstName || "",
       locations: req.session.user.locations || [],
     });

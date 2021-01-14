@@ -39,7 +39,9 @@
     // If the user took more than 1 minute, reroute them back to register page
     if (Math.abs(date - new Date()) > oneMinute) {
       console.log("User took longer than one minute");
-      window.location.replace("http://localhost:3000/auth/register");
+      return window.location.replace(
+        "http://localhost:3000/auth/register?errorMessage=1"
+      );
     } else {
       let errors = validateForm(password, verifyPassword);
       if (errors.length > 0) {
@@ -69,13 +71,13 @@
             console.log(data);
             //JSON.stringify(data);
             window.location.replace(
-              "http://localhost:3000/auth/login?message=success"
+              "http://localhost:3000/auth/login?registered=success"
             );
           })
           .catch((err) => {
             console.log("Error registering new user: ", err);
             window.location.replace(
-              "http://localhost:3000/auth/login?message=failure"
+              "http://localhost:3000/auth/login?registered=failure"
             );
           });
       }

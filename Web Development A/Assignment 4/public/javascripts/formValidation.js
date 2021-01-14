@@ -4,6 +4,7 @@
       .getElementById("submitButton")
       .addEventListener("click", handleSubmit);
     document.getElementById("warningMessage").style.display = "none";
+    addMessage();
   });
 })();
 
@@ -25,11 +26,56 @@ function handleSubmit(e) {
     displayErrors(errors);
   } else {
     // If we get here, there are no errors, send data to server for validation
-    //.....
-    window.location.replace(
-      `http://localhost:3000/auth/password?firstName=${firstName}&lastName=${lastName}&email=${email}`
-    );
+    fetch("http://localhost:3000/auth/lookup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Origin": "*",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    })
+      .then((res) => {
+        console.log("Heres the res - after lookup (frontend): ");
+        console.log(res.status);
+        if (res.status !== 200) {
+          // Email is already in use
+          displayErrors([
+            "Email is already in use, please use a different email",
+          ]);
+        } else {
+          // Email is not in use
+          window.location.replace(
+            `http://localhost:3000/auth/password?firstName=${firstName}&lastName=${lastName}&email=${email}`
+          );
+        }
+      })
+      .catch((err) => {
+        console.log(`Error looking up the user, ${err}`);
+      });
   }
+}
+
+// Add relevant message to screen
+function addMessage() {
+  console.log("IN THE ADD MESSAGE FUNCTION");
+  const urlParams = new URLSearchParams(window.location.search);
+  const message = urlParams.get("errorMessage");
+  let response = "";
+
+  console.log("THE REGISTERED MESSAGE");
+  console.log(message);
+
+  message.localeCompare("1") === 0
+    ? (response = "You took to long to register, please try again.")
+    : "";
+
+  let parent = document.getElementById("mes");
+  let mes = document.createElement("h2");
+  mes.textContent = response;
+  parent.append(mes);
 }
 
 // Clean up all visible errors
