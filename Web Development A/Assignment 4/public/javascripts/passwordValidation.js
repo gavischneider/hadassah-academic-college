@@ -5,10 +5,6 @@
   let email;
   window.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
-    console.log("PARAMS");
-    console.log(urlParams.get("firstName"));
-    console.log(urlParams.get("lastName"));
-    console.log(urlParams.get("email"));
     firstName = urlParams.get("firstName");
     lastName = urlParams.get("lastName");
     email = urlParams.get("email");
@@ -19,7 +15,7 @@
     document.getElementById("warningMessage").style.display = "none";
   });
 
-  // When the user clicked submit
+  // When the user clicks submit
   function handleSubmit(e) {
     removeErrorsFromDOM();
     let password = document.getElementById("passwordInput").value.trim();
@@ -27,18 +23,11 @@
       .getElementById("verifyPasswordInput")
       .value.trim();
 
-    console.log(`password: ${password}`);
-    console.log(`verify password: ${verifyPassword}`);
-
     // Check if a minute has passed since page loaded
     const oneMinute = 60 * 1000;
-    console.log("DATES");
-    console.log(date);
-    console.log(new Date());
-    console.log(Math.abs(date - new Date()));
+
     // If the user took more than 1 minute, reroute them back to register page
     if (Math.abs(date - new Date()) > oneMinute) {
-      console.log("User took longer than one minute");
       return window.location.replace(
         "http://localhost:3000/auth/register?errorMessage=1"
       );
@@ -49,8 +38,6 @@
         displayErrors(errors);
       } else {
         // If we get here, there are no errors, send data to server
-
-        console.log("Right before the fetch");
         fetch("http://localhost:3000/auth/password", {
           method: "POST",
           headers: {
@@ -67,9 +54,6 @@
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("Successfully added new user");
-            console.log(data);
-            //JSON.stringify(data);
             window.location.replace(
               "http://localhost:3000/auth/login?registered=success"
             );
@@ -96,7 +80,6 @@
 
   // Verify that everything is as expected
   function validateForm(password, verifyPassword) {
-    // Validate
     let errors = [];
 
     if (!password) {

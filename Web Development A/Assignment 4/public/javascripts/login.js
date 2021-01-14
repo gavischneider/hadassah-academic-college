@@ -9,17 +9,11 @@
 
   // When the user clicked submit
   function handleSubmit(e) {
-    console.log("E");
-    console.log(e);
     removeErrorsFromDOM();
     let email = document.getElementById("emailInput").value.trim();
     let password = document.getElementById("passwordInput").value.trim();
 
-    console.log(`email: ${email}`);
-    console.log(`password: ${password}`);
-
     let errors = validateForm(email, password);
-    console.log("------------------------");
     if (errors.length > 0) {
       displayErrors(errors);
       e.preventDefault();
@@ -38,10 +32,7 @@
         }),
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log("Logged user in: ");
-          console.log(data);
-        })
+        .then((data) => {})
         .catch((err) => {
           console.log(err);
         });
@@ -50,13 +41,9 @@
 
   // Add relevant message to screen
   function addMessage() {
-    console.log("IN THE ADD MESSAGE FUNCTION");
     const urlParams = new URLSearchParams(window.location.search);
     const message = urlParams.get("registered");
     let response = "";
-
-    console.log("THE REGISTERED MESSAGE");
-    console.log(message);
 
     message.localeCompare("success") === 0
       ? (response = "You have succseefully registered! Please log in.")
@@ -82,7 +69,6 @@
 
   // Verify that everything is as expected
   function validateForm(email, password) {
-    // Validate
     let errors = [];
 
     if (!email) {

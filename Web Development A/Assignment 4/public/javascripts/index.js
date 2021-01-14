@@ -1,4 +1,5 @@
 (() => {
+  let locations = [];
   window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("imageContainer").style.display = "none";
     document.getElementById("warningMessage").style.display = "none";
@@ -18,26 +19,22 @@
     for (let i = 0; i < delButtons.length; i++) {
       delButtons[i].addEventListener("click", removeLocation);
     }
+    loadLocations();
   });
 
-  // Data structure to hold locations
-  let locations = [];
-
   // When the user submits a new location
-  function handleSubmit() {
-    console.log("Handle submit - new locations");
+  async function handleSubmit() {
     removeErrorsFromDOM();
 
     let name = document.getElementById("nameInput").value.trim();
     let latitude = document.getElementById("latitudeInput").value.trim();
     let longitude = document.getElementById("longitudeInput").value.trim();
 
-    let errors = validateForm(name, latitude, longitude);
+    let errors = await validateForm(name, latitude, longitude);
     if (errors.length > 0) {
       displayErrors(errors);
     } else {
       // If we get here, there are no errors, add the new location to list
-      //document.getElementById("message").style.display = "none";
       addNewLocationToList(name, latitude, longitude);
       cleanInputs();
     }
@@ -63,9 +60,24 @@
     }
   }
 
+  // Function that stores users locations list in the file for later reference
+  function loadLocations() {
+    fetch("http://localhost:3000/location/load", {
+      method: "GET",
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        locations = data.locations;
+      })
+      .catch((err) => {
+        console.log(`Error looking up the location, ${err}`);
+      });
+  }
+
   // Verify that everything is as expected
-  function validateForm(name, latitude, longitude) {
-    // Validate
+  async function validateForm(name, latitude, longitude) {
     let errors = [];
 
     if (!name) {
@@ -92,7 +104,7 @@
 
     // Check if location already exists
     locations.map((location) => {
-      if (location.latitude === latitude && location.longitude === longitude) {
+      if (location.lat === latitude && location.lon === longitude) {
         errors.push("You have already entered these coordinates");
       }
     });
@@ -113,10 +125,8 @@
     warningMessage.style.display = "block";
   }
 
-  // Add a new location to DOM and to data structure
+  // Add a new location to DOM and to DB
   function addNewLocationToList(name, latitude, longitude) {
-    let locationList = document.getElementById("list-tab");
-
     fetch("http://localhost:3000/location/add", {
       method: "POST",
       headers: {
@@ -132,53 +142,15 @@
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Added new location: ");
-        console.log(data);
         window.location.replace("http://localhost:3000");
       })
       .catch((err) => {
         console.log(err);
       });
-
-    // let location = document.createElement("div");
-    // location.classList.add(
-    //   "locationItem",
-    //   "list-group-item",
-    //   "list-group-item-action",
-    //   "d-flex",
-    //   "align-items-center",
-    //   "justify-content-between"
-    // );
-    // location.setAttribute("data-toggle", "list");
-    // location.setAttribute("role", "tab");
-    // let button = document.createElement("button");
-    // button.setAttribute("type", "button");
-    // button.classList.add("btn");
-    // button.classList.add("btn-danger");
-    // button.addEventListener("click", removeLocation); // ADD THIS
-    // button.textContent = "Remove";
-    // location.textContent = `${name}: Latitude: ${latitude}, Longitude: ${longitude}`;
-    //0000
-    //location.setAttribute("latitude", latitude);
-    //location.setAttribute("longitude", longitude);
-    //0000
-    // location.appendChild(button);
-    // locationList.appendChild(location);
-
-    // let newLocation = {
-    //   name: name,
-    //   latitude: latitude,
-    //   longitude: longitude,
-    // };
-
-    // locations.push(newLocation);
   }
 
   // When the user removes a location
   function removeLocation(event) {
-    console.log("EVENT.PATH['body']");
-    console.log(event.currentTarget.getAttribute("id"));
-
     const loactionName = event.currentTarget.getAttribute("id");
 
     fetch("http://localhost:3000/location/remove", {
@@ -193,8 +165,6 @@
       }),
     })
       .then((data) => {
-        console.log("Location removed ");
-        console.log(data);
         window.location.replace("http://localhost:3000");
       })
       .catch((err) => {
@@ -202,18 +172,16 @@
       });
   }
 
+  // Remove all location (for a single user)
   function removeAll() {
     // Check if there are locations on screen
     let locationItems = Array.from(document.querySelectorAll(".locationItem"));
-    console.log(locationItems);
     if (locationItems.length > 0) {
       // There are, delete all of them
       fetch("http://localhost:3000/location/removeall", {
         method: "POST",
       })
         .then((data) => {
-          console.log("All locations removed ");
-          console.log(data);
           window.location.replace("http://localhost:3000");
         })
         .catch((err) => {
@@ -236,28 +204,17 @@
     console.log("~~~~~~~ Fetch Weather");
     // Check if a list item is 'active'
     let locationItems = Array.from(document.querySelectorAll(".locationItem"));
-    console.log(locationItems);
     if (locationItems.length > 0) {
       let activeItem = locationItems.filter((location) => {
         return location.classList.contains("active");
       });
       if (activeItem) {
         // We found an 'active' item
-        console.log("Active Item: ");
-        console.log(activeItem);
         const latitude = activeItem[0].dataset.lat;
         const longitude = activeItem[0].dataset.lon;
-
-        //console.log("LAT AND LON THAT WERE GONNA LOOK FOR: ");
-        //console.log(latitude);
-        //console.log(longitude);
-
         try {
           const weather = await getWeather(latitude, longitude);
           const weatherJson = await weather.json();
-
-          //console.log("WEATHER JSON");
-          //console.log(weatherJson);
 
           // Build the image url and place it in the DOM
           let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
@@ -267,9 +224,6 @@
           // Add today's and tommorow's weather to DOM
           let dataSeries = weatherJson.dataseries;
 
-          console.log("DATASERIES");
-          console.log(dataSeries);
-
           const todayWeather = dataSeries[0].weather;
           const todayTempMin = dataSeries[0].temp2m.min;
           const todayTempMax = dataSeries[0].temp2m.max;
@@ -277,12 +231,6 @@
           if (todayWind == 1) {
             todayWind = "None";
           }
-
-          //console.log("TODAYS WEATHER:");
-          //console.log(todayWeather);
-          //console.log(todayTempMin);
-          //console.log(todayTempMax);
-          //console.log(todayWind);
 
           const tomorrowWeather = dataSeries[1].weather;
           const tomorrowTempMin = dataSeries[1].temp2m.min;

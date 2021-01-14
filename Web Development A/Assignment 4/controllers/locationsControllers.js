@@ -2,6 +2,7 @@ const User = require("../models").User;
 const Location = require("../models").Location;
 
 const locationsController = {
+  // Add a new location
   add(req, res) {
     const name = req.body.name;
     const latitude = req.body.latitude;
@@ -15,7 +16,7 @@ const locationsController = {
       userId: userId,
     })
       .then((res) => {
-        // Store the user in the session
+        // Store the new location in the session
         let newUser = {
           ...req.session.user,
           locations: [
@@ -32,8 +33,8 @@ const locationsController = {
       });
   },
 
+  // Remove a location
   remove(req, res) {
-    console.log(" -------> /remove route");
     const name = req.body.name;
     const userId = req.session.user.id;
 
@@ -41,15 +42,10 @@ const locationsController = {
       where: { name, userId },
     })
       .then((response) => {
-        console.log(`Location removed from DB, ${response}`);
-
         // Remove the location from session
         let newLocations = req.session.user.locations.filter((loc) => {
           return loc.name.localeCompare(name) !== 0;
         });
-
-        console.log("++++++++++++++++++ NEW LOCATIONS +++++++++++++++++++");
-        console.log(newLocations);
 
         let newUser = {
           ...req.session.user,
@@ -64,14 +60,14 @@ const locationsController = {
       });
   },
 
+  // Remove all locations (for a single user)
   removeAll(req, res) {
     const userId = req.session.user.id;
     Location.destroy({
       where: { userId },
     })
       .then((response) => {
-        console.log(`All locations removed, ${response}`);
-
+        // Remove all locations from session
         let newUser = {
           ...req.session.user,
           locations: [],
@@ -80,9 +76,29 @@ const locationsController = {
         res.sendStatus(200);
       })
       .catch((err) => {
-        console.log(`Error removing all locations from DB, ${err}`);
         res.send(err);
       });
+  },
+
+  // Get all of a users locations
+  loadUsersLocations(req, res) {
+    const userId = req.session.user.id;
+    Location.findAll({
+      where: { userId },
+    })
+      .then((locations) => {
+        let locs = [];
+        for (let i = 0; i < locations.length; i++) {
+          let newLoc = {
+            name: locations[i].dataValues.name,
+            lat: locations[i].dataValues.lat,
+            lon: locations[i].dataValues.lon,
+          };
+          locs.push(newLoc);
+        }
+        res.json({ locations: locs });
+      })
+      .catch((err) => console.log(`Error loading locations, ${err}`));
   },
 };
 

@@ -1,17 +1,22 @@
-const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
-//const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const { Sequelize } = require("sequelize");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const auth = require("./routes/auth");
+const location = require("./routes/locations");
 
 const app = express();
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "./database.sqlite3",
+});
+
+const myStore = new SequelizeStore({
+  db: sequelize,
 });
 
 const PORT = process.env.PORT || 3000;
@@ -22,27 +27,24 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-//app.use(bodyParser.json());
 app.use(logger("dev"));
-// app.use(express.json());
-// app.use(express.urlencoded());
-//app.use(cookieParser());
 
+// Configure sessions
 app.use(
   session({
     name: "appSession",
+    store: myStore,
     secret: "my-secret",
     cookie: { secure: false, maxAge: 60 * 1000 * 60 }, // 1 hour
   })
 );
 
+myStore.sync();
+
+// Link public directory
 app.use(express.static(path.join(__dirname, "public")));
 
-const auth = require("./routes/auth");
-const location = require("./routes/locations");
-app.use("/auth", auth);
-app.use("/location", location);
-
+// Check if the user is authenticated
 function userIsAuthenticated(session) {
   console.log("IN THE USER IS AUTH FUNCTION!");
   if (session.user) {
@@ -55,25 +57,19 @@ function userIsAuthenticated(session) {
   }
 }
 
+// Routing
+app.use("/auth", auth);
+app.use("/location", location);
+
 // Home route
 app.get("/", (req, res) => {
-  console.log("IN THE / FUNCTION <<<<<<<<<<<<<<<<<<");
-  //console.log(req.session);
-
   if (userIsAuthenticated(req.session)) {
-    console.log("******************** BOOLEN RESPONSE ******************");
-    console.log(userIsAuthenticated(req.session));
-
-    console.log(
-      "---------------------------- USER IS AUTHENTICATED ------------------------------"
-    );
     res.render("index", {
       title: "The Weather App",
       userName: req.session.user.firstName || "",
       locations: req.session.user.locations || [],
     });
   } else {
-    console.log("redirecting to login *****");
     return res.redirect("auth/login");
   }
 });
