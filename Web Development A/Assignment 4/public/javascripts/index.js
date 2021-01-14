@@ -208,16 +208,20 @@
 
   // Get the weather
   async function fetchWeather() {
+    console.log("~~~~~~~ Fetch Weather");
     // Check if a list item is 'active'
     let locationItems = Array.from(document.querySelectorAll(".locationItem"));
+    console.log(locationItems);
     if (locationItems.length > 0) {
       let activeItem = locationItems.filter((location) => {
         return location.classList.contains("active");
       });
       if (activeItem) {
         // We found an 'active' item
-        const latitude = activeItem[0].attributes.latitude.nodeValue;
-        const longitude = activeItem[0].attributes.longitude.nodeValue;
+        console.log("Active Item: ");
+        console.log(activeItem);
+        const latitude = activeItem[0].dataset.lat;
+        const longitude = activeItem[0].dataset.lon;
         try {
           const weather = await getWeather(latitude, longitude);
           const weatherJson = await weather.json();
