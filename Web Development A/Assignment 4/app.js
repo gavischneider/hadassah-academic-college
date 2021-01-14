@@ -55,7 +55,6 @@ function userIsAuthenticated(session) {
   }
 }
 
-// TODO: Add first name
 // Home route
 app.get("/", (req, res) => {
   console.log("IN THE / FUNCTION <<<<<<<<<<<<<<<<<<");
@@ -81,6 +80,10 @@ app.get("/", (req, res) => {
 
 app.get("/sessioninfo", (req, res) => {
   res.json(req.session);
+});
+
+app.get("*", (req, res) => {
+  res.send("404 Page not found");
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
