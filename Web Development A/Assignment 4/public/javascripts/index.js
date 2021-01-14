@@ -201,7 +201,6 @@
 
   // Get the weather
   async function fetchWeather() {
-    console.log("~~~~~~~ Fetch Weather");
     // Check if a list item is 'active'
     let locationItems = Array.from(document.querySelectorAll(".locationItem"));
     if (locationItems.length > 0) {

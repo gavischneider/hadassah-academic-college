@@ -85,6 +85,7 @@ const authController = {
       });
   },
 
+  // Log the user out
   logout(req, res) {
     req.session.destroy(function (err) {
       req.session = null;

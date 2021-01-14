@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models").User;
 const Location = require("../models").Location;
 const authController = require("../controllers/authControllers");
+const userIsAuthenticated = require("../public/javascripts/userIsAuthenticated");
 
 // Home route (Auth)
 router.get("/", (req, res, next) => {
@@ -16,7 +17,11 @@ router.get("/register", (req, res) => {
 
 // Password route
 router.get("/password", (req, res) => {
-  res.render("password", { title: "The Weather App" });
+  if (userIsAuthenticated(req.session)) {
+    res.render("password", { title: "The Weather App" });
+  } else {
+    return res.redirect("login");
+  }
 });
 
 // Login route

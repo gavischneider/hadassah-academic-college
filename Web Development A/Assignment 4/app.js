@@ -7,6 +7,7 @@ const { Sequelize } = require("sequelize");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const auth = require("./routes/auth");
 const location = require("./routes/locations");
+const userIsAuthenticated = require("./public/javascripts/userIsAuthenticated");
 
 const app = express();
 
@@ -43,19 +44,6 @@ myStore.sync();
 
 // Link public directory
 app.use(express.static(path.join(__dirname, "public")));
-
-// Check if the user is authenticated
-function userIsAuthenticated(session) {
-  console.log("IN THE USER IS AUTH FUNCTION!");
-  if (session.user) {
-    console.log("Session User !!!!!!!!");
-    console.log(session.user);
-    return true;
-  } else {
-    console.log("FALSE");
-    return false;
-  }
-}
 
 // Routing
 app.use("/auth", auth);
