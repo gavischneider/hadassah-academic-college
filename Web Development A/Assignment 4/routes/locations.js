@@ -69,4 +69,25 @@ router.post("/remove", (req, res, next) => {
     });
 });
 
+router.post("/removeall", (req, res, next) => {
+  const userId = req.session.user.id;
+  Location.destroy({
+    where: { userId },
+  })
+    .then((response) => {
+      console.log(`All locations removed, ${response}`);
+
+      let newUser = {
+        ...req.session.user,
+        locations: [],
+      };
+      req.session.user = newUser;
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(`Error removing all locations from DB, ${err}`);
+      res.send(err);
+    });
+});
+
 module.exports = router;

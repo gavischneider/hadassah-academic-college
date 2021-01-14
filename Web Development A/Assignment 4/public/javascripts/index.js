@@ -11,6 +11,9 @@
     document
       .getElementById("showWeatherButton")
       .addEventListener("click", fetchWeather);
+    document
+      .getElementById("remove-all-button")
+      .addEventListener("click", removeAll);
     let delButtons = document.querySelectorAll(".delete-button");
     for (let i = 0; i < delButtons.length; i++) {
       delButtons[i].addEventListener("click", removeLocation);
@@ -199,6 +202,28 @@
       });
   }
 
+  function removeAll() {
+    // Check if there are locations on screen
+    let locationItems = Array.from(document.querySelectorAll(".locationItem"));
+    console.log(locationItems);
+    if (locationItems.length > 0) {
+      // There are, delete all of them
+      fetch("http://localhost:3000/location/removeall", {
+        method: "POST",
+      })
+        .then((data) => {
+          console.log("All locations removed ");
+          console.log(data);
+          window.location.replace("http://localhost:3000");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      // There are no locations, do nothing
+    }
+  }
+
   // Empty out the inputs
   function cleanInputs() {
     document.getElementById("nameInput").value = "";
@@ -223,16 +248,16 @@
         const latitude = activeItem[0].dataset.lat;
         const longitude = activeItem[0].dataset.lon;
 
-        console.log("LAT AND LON THAT WERE GONNA LOOK FOR: ");
-        console.log(latitude);
-        console.log(longitude);
+        //console.log("LAT AND LON THAT WERE GONNA LOOK FOR: ");
+        //console.log(latitude);
+        //console.log(longitude);
 
         try {
           const weather = await getWeather(latitude, longitude);
           const weatherJson = await weather.json();
 
-          console.log("WEATHER JSON");
-          console.log(weatherJson);
+          //console.log("WEATHER JSON");
+          //console.log(weatherJson);
 
           // Build the image url and place it in the DOM
           let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
@@ -253,11 +278,11 @@
             todayWind = "None";
           }
 
-          console.log("TODAYS WEATHER:");
-          console.log(todayWeather);
-          console.log(todayTempMin);
-          console.log(todayTempMax);
-          console.log(todayWind);
+          //console.log("TODAYS WEATHER:");
+          //console.log(todayWeather);
+          //console.log(todayTempMin);
+          //console.log(todayTempMax);
+          //console.log(todayWind);
 
           const tomorrowWeather = dataSeries[1].weather;
           const tomorrowTempMin = dataSeries[1].temp2m.min;
