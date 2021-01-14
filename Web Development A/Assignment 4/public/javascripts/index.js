@@ -222,9 +222,17 @@
         console.log(activeItem);
         const latitude = activeItem[0].dataset.lat;
         const longitude = activeItem[0].dataset.lon;
+
+        console.log("LAT AND LON THAT WERE GONNA LOOK FOR: ");
+        console.log(latitude);
+        console.log(longitude);
+
         try {
           const weather = await getWeather(latitude, longitude);
           const weatherJson = await weather.json();
+
+          console.log("WEATHER JSON");
+          console.log(weatherJson);
 
           // Build the image url and place it in the DOM
           let imageURL = `http://www.7timer.info/bin/astro.php?lon=${longitude}&amp;lat=${latitude}&amp;ac=0&amp;lang=en&amp;unit=metric&amp;output=internal&amp;tzshift=0`;
@@ -234,6 +242,9 @@
           // Add today's and tommorow's weather to DOM
           let dataSeries = weatherJson.dataseries;
 
+          console.log("DATASERIES");
+          console.log(dataSeries);
+
           const todayWeather = dataSeries[0].weather;
           const todayTempMin = dataSeries[0].temp2m.min;
           const todayTempMax = dataSeries[0].temp2m.max;
@@ -241,6 +252,12 @@
           if (todayWind == 1) {
             todayWind = "None";
           }
+
+          console.log("TODAYS WEATHER:");
+          console.log(todayWeather);
+          console.log(todayTempMin);
+          console.log(todayTempMax);
+          console.log(todayWind);
 
           const tomorrowWeather = dataSeries[1].weather;
           const tomorrowTempMin = dataSeries[1].temp2m.min;

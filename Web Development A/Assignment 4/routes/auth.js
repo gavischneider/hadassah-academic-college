@@ -78,8 +78,11 @@ router.post("/login", (req, res) => {
     where: { email, password },
   })
     .then(async (user) => {
+      console.log("*USER*");
+      console.log(user);
+
       if (user) {
-        //console.log("Success");
+        console.log("Success");
         //console.log(user);
         // Email and password match
         req.session.user = user;
@@ -130,7 +133,7 @@ router.post("/login", (req, res) => {
         //   locations: locations,
         // });
       } else {
-        //console.log("Failure");
+        console.log("Failure");
         //console.log(user);
         // We could not find a user with that email/password
         //res.send(null);

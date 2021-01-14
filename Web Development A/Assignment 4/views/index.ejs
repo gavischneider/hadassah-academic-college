@@ -85,6 +85,8 @@
           <div
             class="locationItem list-group-item list-group-item-action d-flex align-items-center justify-content-between"
             data-toggle="list"
+            data-lat="<%= locations[i].lat %>"
+            data-lon="<%= locations[i].lon %>"
             role="tab"
           >
             <%= locations[i].name %>: Latitude: <%= locations[i].lat %>,
@@ -93,8 +95,6 @@
               id="<%= locations[i].name %>"
               type="button"
               class="btn btn-danger delete-button"
-              data-lat="<%= locations[i].lat %>"
-              data-lon="<%= locations[i].lon %>"
             >
               Remove
             </button>
