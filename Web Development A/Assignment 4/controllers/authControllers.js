@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const User = require("../models").User;
 const Location = require("../models").Location;
 
@@ -25,64 +27,86 @@ const authController = {
     const lastName = req.body.lastName;
     const email = req.body.email;
     const password = req.body.password;
-    User.create({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      password: password,
-    })
-      .then((res) => {
-        res.send(res);
-      })
-      .catch((err) => {
-        res.render("register", {
-          title: "The Weather App",
-          message: `Error registering, ${err}`,
-        });
-      });
+
+    bcrypt.hash(password, saltRounds, function (err, hash) {
+      // Store hash in your password DB.
+      if (!err) {
+        User.create({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: hash,
+        })
+          .then((res) => {
+            res.send(res);
+          })
+          .catch((err) => {
+            res.render("register", {
+              title: "The Weather App",
+              message: `Error registering, ${err}`,
+            });
+          });
+      } else {
+        console.log("Error encypting password: ", err);
+      }
+    });
   },
 
   login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     User.findOne({
-      where: { email, password },
+      where: { email }, // password
     })
       .then(async (user) => {
         if (user) {
-          req.session.user = user;
+          bcrypt.compare(password, user.password, async function (err, result) {
+            if (result) {
+              console.log("Login Function - User: ");
+              console.log(user);
+              console.log("Login Function - User: password");
+              console.log(user.password);
 
-          // We got the user, now we need to get their locations
-          const locations = await Location.findAll({
-            where: { userId: user.dataValues.id },
+              req.session.user = user;
+
+              // We got the user, now we need to get their locations
+              const locations = await Location.findAll({
+                where: { userId: user.dataValues.id },
+              });
+
+              req.session.user.locations = Array.from(locations);
+
+              const id = req.session.user.dataValues.id;
+              const firstName = req.session.user.dataValues.firstName;
+              const lastName = req.session.user.dataValues.lastName;
+              const email = req.session.user.dataValues.email;
+
+              // Create a new user object for the session
+              const newUser = {
+                id,
+                firstName,
+                lastName,
+                email,
+                locations: Array.from(locations),
+              };
+              req.session.user = newUser;
+              return res.redirect("/");
+            } else {
+              res.render("login", {
+                title: "The Weather App",
+                message: "Error logging in, password is incorrect",
+              });
+            }
           });
-
-          req.session.user.locations = Array.from(locations);
-
-          const id = req.session.user.dataValues.id;
-          const firstName = req.session.user.dataValues.firstName;
-          const lastName = req.session.user.dataValues.lastName;
-          const email = req.session.user.dataValues.email;
-
-          // Create a new user object for the session
-          const newUser = {
-            id,
-            firstName,
-            lastName,
-            email,
-            locations: Array.from(locations),
-          };
-
-          req.session.user = newUser;
-          return res.redirect("/");
         } else {
           // We could not find a user with that email/password
           res.render("login", {
             title: "The Weather App",
-            message: "Error logging in",
+            message: "Error logging in, no registered user with that email",
           });
         }
       })
+
       .catch((err) => {
         res.render("login", {
           title: "The Weather App",

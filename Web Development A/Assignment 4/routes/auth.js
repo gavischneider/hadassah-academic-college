@@ -17,11 +17,7 @@ router.get("/register", (req, res) => {
 
 // Password route
 router.get("/password", (req, res) => {
-  if (userIsAuthenticated(req.session)) {
-    res.render("password", { title: "The Weather App" });
-  } else {
-    return res.redirect("login");
-  }
+  res.render("password", { title: "The Weather App" });
 });
 
 // Login route

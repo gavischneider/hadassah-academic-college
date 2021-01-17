@@ -1,5 +1,5 @@
 (() => {
-  let date;
+  let counter;
   let firstName;
   let lastName;
   let email;
@@ -8,12 +8,17 @@
     firstName = urlParams.get("firstName");
     lastName = urlParams.get("lastName");
     email = urlParams.get("email");
-    date = getDate();
+    counter = 0;
     document
       .getElementById("submitPasswordButton")
       .addEventListener("click", handleSubmit);
     document.getElementById("warningMessage").style.display = "none";
   });
+
+  setInterval(() => {
+    counter++;
+    console.log(counter);
+  }, 1000);
 
   // When the user clicks submit
   function handleSubmit(e) {
@@ -23,11 +28,8 @@
       .getElementById("verifyPasswordInput")
       .value.trim();
 
-    // Check if a minute has passed since page loaded
-    const oneMinute = 60 * 1000;
-
     // If the user took more than 1 minute, reroute them back to register page
-    if (Math.abs(date - new Date()) > oneMinute) {
+    if (counter > 60) {
       return window.location.replace(
         "http://localhost:3000/auth/register?errorMessage=1"
       );
@@ -52,7 +54,7 @@
             password: password,
           }),
         })
-          .then((res) => res.json())
+          //.then((res) => res.json())
           .then((data) => {
             window.location.replace(
               "http://localhost:3000/auth/login?registered=success"

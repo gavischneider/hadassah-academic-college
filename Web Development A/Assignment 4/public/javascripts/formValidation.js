@@ -1,5 +1,6 @@
 (() => {
   window.addEventListener("DOMContentLoaded", () => {
+    removeErrorsFromDOM();
     document
       .getElementById("submitButton")
       .addEventListener("click", handleSubmit);
@@ -53,7 +54,7 @@
   // Add relevant message to screen
   function addMessage() {
     const urlParams = new URLSearchParams(window.location.search);
-    const message = urlParams.get("errorMessage");
+    const message = urlParams.get("errorMessage") || "";
     let response = "";
 
     message.localeCompare("1") === 0
@@ -113,13 +114,17 @@
 
   // Validate email
   function validEmail(email) {
-    const emailRegex = /^(([^<>()[]\\.,;:s@"]+(.[^<>()[]\\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-
-    return emailRegex.test(email);
+    let res = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    console.log("email result");
+    console.log(res);
+    return res;
   }
 
   // Display relevant errors
   function displayErrors(errors) {
+    console.log("I'm in the displayErrors function, here are the errors: ");
+    console.log(errors);
+
     listOfErrors = document.createElement("ul");
     listOfErrors.setAttribute("id", "list-of-errors");
     errors.map((error) => {

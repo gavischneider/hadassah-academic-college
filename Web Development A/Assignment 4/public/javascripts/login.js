@@ -1,5 +1,6 @@
 (() => {
   window.addEventListener("DOMContentLoaded", () => {
+    removeErrorsFromDOM();
     document
       .getElementById("loginButton")
       .addEventListener("click", handleSubmit);
