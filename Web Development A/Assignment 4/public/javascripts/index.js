@@ -1,4 +1,5 @@
 (() => {
+  // Data structure to hold users locations (we'll get them from the DB)
   let locations = [];
   window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("imageContainer").style.display = "none";
@@ -172,7 +173,7 @@
       });
   }
 
-  // Remove all location (for a single user)
+  // Remove all locations (for a single user)
   function removeAll() {
     // Check if there are locations on screen
     let locationItems = Array.from(document.querySelectorAll(".locationItem"));

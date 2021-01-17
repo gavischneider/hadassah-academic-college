@@ -15,9 +15,11 @@
     let firstName = document.getElementById("firstNameInput").value.trim();
     let lastName = document.getElementById("lastNameInput").value.trim();
 
+    // check the form for errors
     let errors = validateForm(email, firstName, lastName);
     if (errors.length > 0) {
       e.preventDefault();
+      // There are errors, display them
       displayErrors(errors);
     } else {
       // If we get here, there are no errors, send data to server for validation
@@ -39,7 +41,7 @@
               "Email is already in use, please use a different email",
             ]);
           } else {
-            // Email is not in use
+            // Email is not in use, allow user to proceed
             window.location.replace(
               `http://localhost:3000/auth/password?firstName=${firstName}&lastName=${lastName}&email=${email}`
             );
@@ -114,17 +116,14 @@
 
   // Validate email
   function validEmail(email) {
-    let res = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    console.log("email result");
-    console.log(res);
+    let res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+      email
+    );
     return res;
   }
 
   // Display relevant errors
   function displayErrors(errors) {
-    console.log("I'm in the displayErrors function, here are the errors: ");
-    console.log(errors);
-
     listOfErrors = document.createElement("ul");
     listOfErrors.setAttribute("id", "list-of-errors");
     errors.map((error) => {

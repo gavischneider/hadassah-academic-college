@@ -15,9 +15,9 @@
     document.getElementById("warningMessage").style.display = "none";
   });
 
+  // Increases counter by 1 every second
   setInterval(() => {
     counter++;
-    console.log(counter);
   }, 1000);
 
   // When the user clicks submit
@@ -54,7 +54,6 @@
             password: password,
           }),
         })
-          //.then((res) => res.json())
           .then((data) => {
             window.location.replace(
               "http://localhost:3000/auth/login?registered=success"
@@ -112,9 +111,5 @@
     let warningMessage = document.getElementById("warningMessage");
     warningMessage.appendChild(listOfErrors);
     warningMessage.style.display = "block";
-  }
-
-  function getDate() {
-    return new Date();
   }
 })();

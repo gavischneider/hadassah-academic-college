@@ -11,11 +11,13 @@ const userIsAuthenticated = require("./public/javascripts/userIsAuthenticated");
 
 const app = express();
 
+// Initialize Sequelize
 const sequelize = new Sequelize({
   dialect: "sqlite",
   storage: "./database.sqlite3",
 });
 
+// Initialize session store
 const myStore = new SequelizeStore({
   db: sequelize,
 });
@@ -66,6 +68,7 @@ app.get("/sessioninfo", (req, res) => {
   res.json(req.session);
 });
 
+// 404 Route
 app.get("*", (req, res) => {
   res.render("error", {
     message: "The page does not exist",

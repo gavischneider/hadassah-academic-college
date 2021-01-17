@@ -2,7 +2,7 @@ const User = require("../models").User;
 const Location = require("../models").Location;
 
 const locationsController = {
-  // Add a new location
+  // Function to add a new location
   add(req, res) {
     // Check if there's a user in the session - if not, don't add location
     if (req.session.user) {
@@ -37,12 +37,12 @@ const locationsController = {
       // There's no user in the session
       res.render("login", {
         title: "The Weather App",
-        message: `Error logging in, ${err}`,
+        message: `Please login to add a location, ${err}`,
       });
     }
   },
 
-  // Remove a location
+  // Function to remove a location
   remove(req, res) {
     const name = req.body.name;
     const userId = req.session.user.id;
@@ -56,6 +56,7 @@ const locationsController = {
           return loc.name.localeCompare(name) !== 0;
         });
 
+        // New user object for session
         let newUser = {
           ...req.session.user,
           locations: [...newLocations],
@@ -69,7 +70,7 @@ const locationsController = {
       });
   },
 
-  // Remove all locations (for a single user)
+  // Function to remove all locations (for a single user)
   removeAll(req, res) {
     const userId = req.session.user.id;
     Location.destroy({
@@ -89,7 +90,7 @@ const locationsController = {
       });
   },
 
-  // Get all of a users locations
+  // Function to get all of a users locations
   loadUsersLocations(req, res) {
     const userId = req.session.user.id;
     Location.findAll({

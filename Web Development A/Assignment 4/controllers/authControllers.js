@@ -4,7 +4,7 @@ const User = require("../models").User;
 const Location = require("../models").Location;
 
 const authController = {
-  // Check if an email is already in use
+  // Function to check if an email is already in use
   lookup(req, res) {
     const email = req.body.email;
     User.findOne({
@@ -21,6 +21,7 @@ const authController = {
       .catch((err) => console.log(`Error looking user up, ${err}`));
   },
 
+  // Function to register a user (data is already validated)
   password(req, res) {
     // Create a new user
     const firstName = req.body.firstName;
@@ -28,8 +29,8 @@ const authController = {
     const email = req.body.email;
     const password = req.body.password;
 
+    // Hash the password before storing
     bcrypt.hash(password, saltRounds, function (err, hash) {
-      // Store hash in your password DB.
       if (!err) {
         User.create({
           firstName: firstName,
@@ -52,21 +53,18 @@ const authController = {
     });
   },
 
+  // Function to login existing users
   login(req, res) {
     const email = req.body.email;
     const password = req.body.password;
     User.findOne({
-      where: { email }, // password
+      where: { email },
     })
       .then(async (user) => {
         if (user) {
+          // Compare the entered password to the stored hash
           bcrypt.compare(password, user.password, async function (err, result) {
-            if (result) {
-              console.log("Login Function - User: ");
-              console.log(user);
-              console.log("Login Function - User: password");
-              console.log(user.password);
-
+            if (result && !err) {
               req.session.user = user;
 
               // We got the user, now we need to get their locations
@@ -106,7 +104,6 @@ const authController = {
           });
         }
       })
-
       .catch((err) => {
         res.render("login", {
           title: "The Weather App",
@@ -115,7 +112,7 @@ const authController = {
       });
   },
 
-  // Log the user out
+  // Function to log the user out
   logout(req, res) {
     req.session.destroy(function (err) {
       req.session = null;

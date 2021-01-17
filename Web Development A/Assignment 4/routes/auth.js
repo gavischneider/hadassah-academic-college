@@ -1,7 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models").User;
-const Location = require("../models").Location;
 const authController = require("../controllers/authControllers");
 const userIsAuthenticated = require("../public/javascripts/userIsAuthenticated");
 

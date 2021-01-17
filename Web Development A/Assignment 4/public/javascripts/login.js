@@ -8,7 +8,7 @@
     addMessage();
   });
 
-  // When the user clicked submit
+  // When the user clicks submit
   function handleSubmit(e) {
     removeErrorsFromDOM();
     let email = document.getElementById("emailInput").value.trim();
@@ -47,7 +47,7 @@
     let response = "";
 
     message.localeCompare("success") === 0
-      ? (response = "You have succseefully registered! Please log in.")
+      ? (response = "You have successfully registered! Please log in.")
       : message.localeCompare("failure") === 0
       ? (response = "You took to long to register, please try again.")
       : "";
