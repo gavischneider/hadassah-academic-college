@@ -210,6 +210,11 @@
       });
       if (activeItem) {
         // We found an 'active' item
+
+        const spinner = document.getElementById("spinner");
+        spinner.classList.remove("d-none");
+        spinner.classList.add("d-flex");
+
         const latitude = activeItem[0].dataset.lat;
         const longitude = activeItem[0].dataset.lon;
         try {
@@ -251,6 +256,9 @@
           weatherList[5].textContent = `Weather Forecast: ${tomorrowWeather}`;
           weatherList[6].textContent = `Temperature: Between ${tomorrowTempMin} and ${tomorrowTempMax} (Cel)`;
           weatherList[7].textContent = `Wind Factor: ${tomorrowWind}`;
+
+          spinner.classList.remove("d-flex");
+          spinner.classList.add("d-none");
         } catch (error) {
           console.log(`Error: ${error}`);
         }
