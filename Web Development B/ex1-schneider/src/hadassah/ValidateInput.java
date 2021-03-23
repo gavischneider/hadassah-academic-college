@@ -20,12 +20,20 @@ public class ValidateInput {
         this.url = theUrl;
         this.argument = theArgument;
     }
-    public ValidateInput(){}
 
     // --------- Methods --------------
     public boolean checkCommand() {
-        if (!Arrays.asList(commands).contains(command)){
-            System.out.println("Invalid Command!"); // todo - create exception
+        try {
+            if (!Arrays.asList(commands).contains(command)) {
+                System.out.println("Invalid command");
+                throw new InvalidCommandException();
+            }
+        }
+        catch(InvalidCommandException e) {
+            return false;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
             return false;
         }
         return true;

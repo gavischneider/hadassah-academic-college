@@ -4,10 +4,12 @@ import java.util.Scanner;
 
 public class UrlCheck {
 
+    // --------- Constructors ---------
     public UrlCheck(){
         initializeApp();
     }
 
+    // --------- Methods --------------
     public void initializeApp(){
         System.out.println("Initialized!!");
 
@@ -22,12 +24,17 @@ public class UrlCheck {
 
         ValidateInput validateInput = new ValidateInput(command, url, argument);
         boolean result = validateInput.checkCommand();
-        boolean result2 = validateInput.checkUrl();
-        boolean result3 = validateInput.checkArgument();
-
-        if(!result || !result2 || !result3) {
+        if (!result) {
             System.exit(0);
         }
+        boolean result2 = validateInput.checkUrl();
+        if (!result2) {
+            System.exit(0);
+        }
+        //boolean result3 = validateInput.checkArgument();
+        //if (!result3) {
+        //    System.exit(0);
+        //}
 
         System.out.println("Command is: " + command);
         System.out.println("URL is: " + url);
