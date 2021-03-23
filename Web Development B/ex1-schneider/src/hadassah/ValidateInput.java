@@ -1,5 +1,7 @@
 package hadassah;
 
+import javax.imageio.IIOException;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -9,9 +11,9 @@ import java.util.Arrays;
 public class ValidateInput {
 
     // --------- Variables ------------
-    private String command;
-    private String url;
-    private String argument;
+    private String command = "";
+    private String url = "";
+    private String argument = "";
     public String[] commands = {"t", "w", "i", "l", "q"};
 
     // --------- Constructors ---------
@@ -42,13 +44,12 @@ public class ValidateInput {
     public boolean checkUrl() {
         try {
             URL urlObject = new URL(url);
-            URLConnection urlConnection = urlObject.openConnection();
+            URLConnection urlConnection = urlObject.openConnection(); // Throws IOException when it can't open
             urlConnection.connect(); // Throws UnknownHostException when it cant connect
-            System.out.println("URL exists");
         }
         catch(UnknownHostException e)
         {
-            System.out.println("URL either doesn't exist or unable to connect at this moment");
+            System.out.println("error");
             return false;
         }
         catch(MalformedURLException e)
@@ -56,8 +57,8 @@ public class ValidateInput {
             System.out.println("Bad URL");
             return false;
         }
-        catch(Exception e) {
-            e.printStackTrace();
+        catch(IOException e) {
+            System.out.println("error");
             return false;
         }
         return true;
