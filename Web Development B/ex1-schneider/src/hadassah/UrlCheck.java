@@ -1,6 +1,10 @@
 package hadassah;
 
 import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -33,11 +37,37 @@ public class UrlCheck {
     }
 
     public boolean validateInput(String command, String url, String argument) {
-        String[] arr = {"a", "b", "c"};
+
+        // Check command
+        String[] arr = {"t", "w", "i", "l", "q"};
         if (!Arrays.asList(arr).contains(command)){
-            System.out.println("Invalid Command!");
+            System.out.println("Invalid Command!"); // todo - create exception
             return false;
         }
+
+        // Check URL
+        try {
+            URL urlObject = new URL(url);
+            URLConnection urlConnection = urlObject.openConnection();
+            urlConnection.connect(); // Throws UnknownHostException when it cant connect
+            System.out.println("URL exists");
+        }
+        catch(UnknownHostException e)
+        {
+            System.out.println("URL either doesn't exist or unable to connect at this moment");
+            return false;
+        }
+        catch(MalformedURLException e)
+        {
+            System.out.println("Bad URL");
+            return false;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        // Check argument
         return  true;
     }
 }
