@@ -1,5 +1,7 @@
 package hadassah;
 
+import java.awt.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UrlCheck {
@@ -19,10 +21,23 @@ public class UrlCheck {
         String command = separatedInput[0];
         String url = separatedInput[1];
         String argument = separatedInput[2];
-        // Check input
+
+        boolean result = validateInput(command, url, argument);
+        if (!result) {
+            System.exit(0);
+        }
 
         System.out.println("Command is: " + command);
         System.out.println("URL is: " + url);
         System.out.println("Argument is: " + argument);
+    }
+
+    public boolean validateInput(String command, String url, String argument) {
+        String[] arr = {"a", "b", "c"};
+        if (!Arrays.asList(arr).contains(command)){
+            System.out.println("Invalid Command!");
+            return false;
+        }
+        return  true;
     }
 }
