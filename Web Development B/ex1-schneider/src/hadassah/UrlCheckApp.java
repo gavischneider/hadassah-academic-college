@@ -18,6 +18,7 @@ public class UrlCheckApp {
     public void appManager() {
         while (true) {
 
+            // 1. Get input from user
             System.out.println("Please enter a command, URL and arguments: \n");
             Scanner scanner = new Scanner(System.in);
             String input = scanner.nextLine();
@@ -38,6 +39,7 @@ public class UrlCheckApp {
                 argument = separatedInput[2];
             }
 
+            // 2. Make sure entered input is valid
             ValidateInput validateInput = new ValidateInput(command, url, argument);
             boolean result = validateInput.checkCommand();
             if (!result) {
@@ -55,6 +57,10 @@ public class UrlCheckApp {
             System.out.println("Command is: " + command);
             System.out.println("URL is: " + url);
             System.out.println("Argument is: " + argument);
+
+            // 3. Execute command
+            CommandManager commandManager = new CommandManager(command, url, argument);
+            commandManager.execute();
         }
     }
 }
