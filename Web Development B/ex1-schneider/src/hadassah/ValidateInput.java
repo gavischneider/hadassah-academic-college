@@ -1,6 +1,7 @@
 package hadassah;
 
 import javax.imageio.IIOException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -66,6 +67,41 @@ public class ValidateInput {
     }
 
     public boolean checkArgument() {
+        char c = command.charAt(0);
+
+        switch (c) {
+            case 't':
+                String[] tAllowedArgs = {"text", "text/html", "img", "img/gif"};
+                // If command is 't', only one arg may be given
+                if (args.size() != 1) {
+                    return false;
+                }
+                // Check if arg is allowed, if not return false
+                return Arrays.asList(tAllowedArgs).contains(args.get(0));
+            case 'w':
+                // Arg should be a path to a file of words
+                if (args.size() != 1) {
+                    return false;
+                }
+                ExtractWords extractor = new ExtractWords(args.get(0));
+                ArrayList<String> words = extractor.getWordsFromFile();
+                // If there are no words, return true
+                if (words.size() == 0) {
+                    return true;
+                }
+                return !words.get(0).equals("fileNoGood");
+            case 'i':
+                // In this case there should be no args
+                return args.size() == 0;
+            case 'l':
+                // there must be exactly 1 arg - 'english'
+                if (args.size() != 1) {
+                    return false;
+                }
+                return args.get(0).equalsIgnoreCase("english");
+            default:
+                break;
+        }
         return false;
     }
 }
