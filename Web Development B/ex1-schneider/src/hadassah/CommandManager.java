@@ -1,15 +1,17 @@
 package hadassah;
 
+import java.util.ArrayList;
+
 public class CommandManager {
 
     private char command;
     private String url = "";
-    private String argument = "";
+    private ArrayList<String> args;
 
-    public CommandManager(String theCommand, String theUrl, String theArgument) {
+    public CommandManager(String theCommand, String theUrl, ArrayList<String> theArguments) {
         this.command = theCommand.charAt(0);
         this.url = theUrl;
-        this.argument = theArgument;
+        this.args = theArguments;
     }
 
     public void execute() {

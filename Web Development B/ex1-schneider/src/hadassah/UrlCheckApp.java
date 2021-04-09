@@ -1,5 +1,7 @@
 package hadassah;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UrlCheckApp {
@@ -32,15 +34,17 @@ public class UrlCheckApp {
             }
 
             String url = separatedInput[1];
-            String argument = "";
+            //String[] args = new String[10];
+            ArrayList<String> args = new ArrayList<String>();
 
             // Check if there's an argument
             if (separatedInput.length > 2) {
-                argument = separatedInput[2];
+                // Add the argument(s) to the args array
+                args.addAll(Arrays.asList(separatedInput).subList(2, separatedInput.length));
             }
 
             // 2. Make sure entered input is valid
-            ValidateInput validateInput = new ValidateInput(command, url, argument);
+            ValidateInput validateInput = new ValidateInput(command, url, args);
             boolean result = validateInput.checkCommand();
             if (!result) {
                 System.exit(0);
@@ -56,10 +60,13 @@ public class UrlCheckApp {
 
             System.out.println("Command is: " + command);
             System.out.println("URL is: " + url);
-            System.out.println("Argument is: " + argument);
+            System.out.println("Arguments are: ");
+            for (String arg : args) {
+                System.out.println(arg + " ");
+            }
 
             // 3. Execute command
-            CommandManager commandManager = new CommandManager(command, url, argument);
+            CommandManager commandManager = new CommandManager(command, url, args);
             commandManager.execute();
         }
     }

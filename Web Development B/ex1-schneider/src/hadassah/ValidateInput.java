@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ValidateInput {
@@ -13,14 +14,14 @@ public class ValidateInput {
     // --------- Variables ------------
     private String command = "";
     private String url = "";
-    private String argument = "";
+    private ArrayList<String> args;
     public String[] commands = {"t", "w", "i", "l", "q"};
 
     // --------- Constructors ---------
-    public ValidateInput(String theCommand, String theUrl, String theArgument) {
+    public ValidateInput(String theCommand, String theUrl, ArrayList<String> theArguments) {
         this.command = theCommand;
         this.url = theUrl;
-        this.argument = theArgument;
+        this.args = theArguments;
     }
 
     // --------- Methods --------------
@@ -45,7 +46,7 @@ public class ValidateInput {
         try {
             URL urlObject = new URL(url);
             URLConnection urlConnection = urlObject.openConnection(); // Throws IOException when it can't open
-            urlConnection.connect(); // Throws UnknownHostException when it cant connect
+            urlConnection.connect(); // Throws UnknownHostException when it can't connect
         }
         catch(UnknownHostException e)
         {
