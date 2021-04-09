@@ -14,22 +14,23 @@ public class CommandManager {
         this.args = theArguments;
     }
 
-    public void execute() {
+    public boolean execute() {
         switch (command) {
             case 't':
-                //code
-                break;
+                ContentTypeChecker contentChecker = new ContentTypeChecker();
+                return contentChecker.check();
             case 'w':
-                // code
-                break;
+                WordChecker wordChecker = new WordChecker();
+                return wordChecker.check();
             case 'i':
-                // code
-                break;
+                ImageChecker imageChecker = new ImageChecker();
+                return imageChecker.check();
             case 'l':
-                // code
-                break;
+                LanguageChecker languageChecker = new LanguageChecker();
+                return languageChecker.check();
             default:
                 break;
         }
+        return false;
     }
 }

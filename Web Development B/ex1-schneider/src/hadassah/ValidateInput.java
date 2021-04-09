@@ -74,6 +74,7 @@ public class ValidateInput {
         try {
             char c = command.charAt(0);
             switch (c) {
+                // Content Type
                 case 't':
                     String[] tAllowedArgs = {"text", "text/html", "img", "img/gif"};
                     // If command is 't', only one arg may be given
@@ -84,6 +85,7 @@ public class ValidateInput {
                     if (!Arrays.asList(tAllowedArgs).contains(args.get(0))) {
                         throw new InvalidArgumentException();
                     }
+                // Word Search
                 case 'w':
                     // Arg should be a path to a file of words
                     if (args.size() != 1) {
@@ -98,11 +100,13 @@ public class ValidateInput {
                     if (words.get(0).equals("fileNoGood")) {
                         throw new InvalidArgumentException();
                     }
+                // Image Search
                 case 'i':
                     // In this case there should be no args
                     if (args.size() != 0) {
                         throw new InvalidArgumentException();
                     }
+                // Language
                 case 'l':
                     // there must be exactly 1 arg - 'english'
                     if (args.size() != 1) {

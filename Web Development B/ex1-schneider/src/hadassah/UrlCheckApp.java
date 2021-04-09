@@ -67,7 +67,11 @@ public class UrlCheckApp {
 
             // 3. Execute command
             CommandManager commandManager = new CommandManager(command, url, args);
-            commandManager.execute();
+            boolean res = commandManager.execute();
+            if (res) {
+                System.out.println("true");
+            }
+            System.out.println("false");
         }
     }
 }
