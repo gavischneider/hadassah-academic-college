@@ -23,7 +23,7 @@ public class CommandManager {
                 WordChecker wordChecker = new WordChecker(command, url, args.get(0));
                 return wordChecker.check();
             case 'i':
-                ImageChecker imageChecker = new ImageChecker();
+                ImageChecker imageChecker = new ImageChecker(command, url);
                 return imageChecker.check();
             case 'l':
                 LanguageChecker languageChecker = new LanguageChecker();
