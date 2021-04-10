@@ -84,6 +84,8 @@ public class ValidateInput {
                     // Check if arg is allowed, if not return false
                     if (!Arrays.asList(tAllowedArgs).contains(args.get(0))) {
                         throw new InvalidArgumentException();
+                    } else {
+                        return true;
                     }
                 // Word Search
                 case 'w':

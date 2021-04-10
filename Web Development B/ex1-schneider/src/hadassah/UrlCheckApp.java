@@ -47,15 +47,15 @@ public class UrlCheckApp {
             ValidateInput validateInput = new ValidateInput(command, url, args);
             boolean result = validateInput.checkCommand();
             if (!result) {
-                System.out.println("false");
+                System.out.println("false, invalid command");
             }
             boolean result2 = validateInput.checkUrl();
             if (!result2) {
-                System.out.println("false");
+                System.out.println("false, invalid url");
             }
             boolean result3 = validateInput.checkArgument();
             if (!result3) {
-                System.out.println("false");
+                System.out.println("false, invalid arg");
             }
 
             System.out.println("Command is: " + command);
@@ -70,8 +70,9 @@ public class UrlCheckApp {
             boolean res = commandManager.execute();
             if (res) {
                 System.out.println("true");
+            } else {
+                System.out.println("false");
             }
-            System.out.println("false");
         }
     }
 }

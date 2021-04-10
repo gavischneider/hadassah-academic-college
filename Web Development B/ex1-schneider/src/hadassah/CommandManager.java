@@ -17,7 +17,7 @@ public class CommandManager {
     public boolean execute() {
         switch (command) {
             case 't':
-                ContentTypeChecker contentChecker = new ContentTypeChecker();
+                ContentTypeChecker contentChecker = new ContentTypeChecker(command, url, args.get(0));
                 return contentChecker.check();
             case 'w':
                 WordChecker wordChecker = new WordChecker();
