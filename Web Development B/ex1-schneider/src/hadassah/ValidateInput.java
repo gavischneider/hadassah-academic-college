@@ -102,12 +102,14 @@ public class ValidateInput {
                     if (words.get(0).equals("fileNoGood")) {
                         throw new InvalidArgumentException();
                     }
+                    return true;
                 // Image Search
                 case 'i':
                     // In this case there should be no args
                     if (args.size() != 0) {
                         throw new InvalidArgumentException();
                     }
+                    return true;
                 // Language
                 case 'l':
                     // there must be exactly 1 arg - 'english'
@@ -117,6 +119,7 @@ public class ValidateInput {
                     if (!args.get(0).equalsIgnoreCase("english")) {
                         throw new InvalidArgumentException();
                     }
+                    return true;
                 default:
                     break;
             }

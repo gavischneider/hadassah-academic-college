@@ -20,7 +20,7 @@ public class CommandManager {
                 ContentTypeChecker contentChecker = new ContentTypeChecker(command, url, args.get(0));
                 return contentChecker.check();
             case 'w':
-                WordChecker wordChecker = new WordChecker();
+                WordChecker wordChecker = new WordChecker(command, url, args.get(0));
                 return wordChecker.check();
             case 'i':
                 ImageChecker imageChecker = new ImageChecker();

@@ -48,14 +48,17 @@ public class UrlCheckApp {
             boolean result = validateInput.checkCommand();
             if (!result) {
                 System.out.println("false, invalid command");
+                continue;
             }
             boolean result2 = validateInput.checkUrl();
             if (!result2) {
                 System.out.println("false, invalid url");
+                continue;
             }
             boolean result3 = validateInput.checkArgument();
             if (!result3) {
                 System.out.println("false, invalid arg");
+                continue;
             }
 
             System.out.println("Command is: " + command);
