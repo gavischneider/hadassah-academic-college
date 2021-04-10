@@ -1,6 +1,5 @@
 package hadassah;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -47,25 +46,17 @@ public class UrlCheckApp {
             ValidateInput validateInput = new ValidateInput(command, url, args);
             boolean result = validateInput.checkCommand();
             if (!result) {
-                System.out.println("false, invalid command");
+                System.out.println("invalid command");
                 continue;
             }
             boolean result2 = validateInput.checkUrl();
             if (!result2) {
-                System.out.println("false, invalid url");
                 continue;
             }
             boolean result3 = validateInput.checkArgument();
             if (!result3) {
-                System.out.println("false, invalid arg");
+                System.out.println("false");
                 continue;
-            }
-
-            System.out.println("Command is: " + command);
-            System.out.println("URL is: " + url);
-            System.out.println("Arguments are: ");
-            for (String arg : args) {
-                System.out.println(arg + " ");
             }
 
             // 3. Execute command

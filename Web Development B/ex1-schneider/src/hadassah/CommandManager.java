@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class CommandManager {
 
-    private char command;
+    private char command = ' ';
     private String url = "";
     private ArrayList<String> args;
 

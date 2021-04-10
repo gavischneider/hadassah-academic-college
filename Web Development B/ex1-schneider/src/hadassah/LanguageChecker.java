@@ -4,6 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LanguageChecker implements Checker{
 
@@ -27,13 +29,16 @@ public class LanguageChecker implements Checker{
             String pageText = doc.body().text();
 
             for (String word: commonWords) {
-                if (pageText.toLowerCase().contains(word.toLowerCase())) {
+                String pattern = "(?m)(^|\\s)" + word + "(\\s|$)";
+                Pattern p = Pattern.compile(pattern);
+                Matcher m = p.matcher(pageText);
+                if (m.find()) {
                     wordCount++;
                 }
             }
 
             // Check percentage
-            return wordCount / commonWords.length >= 0.8;
+            return wordCount / commonWords.length >= 0.85;
 
         } catch (IOException e) {
             e.printStackTrace();

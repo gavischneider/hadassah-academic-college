@@ -5,7 +5,6 @@ import org.jsoup.nodes.Document;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class WordChecker implements Checker{
 

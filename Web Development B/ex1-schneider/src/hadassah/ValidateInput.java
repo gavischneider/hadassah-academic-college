@@ -1,7 +1,5 @@
 package hadassah;
 
-import javax.imageio.IIOException;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,7 +25,7 @@ public class ValidateInput {
 
     // --------- Methods --------------
 
-    // Check if the command is allowed, throws exception otherwise
+    // Check if the command is allowed, throw exception otherwise
     public boolean checkCommand() {
         try {
             if (!Arrays.asList(commands).contains(command)) {
@@ -45,7 +43,7 @@ public class ValidateInput {
         return true;
     }
 
-    // Check if the URL is good, throws exception otherwise
+    // Check if the URL is good, throw exception otherwise
     public boolean checkUrl() {
         try {
             URL urlObject = new URL(url);
@@ -59,7 +57,7 @@ public class ValidateInput {
         }
         catch(MalformedURLException e)
         {
-            System.out.println("Bad URL");
+            System.out.println("bad url");
             return false;
         }
         catch(IOException e) {
@@ -69,7 +67,7 @@ public class ValidateInput {
         return true;
     }
 
-    // Check if the argument(s) are allowed, throws exception otherwise
+    // Check if the argument(s) are allowed, throw exception otherwise
     public boolean checkArgument() {
         try {
             char c = command.charAt(0);

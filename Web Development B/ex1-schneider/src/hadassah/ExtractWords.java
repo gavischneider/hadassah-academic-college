@@ -28,16 +28,9 @@ public class ExtractWords {
                     String[] splitLine = currentLine.split(" ");
                     Collections.addAll(words, splitLine);
                 }
-
-                //for (String word : words) {
-                  //  System.out.println(word);
-                //}
-
-
                 return words;
             }
             else {
-                System.out.println("File does not exist: " + path);
                 throw new FileNotFoundException();
             }
         }
@@ -47,9 +40,3 @@ public class ExtractWords {
         }
     }
 }
-
-// w https://en.wikipedia.org/wiki/Main_Page src/hadassah/words.txt
-
-//src/hadassah/words.txt
-
-//Web Development B/ex1-schneider/src/hadassah/words.txt
