@@ -26,7 +26,7 @@ public class CommandManager {
                 ImageChecker imageChecker = new ImageChecker(command, url);
                 return imageChecker.check();
             case 'l':
-                LanguageChecker languageChecker = new LanguageChecker();
+                LanguageChecker languageChecker = new LanguageChecker(command, url, args.get(0));
                 return languageChecker.check();
             default:
                 break;
