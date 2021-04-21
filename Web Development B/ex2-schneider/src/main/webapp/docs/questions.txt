@@ -1,1 +1,5 @@
-this is question textjj
+How to fetch array from one function to another function using javascript
+Why am I getting undefined instead of null?
+Two simultaneous curl_multi_perform()?
+React.js How to make a global win counter?
+How to play a sound with AVAudioPlayer every Monday using Swift?

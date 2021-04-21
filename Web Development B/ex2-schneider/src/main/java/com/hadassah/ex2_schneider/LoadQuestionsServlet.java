@@ -1,5 +1,9 @@
 package com.hadassah.ex2_schneider;
 
+import com.google.gson.Gson;
+
+import javax.json.Json;
+import javax.json.JsonObject;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -15,7 +19,7 @@ import java.util.Scanner;
 public class LoadQuestionsServlet extends HttpServlet {
 
     String file;
-    ArrayList<String> questions = new ArrayList<String>();
+    ArrayList<Question> questions = new ArrayList<Question>();
 
     @Override
     public void init() {
@@ -36,12 +40,21 @@ public class LoadQuestionsServlet extends HttpServlet {
         try {
             // Check if file exists and is not a folder
             if (file.isFile()) {
+                int i = 0;
                 Scanner in = new Scanner(file);
                 while (in.hasNextLine()){
-                    Collections.addAll(questions, in.nextLine());
+                    Question tempQuestion = new Question(i, in.nextLine());
+                    questions.add(tempQuestion);
+                    i++;
                 }
+
+                // Create JSON object from questions
+                Gson g = new Gson();
+                String json = g.toJson(questions);
+
+
                 toClient.println("Questions: ");
-                toClient.println(questions);
+                toClient.println(json);
                 toClient.close();
             }
             else {
