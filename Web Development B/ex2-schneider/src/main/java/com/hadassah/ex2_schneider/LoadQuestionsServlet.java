@@ -30,7 +30,7 @@ public class LoadQuestionsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
+        response.setContentType("application/json");
         PrintWriter toClient = response.getWriter();
 
         // Open file
@@ -52,10 +52,13 @@ public class LoadQuestionsServlet extends HttpServlet {
                 Gson g = new Gson();
                 String json = g.toJson(questions);
 
-
-                toClient.println("Questions: ");
-                toClient.println(json);
+                // Return JSON to client
+                toClient.print(json);
                 toClient.close();
+
+                //toClient.println("Questions: ");
+                //toClient.println(json);
+                //toClient.close();
             }
             else {
                 throw new FileNotFoundException();

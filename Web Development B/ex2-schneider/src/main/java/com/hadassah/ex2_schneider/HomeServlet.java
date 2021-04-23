@@ -14,13 +14,14 @@ public class HomeServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("text/html");
 
-        RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
-        rd.forward(request, response);
+        // Forward the request to LoadQuestionsServlet
+        //RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
+        //rd.forward(request, response);
 
-        // Return HTML page
-        //RequestDispatcher view = request.getRequestDispatcher("/html/index.html");
-        //view.forward(request, response);
+        RequestDispatcher view = request.getRequestDispatcher("/html/index.html");
+        view.forward(request, response);
     }
 
     public void destroy() {
