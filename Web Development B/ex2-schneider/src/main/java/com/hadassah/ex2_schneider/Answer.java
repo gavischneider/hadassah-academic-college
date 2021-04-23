@@ -2,27 +2,17 @@ package com.hadassah.ex2_schneider;
 
 public class Answer {
 
-    int id;
     int question;
     String text;
     String user;
 
-    public Answer(int id, int question, String text, String user) {
-        this.id = id;
+    public Answer(int question, String text, String user) {
         this.question = question;
         this.text = text;
         this.user = user;
     }
 
     public Answer() {}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getQuestion() {
         return question;

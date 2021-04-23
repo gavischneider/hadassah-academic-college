@@ -4,6 +4,7 @@
     })
 
     function addQuestions() {
+        // Fetch questions from servlet and loop through them
         fetch("LoadQuestionsServlet", {
             headers: {
                 'Content-Type': 'application/json'

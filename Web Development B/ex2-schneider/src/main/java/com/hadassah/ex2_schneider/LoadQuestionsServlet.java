@@ -1,9 +1,6 @@
 package com.hadassah.ex2_schneider;
 
 import com.google.gson.Gson;
-
-import javax.json.Json;
-import javax.json.JsonObject;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -12,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 @WebServlet(name = "LoadQuestionsServlet", value = "/LoadQuestionsServlet")
@@ -25,7 +21,6 @@ public class LoadQuestionsServlet extends HttpServlet {
     public void init() {
         // Application wide parameter stored in web.xml
         file = this.getServletContext().getInitParameter("file");
-
     }
 
     @Override
@@ -55,10 +50,6 @@ public class LoadQuestionsServlet extends HttpServlet {
                 // Return JSON to client
                 toClient.print(json);
                 toClient.close();
-
-                //toClient.println("Questions: ");
-                //toClient.println(json);
-                //toClient.close();
             }
             else {
                 throw new FileNotFoundException();
@@ -68,15 +59,11 @@ public class LoadQuestionsServlet extends HttpServlet {
             toClient.println("Error opening file...");
             toClient.close();
         }
-
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
-
-
 
 }
