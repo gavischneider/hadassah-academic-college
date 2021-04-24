@@ -52,10 +52,16 @@
                     answerButton.setAttribute("class", "btn-info");
                     answerButton.innerText = "Answer";
 
+                    // Add the question id
+                    let questionId = document.createElement("div");
+                    questionId.innerText = question.id;
+
+
 
                     bottomRow.appendChild(numOfAnswers);
                     bottomRow.appendChild(showButton);
                     bottomRow.appendChild(answerButton);
+                    bottomRow.appendChild(questionId);
                     bottomRow.setAttribute("class", "d-flex");
                     bottomRow.setAttribute("class", "justify-content-around")
                     bottomRow.setAttribute("class", "p-3");
@@ -69,8 +75,12 @@
             });
     }
     
-    function answerQuestion() {
+    function answerQuestion(e) {
+        let question = e.path[1].childNodes[3].innerHTML;
         window.alert("Answer Question")
+        //window.location = '/answer?question=' + question;
+        console.log("Event: ");
+        console.log(e.path[1].childNodes[3].innerHTML);
     }
     
     function showAnswers() {

@@ -49,5 +49,8 @@ public class AnswersServlet extends HttpServlet {
         // Create new answer object and store it
         Answer answer = new Answer(question, text, user);
         answers.add(answer);
+
+        System.out.println("Answers DS: ");
+        System.out.println(answers);
     }
 }
