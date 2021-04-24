@@ -78,11 +78,16 @@
 
     // Get all answers for a particular question
     function showAnswers(e) {
-
         // Create DOM element for answers
         let answersContainer = document.createElement("div");
         let title = document.createElement("h4");
         title.innerText = "Answers: ";
+        let hide = document.createElement("button");
+        hide.innerHTML = "Hide Answers";
+        hide.setAttribute("class", "btn");
+        hide.setAttribute("class", "btn-secondary");
+        hide.addEventListener("click", hideAnswers);
+        answersContainer.appendChild(hide);
         answersContainer.appendChild(title);
 
         // Fetch answers from servlet and loop through them
@@ -114,5 +119,11 @@
                 let question = e.path[1];
                 question.appendChild(answersContainer);
             })
+    }
+
+    // Remove answers from DOM
+    function hideAnswers(e) {
+        console.log(e);
+        e.path[2].removeChild(e.path[2].childNodes[4]);
     }
 //});
