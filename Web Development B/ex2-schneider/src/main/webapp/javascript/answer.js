@@ -3,6 +3,10 @@ window.addEventListener("DOMContentLoaded", () => {
     let questionId = getUrlParameter('question');
     let questionInput = document.getElementById("questionInput");
     questionInput.value = questionId;
+
+    document.getElementById("cancel-button").addEventListener("click", () => {
+        window.location = '/';
+    })
 })
 
 // Extracts a specific URL parameter
