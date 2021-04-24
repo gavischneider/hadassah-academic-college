@@ -77,8 +77,7 @@
     
     function answerQuestion(e) {
         let question = e.path[1].childNodes[3].innerHTML;
-        window.alert("Answer Question")
-        //window.location = '/answer?question=' + question;
+        window.location = '/html/answer.html?question=' + question;
         console.log("Event: ");
         console.log(e.path[1].childNodes[3].innerHTML);
     }
