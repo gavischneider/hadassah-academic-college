@@ -63,6 +63,20 @@ public class LoadQuestionsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+
+        // Extract parameters from request
+        int question = Integer.parseInt(request.getParameter("question"));
+
+        // Increment answers by 1
+        for (Question q : questions) {
+            if (q.id == question) {
+                q.answers++;
+            }
+        }
+
+        RequestDispatcher view = request.getRequestDispatcher("/html/index.html");
+        view.forward(request, response);
 
     }
 

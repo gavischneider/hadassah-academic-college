@@ -33,7 +33,8 @@
 
                     let numOfAnswers = document.createElement("p");
 
-                    numOfAnswers.innerText = "0 answers";
+                    let num = question.answers;
+                    numOfAnswers.innerText = num + " answers";
 
                     let showButton = document.createElement("button");
                     showButton.addEventListener("click", showAnswers);

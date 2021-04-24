@@ -40,6 +40,7 @@ public class AnswersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
 
         // Extract parameters from request
         int question = Integer.parseInt(request.getParameter("question"));
@@ -52,5 +53,12 @@ public class AnswersServlet extends HttpServlet {
 
         System.out.println("Answers DS: ");
         System.out.println(answers);
+
+        // Forward the request to LoadQuestionsServlet
+        RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
+        rd.forward(request, response);
+
+        //RequestDispatcher view = request.getRequestDispatcher("/html/index.html");
+        //view.forward(request, response);
     }
 }
