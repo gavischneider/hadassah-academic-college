@@ -65,7 +65,7 @@ public class LoadQuestionsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
-        // Extract parameters from request
+        // Extract question from request
         int question = Integer.parseInt(request.getParameter("question"));
 
         // Increment answers by 1

@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
     questionInput.value = questionId;
 })
 
+// Extracts a specific URL parameter
 function getUrlParameter(parameter) {
     let pageUrl = window.location.search.substring(1);
     let urlVariables = pageUrl.split('&');
