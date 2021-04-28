@@ -8,11 +8,26 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+/**
+ * Answers servlet:
+ * Returns all the answers for a specific question in JSON
+ * Adds a new answer to the answers list
+ */
 @WebServlet(name = "AnswersServlet", value = "/AnswersServlet")
 public class AnswersServlet extends HttpServlet {
 
+    /**
+     * List of answers
+     */
     ArrayList<Answer> answers = new ArrayList<Answer>();
 
+    /**
+     *
+     * @param request Incoming request
+     * @param response Outgoing response
+     * @throws ServletException Servlet exception
+     * @throws IOException Input output exception
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
@@ -38,6 +53,13 @@ public class AnswersServlet extends HttpServlet {
         toClient.close();
     }
 
+    /**
+     *
+     * @param request Incoming request
+     * @param response Outgoing response
+     * @throws ServletException Servlet exception
+     * @throws IOException Input output exception
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

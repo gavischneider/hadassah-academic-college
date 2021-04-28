@@ -11,18 +11,39 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Questions servlet:
+ * loads the questions from the file
+ * Increments questions answer count when a new answer is added
+ */
 @WebServlet(name = "LoadQuestionsServlet", value = "/LoadQuestionsServlet")
 public class LoadQuestionsServlet extends HttpServlet {
 
+    /**
+     * Questions file
+     */
     String file;
+    /**
+     * List of questions
+     */
     ArrayList<Question> questions = new ArrayList<Question>();
 
+    /**
+     * Init method - gets the questions file
+     */
     @Override
     public void init() {
         // Application wide parameter stored in web.xml
         file = this.getServletContext().getInitParameter("file");
     }
 
+    /**
+     *
+     * @param request Incoming request
+     * @param response Outgoing response
+     * @throws ServletException Servlet exception
+     * @throws IOException Input output exception
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("application/json");
@@ -61,6 +82,13 @@ public class LoadQuestionsServlet extends HttpServlet {
         }
     }
 
+    /**
+     *
+     * @param request Incoming request
+     * @param response Outgoing response
+     * @throws ServletException Servlet exception
+     * @throws IOException Input output exception
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
