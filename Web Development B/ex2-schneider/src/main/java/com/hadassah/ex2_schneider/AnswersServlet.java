@@ -49,18 +49,14 @@ public class AnswersServlet extends HttpServlet {
 
             // Validate Parameters
             if (question < 0) {
-                throw
+                throw new IllegalParameterException();
             }
             if (text.isEmpty()) {
-                //error
+                throw new IllegalParameterException();
             }
             if (user.isEmpty()) {
-
+                throw new IllegalParameterException();
             }
-
-            System.out.println(question);
-            System.out.println(text);
-            System.out.println(user);
 
             // Create new answer object and store it
             Answer answer = new Answer(question, text, user);
@@ -70,8 +66,9 @@ public class AnswersServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
             rd.forward(request, response);
         }
-        catch {
-
+        catch(IllegalParameterException e) {
+            RequestDispatcher view = request.getRequestDispatcher("/html/invalidParameter.html");
+            view.forward(request, response);
         }
     }
 }
