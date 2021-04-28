@@ -6,26 +6,28 @@
     <title>Answer</title>
 </head>
 <body>
-  <h1>Add Answer</h1>
+  <div class="container">
+    <h1>Add Answer</h1>
 
-  <form name="answerForm" method="post" action="../AnswersServlet">
-    <div class="form-group">
-      <label for="usernameInput">Username</label>
-      <input type="text" class="form-control" id="usernameInput" placeholder="Enter username" name="user">
-    </div>
-    <div class="form-group">
-      <label for="answerInput">Answer</label>
-      <input type="text" class="form-control" id="answerInput" placeholder="Answer" name="text">
-    </div>
+    <form name="answerForm" method="post" action="../AnswersServlet">
+      <div class="form-group">
+        <label for="usernameInput">Username</label>
+        <input type="text" class="form-control" id="usernameInput" placeholder="Enter username" name="user" required>
+      </div>
+      <div class="form-group">
+        <label for="answerInput">Answer</label>
+        <input type="text" class="form-control" id="answerInput" placeholder="Answer" name="text" required>
+      </div>
 
-    <div class="form-group">
-      <label for="questionInput">Question</label>
-      <input type="hidden" class="form-control" id="questionInput" placeholder="Question" name="question">
-    </div>
+      <div class="form-group">
+        <label for="questionInput">Question</label>
+        <input type="hidden" class="form-control" id="questionInput" placeholder="Question" name="question">
+      </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <button type="button" class="btn btn-info" id="cancel-button">Cancel</button>
-  </form>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="button" class="btn btn-info" id="cancel-button">Cancel</button>
+    </form>
+  </div>
 </body>
 <script type="text/javascript" src="../javascript/answer.js"></script>
 </html>

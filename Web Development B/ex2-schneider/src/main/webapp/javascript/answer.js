@@ -1,4 +1,4 @@
-// Add the question id passed in the url to the form
+// Add the question id passed in the url to the html form
 window.addEventListener("DOMContentLoaded", () => {
     let questionId = getUrlParameter('question');
     let questionInput = document.getElementById("questionInput");
@@ -22,3 +22,4 @@ function getUrlParameter(parameter) {
         }
     }
 }
+

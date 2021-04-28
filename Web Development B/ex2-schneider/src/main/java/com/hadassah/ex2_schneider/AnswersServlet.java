@@ -40,7 +40,6 @@ public class AnswersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //response.setContentType("text/html");
 
         // Extract parameters from request
         int question = Integer.parseInt(request.getParameter("question"));
