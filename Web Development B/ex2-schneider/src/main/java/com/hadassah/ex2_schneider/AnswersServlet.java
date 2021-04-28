@@ -41,17 +41,37 @@ public class AnswersServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // Extract parameters from request
-        int question = Integer.parseInt(request.getParameter("question"));
-        String text = request.getParameter("text");
-        String user = request.getParameter("user");
+        try {
+            // Extract parameters from request
+            int question = Integer.parseInt(request.getParameter("question"));
+            String text = request.getParameter("text").trim();
+            String user = request.getParameter("user").trim();
 
-        // Create new answer object and store it
-        Answer answer = new Answer(question, text, user);
-        answers.add(answer);
+            // Validate Parameters
+            if (question < 0) {
+                throw
+            }
+            if (text.isEmpty()) {
+                //error
+            }
+            if (user.isEmpty()) {
 
-        // Forward the request to LoadQuestionsServlet
-        RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
-        rd.forward(request, response);
+            }
+
+            System.out.println(question);
+            System.out.println(text);
+            System.out.println(user);
+
+            // Create new answer object and store it
+            Answer answer = new Answer(question, text, user);
+            answers.add(answer);
+
+            // Forward the request to LoadQuestionsServlet
+            RequestDispatcher rd = request.getRequestDispatcher("/LoadQuestionsServlet");
+            rd.forward(request, response);
+        }
+        catch {
+
+        }
     }
 }
