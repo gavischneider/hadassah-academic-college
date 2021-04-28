@@ -77,7 +77,6 @@ public class LoadQuestionsServlet extends HttpServlet {
 
         RequestDispatcher view = request.getRequestDispatcher("/html/index.html");
         view.forward(request, response);
-
     }
 
 }

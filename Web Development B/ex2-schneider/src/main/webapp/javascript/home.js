@@ -38,6 +38,7 @@ function addQuestions() {
                 showButton.setAttribute("type", "button");
                 showButton.setAttribute("class", "btn");
                 showButton.setAttribute("class", "btn-primary");
+                showButton.setAttribute("class", "me-3");
                 showButton.innerText = "Show";
 
                 let answerButton = document.createElement("button");
@@ -45,6 +46,7 @@ function addQuestions() {
                 answerButton.setAttribute("type", "button");
                 answerButton.setAttribute("class", "btn");
                 answerButton.setAttribute("class", "btn-info");
+                //answerButton.setAttribute("class", "ml-50");
                 answerButton.innerText = "Answer";
 
                 // Add the question id
@@ -78,6 +80,10 @@ function answerQuestion(e) {
 
 // Get all answers for a particular question
 function showAnswers(e) {
+    // Remove show button
+    let showButton = e.path[1].childNodes[1];
+    showButton.classList.add("d-none");
+
     // Create DOM element for answers
     let answersContainer = document.createElement("div");
     let title = document.createElement("h4");
@@ -87,6 +93,8 @@ function showAnswers(e) {
     hide.setAttribute("class", "btn");
     hide.setAttribute("class", "btn-secondary");
     hide.addEventListener("click", hideAnswers);
+    let br = document.createElement("br");
+    answersContainer.appendChild(br);
     answersContainer.appendChild(hide);
     answersContainer.appendChild(title);
 
@@ -120,7 +128,10 @@ function showAnswers(e) {
 
 // Remove answers from DOM
 function hideAnswers(e) {
-    console.log(e);
+    // Return show button
+    e.path[2].childNodes[1].classList.remove("d-none");
+
+    // Hide the answers
     e.path[2].removeChild(e.path[2].childNodes[4]);
 }
 
