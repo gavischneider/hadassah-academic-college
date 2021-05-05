@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ex3-schneider:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ex3-schneider</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="ex3-schneider-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ex3-schneider:war exploded" />
+    </root>
+  </artifact>
+</component>
