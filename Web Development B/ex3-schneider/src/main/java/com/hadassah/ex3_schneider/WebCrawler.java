@@ -47,6 +47,7 @@ public class WebCrawler {
              for (Element image : imagesOnPage) {
                  imageCount++;
                  System.out.println("Image count is now: " + imageCount);
+                 //System.out.println("Crawling URL " + URL + " Current results: " + imageCount + " images found");
              }
         } catch (IOException e) {
             System.err.println("Error opening URL while searching for images");

@@ -18,21 +18,26 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        // Todo:
-        // 1. Get url parameter from html form
-        // 2. Create new thread
-        // 3. Start thread with url --> call the web crawler
-        // 4. Redirect user to next page
-
+        // Get url parameter from html form
         String url = request.getParameter("url");
 
-        Thread newThread = new Thread() {
-            public void run() {
-                new WebCrawler().getPageLinks(url, 0);
-            }
-        };
+        // Create new thread, use it to create a new web crawler
+        Thread newThread = new Thread(() -> {
+            System.out.println("Starting Thread for url " + url);
+            new WebCrawler().getPageLinks(url, 0);
+            System.out.println("Begin crawling " + url + " at depth 0");
+        });
         newThread.start();
 
+        try {
+            newThread.join();
+            System.out.println("THREAD HAS ENDED!!!!!");
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // Redirect user to next page
         response.setContentType("text/html");
         RequestDispatcher view = request.getRequestDispatcher("/html/crawling.html");
         view.forward(request, response);
