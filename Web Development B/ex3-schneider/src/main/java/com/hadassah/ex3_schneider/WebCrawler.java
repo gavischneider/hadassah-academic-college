@@ -10,14 +10,32 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 
+/**
+ * Web Crawler class
+ */
 public class WebCrawler {
+    /**
+     * MAX_DEPTH - how deep the web crawler should search
+     * sessionStorage - Data structure for storing sessions
+     * links - Data structure for storing links that have been discovered
+     * imageCount - How many images have been discovered
+     */
     private static final int MAX_DEPTH = 2;
     private static final HashMap<Long, Session> sessionStorage = new HashMap<>();
     private HashSet<String> links = new HashSet<>();
     static int imageCount = 0;
 
+    /**
+     * Web crawler constructor
+     */
     public WebCrawler() { }
 
+    /**
+     *
+     * @param URL - url that the user provided
+     * @param depth - how deep the web crawler should search
+     * @param id - session id
+     */
     public void newUrl(String URL, int depth, Long id) {
         // Create a new executor service to run our task
         ExecutorService executor = getExecutor(id);
@@ -33,6 +51,12 @@ public class WebCrawler {
         executor.shutdown();
     }
 
+    /**
+     *
+     * @param URL - url that the user provided
+     * @param depth - how deep the web crawler should search
+     * @param id - session id
+     */
     public void getPageLinks(String URL, int depth, Long id) {
         sessionStorage.get(id).url = URL;
         if ((!links.contains(URL) && (depth < MAX_DEPTH))) {
@@ -57,6 +81,11 @@ public class WebCrawler {
         }
     }
 
+    /**
+     *
+     * @param URL - url that the user provided
+     * @param id - session id
+     */
     public void getPageImages(String URL, Long id) {
         try {
             Document document = Jsoup.connect(URL).get();
@@ -71,10 +100,21 @@ public class WebCrawler {
     }
 
     // Getter functions that return session info
+
+    /**
+     *
+     * @param id - session id
+     * @return the url that the user provided
+     */
     public static String getUrl(Long id) {
         return sessionStorage.get(id).url;
     }
 
+    /**
+     *
+     * @param id - session id
+     * @return the sessions executor service
+     */
     private static ExecutorService getExecutor(Long id){
         if(!sessionStorage.containsKey(id))
         {
@@ -84,10 +124,20 @@ public class WebCrawler {
         return sessionStorage.get(id).executor;
     }
 
+    /**
+     *
+     * @param id - session id
+     * @return the image count
+     */
     public static int getImageCount(Long id) {
         return sessionStorage.get(id).imageCount;
     }
 
+    /**
+     *
+     * @param id - session id
+     * @return the status of the executor service
+     */
     public static Boolean getFinished(Long id) {
         ExecutorService executor = sessionStorage.get(id).executor;
         return executor.isTerminated();

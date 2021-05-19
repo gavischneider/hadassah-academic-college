@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"com.hadassah.ex3_schneider","l":"HomeServlet"},{"p":"com.hadassah.ex3_schneider","l":"ResultsServlet"},{"p":"com.hadassah.ex3_schneider","l":"Session"},{"p":"com.hadassah.ex3_schneider","l":"WebCrawler"},{"p":"com.hadassah.ex3_schneider","l":"WebCrawlerServlet"}];updateSearchResults();
