@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public class WebCrawler {
-    private static final int MAX_DEPTH = 2;
+    private static final int MAX_DEPTH = 1;
     private HashSet<String> links;
     static int imageCount = 0;
 
@@ -54,7 +54,7 @@ public class WebCrawler {
         }
     }
 
-    public static void main(String[] args) {
-        new WebCrawler().getPageLinks("http://www.mkyong.com/", 0);
-    }
+    //public static void main(String[] args) {
+      //  new WebCrawler().getPageLinks("http://www.mkyong.com/", 0);
+    //}
 }
