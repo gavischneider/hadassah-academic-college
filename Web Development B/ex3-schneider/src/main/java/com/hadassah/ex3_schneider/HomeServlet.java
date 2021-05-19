@@ -21,26 +21,23 @@ public class HomeServlet extends HttpServlet {
         // Get url parameter from html form
         String url = request.getParameter("url");
 
-        // Create new thread, use it to create a new web crawler
-        Thread newThread = new Thread(() -> {
-            System.out.println("Starting Thread for url " + url);
-            new WebCrawler().getPageLinks(url, 0);
-            System.out.println("Begin crawling " + url + " at depth 0");
-        });
-        newThread.start();
-
-        try {
-            newThread.join();
-            System.out.println("THREAD HAS ENDED!!!!!");
-
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        ThreadController threadController = new ThreadController(url);
+        threadController.createNewThread();
 
         // Redirect user to next page
         response.setContentType("text/html");
         RequestDispatcher view = request.getRequestDispatcher("/html/crawling.html");
         view.forward(request, response);
+
+        //try {
+          //  newThread.join();
+           // System.out.println("THREAD HAS ENDED!!!!!");
+
+        //} catch (InterruptedException e) {
+          //  e.printStackTrace();
+        //}
+
+
     }
 
     public void destroy() {
