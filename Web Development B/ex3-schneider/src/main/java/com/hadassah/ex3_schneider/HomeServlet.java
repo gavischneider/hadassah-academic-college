@@ -18,24 +18,6 @@ public class HomeServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        // Get url parameter from html form
-        String url = request.getParameter("url");
-
-        ThreadController threadController = new ThreadController(url);
-        threadController.createNewThread();
-
-        // Redirect user to next page
-        response.setContentType("text/html");
-        RequestDispatcher view = request.getRequestDispatcher("/html/crawling.html");
-        view.forward(request, response);
-
-        //try {
-          //  newThread.join();
-           // System.out.println("THREAD HAS ENDED!!!!!");
-
-        //} catch (InterruptedException e) {
-          //  e.printStackTrace();
-        //}
 
 
     }
