@@ -12,12 +12,18 @@ public class ResultsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get the users session
         Long id = (Long) request.getSession().getAttribute("id");
-
+        Boolean finished = WebCrawler.getFinished(id);
+        String finishedString;
+        if(finished) {
+            finishedString = String.format("<h1>Finished crawling %s </h1>", WebCrawler.getUrl(id));
+        } else {
+            finishedString = String.format("<h1> Crawling: %s </h1>", WebCrawler.getUrl(id)) + "Refresh page for updated results";
+        }
         PrintWriter out = response.getWriter();
         out.println("<html><body>" +
-                String.format("<h1> Crawling: %s </h1>", WebCrawler.getUrl(id)) +
-                String.format("<p> found %d images </p>", WebCrawler.getImageCount(id)) +
-                "<a href=\"/home\">Home Page</a>" +
+                finishedString +
+                String.format("<p> Found %d images </p>", WebCrawler.getImageCount(id)) +
+                "<a href=HomeServlet>Home Page</a>" +
                 "</body>" +
                 "</html>");
     }

@@ -10,7 +10,6 @@ import java.time.Instant;
 public class WebCrawlerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     @Override
@@ -18,8 +17,12 @@ public class WebCrawlerServlet extends HttpServlet {
         // Get url parameter from html form
         String url = request.getParameter("url");
 
-        //ThreadController threadController = new ThreadController(url);
-        //threadController.createNewThread();
+        // URL validation
+        //++++++++++
+        //
+        //
+        //
+        //
 
         // Create new session and start web crawler
         Long id = Instant.now().toEpochMilli();

@@ -19,24 +19,24 @@ public class WebCrawler {
     public WebCrawler() { }
 
     public void newUrl(String URL, int depth, Long id) {
+        // Create a new executor service to run our task
         ExecutorService executor = getExecutor(id);
 
-        Runnable producerTask = () -> {
-            System.out.println("Starting thread for url: " + URL);
+        Runnable task = () -> {
+            System.out.println("Starting Thread for url: " + URL);
             getPageLinks(URL, depth, id);
-            //this.done = true;
-
+            System.out.println("Number of images found for " + URL + ": " + imageCount);
+            System.out.println("End crawling " + URL + " at depth " + MAX_DEPTH);
             System.out.println("End of thread for url: " + URL);
         };
-        executor.execute(producerTask);
-
+        executor.execute(task);
         executor.shutdown();
     }
 
     public void getPageLinks(String URL, int depth, Long id) {
         sessionStorage.get(id).url = URL;
         if ((!links.contains(URL) && (depth < MAX_DEPTH))) {
-            System.out.println(">> Depth: " + depth + " [" + URL + "]");
+            System.out.println("Begin crawling " + URL + " at depth " + depth);
             try {
                 links.add(URL);
 
@@ -64,14 +64,13 @@ public class WebCrawler {
              for (Element image : imagesOnPage) {
                  imageCount++;
                  sessionStorage.get(id).imageCount = imageCount;
-                 System.out.println("Image count is now: " + imageCount);
-                 //System.out.println("Crawling URL " + URL + " Current results: " + imageCount + " images found");
              }
         } catch (IOException e) {
             System.err.println("Error opening URL while searching for images");
         }
     }
 
+    // Getter functions that return session info
     public static String getUrl(Long id) {
         return sessionStorage.get(id).url;
     }
@@ -87,5 +86,10 @@ public class WebCrawler {
 
     public static int getImageCount(Long id) {
         return sessionStorage.get(id).imageCount;
+    }
+
+    public static Boolean getFinished(Long id) {
+        ExecutorService executor = sessionStorage.get(id).executor;
+        return executor.isTerminated();
     }
 }
