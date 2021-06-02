@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+  <h1>Hello!</h1>
+
+  <div class="container">
+      <form class="form-signin" method="POST" th:action="@{/login}">
+          <h2 class="form-heading">Log in</h2>
+
+          <div class="form-group">
+              <label>
+                  <input name="username" type="text" class="form-control" placeholder="Username"
+                         autofocus="true"/>
+              </label>
+
+              <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+              <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
+          </div>
+      </form>
+  </div>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</body>
+</html>
