@@ -17,8 +17,15 @@ public class User {
     private Long id;
 
     @NotEmpty(message = "Name is mandatory")
-    @Column(name = "username")
+    @Column(name = "username", unique=true)
     String username;
+
+    public User(){
+    }
+
+    public User(String username){
+        this.username = username;
+    }
 
     public String getUsername() {
         return username;
