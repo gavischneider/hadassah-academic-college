@@ -4,8 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.Optional;
-
 
 @Entity
 @Table(name = "user")
@@ -20,11 +18,23 @@ public class User {
     @Column(name = "username", unique=true)
     String username;
 
+    @Column(name = "online")
+    boolean online;
+
     public User(){
     }
 
     public User(String username){
         this.username = username;
+        this.online = true;
+    }
+
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
     }
 
     public String getUsername() {

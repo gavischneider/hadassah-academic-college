@@ -16,6 +16,6 @@ public class Ex4Application {
 
     @GetMapping("/")
     public String index(){
-        return "redirect:/login";
+        return "redirect:/index";
     }
 }
