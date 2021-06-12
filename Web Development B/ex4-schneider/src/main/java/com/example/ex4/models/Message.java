@@ -18,8 +18,8 @@ public class Message {
     private Long id;
 
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    @Column(name = "created", nullable = false, updatable = false)
+    private Date created;
 
     @CreatedBy
     @ManyToOne
@@ -30,12 +30,15 @@ public class Message {
     @Column(name = "body")
     String body;
 
+    String username;
+
     public Message(User user, String body){
         this.user = user;
         this.body = body;
+        this.username = user.getUsername();
     };
 
-    //public Message(){};
+    public Message(){};
 
     public Long getId() {
         return id;
@@ -49,8 +52,8 @@ public class Message {
         this.user = user;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreated() {
+        return created;
     }
 
     public String getBody() {
@@ -59,5 +62,13 @@ public class Message {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

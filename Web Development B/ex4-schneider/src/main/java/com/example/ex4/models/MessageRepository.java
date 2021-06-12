@@ -8,5 +8,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     //@Override
     Message getById(Long aLong);
 
-    List<Message> findTop5ByOrderByDateDesc();
+    List<Message> findTop5ByOrderByCreatedDesc();
+    List<Message> getAllByBody(String body);
+    List<Message> getAllByUsername(String username);
 }
