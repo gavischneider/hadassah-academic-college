@@ -42,6 +42,8 @@ public class LoginController {
             getRepo().save(newUser);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("index");
+            //modelAndView.getModelMap().addAttribute("username", username);
+            modelAndView.addObject("user", username);
             return modelAndView;
         } else {
             System.out.println("user found: " + user);

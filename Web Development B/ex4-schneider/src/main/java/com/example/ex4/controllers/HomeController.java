@@ -15,9 +15,7 @@ public class HomeController {
     @Autowired
     MessageRepository messageRepository;
 
-    private UserRepository getUserRepo() {
-        return userRepository;
-    }
+    private UserRepository getUserRepo() { return userRepository; }
 
     private MessageRepository getMessageRepo(){ return messageRepository; }
 

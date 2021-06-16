@@ -18,24 +18,21 @@ public class Message {
     private Long id;
 
     @CreatedDate
-    @Column(name = "created", nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "created")
     private Date created;
 
     @CreatedBy
-    @ManyToOne
-    @JoinColumn(name = "user", nullable = false, updatable = false)
-    private User user;
+    @Column(name = "user", nullable = false, updatable = false)
+    private String user;
 
     @NotEmpty(message = "Message body is mandatory")
     @Column(name = "body")
     String body;
 
-    String username;
-
-    public Message(User user, String body){
+    public Message(String user, String body){
         this.user = user;
         this.body = body;
-        this.username = user.getUsername();
     };
 
     public Message(){};
@@ -44,11 +41,11 @@ public class Message {
         return id;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
@@ -62,13 +59,5 @@ public class Message {
 
     public void setBody(String body) {
         this.body = body;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 }
