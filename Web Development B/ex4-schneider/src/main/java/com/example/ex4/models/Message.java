@@ -1,6 +1,7 @@
 package com.example.ex4.models;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -17,8 +18,9 @@ public class Message {
     @Column(name = "id")
     private Long id;
 
-    @CreatedDate
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@CreatedDate
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @CreationTimestamp
     @Column(name = "created")
     private Date created;
 

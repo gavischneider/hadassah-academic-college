@@ -34,13 +34,13 @@ public class MessageController {
 
     // Add a new message
     @PostMapping("/message/add")
-    public ModelAndView addMessage(@RequestParam String user, @RequestParam String body){
+    public void addMessage(@RequestParam String user, @RequestParam String body){
         Message message = new Message(user, body);
         getRepo().save(message);
 
         ////////
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index");
-        return modelAndView;
+        //ModelAndView modelAndView = new ModelAndView();
+        //modelAndView.setViewName("index");
+        //return modelAndView;
     }
 }
