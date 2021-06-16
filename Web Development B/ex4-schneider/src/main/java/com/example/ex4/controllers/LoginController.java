@@ -30,10 +30,6 @@ public class LoginController {
     @PostMapping("/login")
     public ModelAndView login(@RequestParam String username){
         User user = getRepo().findByUsername(username);
-        System.out.println("---------");
-        System.out.println(user);
-        System.out.println("---------");
-
         if(user == null){
             System.out.println("**");
             System.out.println(user);
@@ -42,7 +38,6 @@ public class LoginController {
             getRepo().save(newUser);
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("index");
-            //modelAndView.getModelMap().addAttribute("username", username);
             modelAndView.addObject("user", username);
             return modelAndView;
         } else {
