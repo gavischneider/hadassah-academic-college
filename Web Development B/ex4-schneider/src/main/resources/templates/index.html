@@ -11,20 +11,20 @@
 
         <div id="message-container"></div>
 
-        <form class="form-signin" method="POST" th:action="@{/message/add}">
+        <form class="form-signin" onsubmit="return false">
             <h2 class="form-heading">New Message</h2>
 
             <div class="form-group">
                 <label>
                     <input name="body" type="text" class="form-control" placeholder="message"
-                           autofocus="true"/>
+                           autofocus="true" id="body-input"/>
                 </label>
 
-                <input type="hidden" name="user" th:value="${user}"/>
+                <input type="hidden" name="user" th:value="${user}" id="username-input"/>
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Send</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" id="add-button">Send</button>
             </div>
         </form>
     </div>

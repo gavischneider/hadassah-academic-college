@@ -2,13 +2,12 @@ package com.example.ex4.controllers;
 
 import com.example.ex4.models.Message;
 import com.example.ex4.models.MessageRepository;
+import com.example.ex4.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MessageController {
@@ -33,8 +32,9 @@ public class MessageController {
 
     // Add a new message
     @PostMapping("/message/add")
-    public void addMessage(@RequestParam String user, @RequestParam String body){
-        Message message = new Message(user, body);
+    public void addMessage(@RequestBody Map<String, String> newUser){
+        System.out.println(newUser);
+        Message message = new Message(newUser.get("user"), newUser.get("body"));
         getRepo().save(message);
 
         ////////
