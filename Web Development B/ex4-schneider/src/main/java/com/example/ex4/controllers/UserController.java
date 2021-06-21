@@ -18,7 +18,7 @@ public class UserController {
     }
 
     // Returns all online users
-    @GetMapping("/online-users")
+    @GetMapping("/user/online")
     public List<User> getOnlineUsers(){
         return getRepo().getAllByOnline(true);
     }
