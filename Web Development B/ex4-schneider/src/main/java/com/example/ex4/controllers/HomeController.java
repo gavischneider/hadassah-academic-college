@@ -20,15 +20,16 @@ public class HomeController {
     private MessageRepository getMessageRepo(){ return messageRepository; }
 
     @GetMapping("index")
-    //public ModelAndView homePage() {
-      //  ModelAndView modelAndView = new ModelAndView();
-        //modelAndView.setViewName("index");
-        //return modelAndView;
-    //}
+    public ModelAndView homePage() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
 
     // If user is logged in --> Index (Get 5 latest messages, users that are online)
     // If user is NOT logged in --> Login
-    public String index(){
-        return "redirect:/login";
-    }
+
+    //public String index(){
+        //return "redirect:/login";
+    //}
 }
