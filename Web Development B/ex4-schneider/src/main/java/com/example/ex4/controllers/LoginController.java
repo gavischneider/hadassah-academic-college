@@ -23,9 +23,6 @@ public class LoginController {
         return userRepository;
     }
 
-    private MessageRepository messageRepository;
-    private MessageRepository getMessageRepo() {return messageRepository;}
-
     @GetMapping("/login")
     public ModelAndView loginPage() {
         ModelAndView modelAndView = new ModelAndView();
@@ -59,12 +56,12 @@ public class LoginController {
     }
 
     @GetMapping("/logout")
-    public ModelAndView logout(Model model, HttpServletRequest request) {
+    public void logout(Model model, HttpServletRequest request) {
         User user = getRepo().findByUsername((String) request.getSession().getAttribute("username"));
         request.getSession().invalidate();
         getRepo().delete(user);
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
+        //ModelAndView modelAndView = new ModelAndView();
+        //modelAndView.setViewName("login");
+        //return modelAndView;
     }
 }
