@@ -60,7 +60,9 @@ public class LoginController {
 
     @GetMapping("/logout")
     public ModelAndView logout(Model model, HttpServletRequest request) {
+        User user = getRepo().findByUsername((String) request.getSession().getAttribute("username"));
         request.getSession().invalidate();
+        getRepo().delete(user);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;

@@ -2,6 +2,10 @@ window.addEventListener("DOMContentLoaded", () =>{
     document.getElementById("add-button").addEventListener("click", addMessage);
     getMessages();
     getOnlineUsers()
+    window.setInterval(function(){
+        getMessages();
+        getOnlineUsers();
+    }, 5000);
 })
 
 window.onbeforeunload = function(e) {
