@@ -7,8 +7,9 @@
 <body class="bg-secondary">
 
 <div class="container p-5 outer">
+    <h3 th:inline="text">Hello, [[${user}]]</h3>
 
-    <div class="rounded shadow p-5 justify-content-around bg-white top d-flex h-75">
+    <div class="rounded shadow p-5 justify-content-around bg-white top d-flex h-75 border border-dark">
 
         <div>
             <div class="p-5 bg-white">
@@ -18,13 +19,13 @@
         </div>
 
         <div>
-            <form class="form-signin p-4 mb-5 bg-white" onsubmit="return false">
+            <form class="form-signin p-4 mb-5 bg-white" onsubmit="return false" id="form">
                 <h4 class="form-heading">New Message</h4>
 
                 <div class="form-group">
                     <label>
                         <input name="body" type="text" class="form-control" placeholder="message"
-                               autofocus="true" id="body-input" required/>
+                               autofocus="true" id="body-input"/>
                     </label>
 
                     <input type="hidden" name="user" th:value="${user}" id="username-input"/>

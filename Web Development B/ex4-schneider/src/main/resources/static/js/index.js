@@ -70,6 +70,7 @@ function getMessages(){
     }).then((messages) => {
         // Add messages to DOM
         messages.reverse();
+        let index = 1;
         let messageContainer = document.getElementById("message-container");
         let messageList = document.createElement("ul");
         messageList.classList.add("list-group")
@@ -77,6 +78,10 @@ function getMessages(){
             let newMessage = document.createElement("li");
             newMessage.innerHTML = message.user + ": " + message.body;
             newMessage.classList.add("list-group-item");
+            if(index % 2 === 0) {
+                newMessage.classList.add("list-group-item-dark");
+            }
+            index++;
             messageList.append(newMessage);
         })
         messageContainer.innerHTML = '';
@@ -87,6 +92,11 @@ function getMessages(){
 function addMessage(){
     let username = document.getElementById("username-input").value.trim();
     let body = document.getElementById("body-input").value.trim();
+
+    if (body === "") {
+        alert("Message may not be empty!");
+        return false;
+    }
 
     document.getElementById("body-input").value = "";
 
@@ -130,9 +140,11 @@ function searchUsersByName(query){
     }).then((users) => {
         let container = document.getElementById("user-results-container");
         let searchUserList = document.createElement("ul");
+        searchUserList.classList.add("list-group");
         users.map((user) => {
             let newUser = document.createElement("li");
             newUser.innerHTML = user.username;
+            newUser.classList.add("list-group-item")
             searchUserList.append(newUser);
         })
         container.innerHTML = '';
@@ -153,9 +165,11 @@ function searchMessagesByBody(query){
     }).then((messages) => {
         let container = document.getElementById("message-body-results-container");
         let searchMessageList = document.createElement("ul");
+        searchMessageList.classList.add("list-group")
         messages.map((message) => {
             let newMessage = document.createElement("li");
-            newMessage.innerHTML = message.user + " " + message.body;
+            newMessage.innerHTML = message.user + ": " + message.body;
+            newMessage.classList.add("list-group-item")
             searchMessageList.append(newMessage);
         })
         container.innerHTML = '';
@@ -176,9 +190,11 @@ function searchMessagesByUser(query){
     }).then((messages) => {
         let container = document.getElementById("message-user-results-container");
         let searchMessageByUserList = document.createElement("ul");
+        searchMessageByUserList.classList.add("list-group");
         messages.map((message) => {
             let newMessage = document.createElement("li");
             newMessage.innerHTML = message.user + ": " + message.body;
+            newMessage.classList.add("list-group-item")
             searchMessageByUserList.append(newMessage);
         })
         container.innerHTML = '';
