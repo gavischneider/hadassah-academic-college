@@ -35,10 +35,5 @@ public class MessageController {
         System.out.println(newUser);
         Message message = new Message(newUser.get("user"), newUser.get("body"));
         getRepo().save(message);
-
-        ////////
-        //ModelAndView modelAndView = new ModelAndView();
-        //modelAndView.setViewName("index");
-        //return modelAndView;
     }
 }

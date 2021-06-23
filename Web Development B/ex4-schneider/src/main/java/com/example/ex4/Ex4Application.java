@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ public class Ex4Application {
     }
 
     @GetMapping("/")
-    public Object index(Model model, HttpServletRequest request){
+    public Object home(Model model, HttpServletRequest request){
         // Check if user is logged in or not
         String username = (String) request.getSession().getAttribute("username");
         System.out.println("-----> Username: " + username);
@@ -36,5 +37,21 @@ public class Ex4Application {
         modelAndView.setViewName("index");
         modelAndView.addObject("user", username);
         return modelAndView;
+    }
+
+    @GetMapping("/index")
+    public Object index(Model model, HttpServletRequest request){
+        String username = (String) request.getSession().getAttribute("username");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        modelAndView.addObject("user", username);
+        return modelAndView;
+    }
+
+    @GetMapping("/session")
+    @ResponseBody
+    public Boolean checkSession(Model model, HttpServletRequest request){
+        String username = (String) request.getSession().getAttribute("username");
+        return username != null;
     }
 }

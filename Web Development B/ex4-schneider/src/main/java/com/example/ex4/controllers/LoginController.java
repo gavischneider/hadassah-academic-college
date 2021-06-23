@@ -23,14 +23,19 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public ModelAndView loginPage() {
+    public Object loginPage(Model model, HttpServletRequest request) {
+        String username = (String) request.getSession().getAttribute("username");
+        if(username != null) {
+            return "redirect:/index";
+        }
+
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
     }
 
     @PostMapping("/login")
-    public ModelAndView login(@RequestParam String username, Model model, HttpServletRequest request){
+    public Object login(@RequestParam String username, Model model, HttpServletRequest request){
         User user = getRepo().findByUsername(username);
         if(user == null){
             // Username is available, add name to session
@@ -39,12 +44,7 @@ public class LoginController {
             // Add user to database
             User newUser = new User(username);
             getRepo().save(newUser);
-
-            // Redirect to index
-            ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("index");
-            modelAndView.addObject("user", username);
-            return modelAndView;
+            return "redirect:/index";
         } else {
             System.out.println("user found: " + user);
             // Username is taken
@@ -54,13 +54,10 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/logout")
+    @PostMapping("/logout")
     public void logout(Model model, HttpServletRequest request) {
         User user = getRepo().findByUsername((String) request.getSession().getAttribute("username"));
         request.getSession().invalidate();
         getRepo().delete(user);
-        //ModelAndView modelAndView = new ModelAndView();
-        //modelAndView.setViewName("login");
-        //return modelAndView;
     }
 }
