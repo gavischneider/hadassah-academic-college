@@ -1,6 +1,5 @@
 package com.example.ex4.controllers;
 
-import com.example.ex4.models.MessageRepository;
 import com.example.ex4.models.User;
 import com.example.ex4.models.UserRepository;
 

@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () =>{
     document.getElementById("add-button").addEventListener("click", addMessage);
     document.getElementById("logout-button").addEventListener("click", logout);
+    document.getElementById("search-button").addEventListener("click", search);
     getMessages();
     getOnlineUsers()
     window.setInterval(function(){
@@ -88,63 +89,3 @@ function addMessage(){
         });
 }
 
-function searchUsersByName(query){
-    fetch("http://localhost:8080/search/user", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Origin": "*",
-        },
-        body: JSON.stringify({
-            query: query
-        })
-    }).then((res) => {
-        return res.json();
-    }).then((results) => {
-        ////
-    })
-}
-
-function searchMessagesByBody(query){
-    fetch("http://localhost:8080/search/message/body", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Origin": "*",
-        },
-        body: JSON.stringify({
-            query: query
-        })
-    }).then((res) => {
-        return res.json();
-    }).then((results) => {
-        ////
-    })
-}
-
-function searchMessagesByUser(query){
-    fetch("http://localhost:8080/search/message/user", {
-        method: "POST",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "Access-Control-Origin": "*",
-        },
-        body: JSON.stringify({
-            query: query
-        })
-    }).then((res) => {
-        return res.json();
-    }).then((results) => {
-        ////
-    })
-}
-
-function search(){
-    let query = document.getElementById("query-input").value.trim();
-    searchUsersByName(query);
-    searchMessagesByBody(query);
-    searchMessagesByUser(query);
-}

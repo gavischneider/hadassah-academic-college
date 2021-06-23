@@ -2,7 +2,6 @@ package com.example.ex4.controllers;
 
 import com.example.ex4.models.Message;
 import com.example.ex4.models.MessageRepository;
-import com.example.ex4.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
