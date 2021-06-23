@@ -4,10 +4,12 @@ import com.example.ex4.models.Message;
 import com.example.ex4.models.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Message Controller
+ */
 @RestController
 public class MessageController {
     @Autowired
@@ -17,19 +19,28 @@ public class MessageController {
         return messageRepository;
     }
 
-    // Get all messages
+    /**
+     *
+     * @return - All messages
+     */
     @GetMapping("/message/all")
     public List<Message> getAllMessages() {
         return getRepo().findAll();
     }
 
-    // Get the five latest messages
+    /**
+     *
+     * @return - Five most recent messages
+     */
     @GetMapping("/message/last-five")
     public List<Message> getLastMessages() {
         return getRepo().findTop5ByOrderByCreatedDesc();
     }
 
-    // Add a new message
+    /**
+     *
+     * @param newUser - Holds the user and body params to create a new message
+     */
     @PostMapping("/message/add")
     public void addMessage(@RequestBody Map<String, String> newUser){
         System.out.println(newUser);

@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () =>{
     document.getElementById("add-button").addEventListener("click", addMessage);
     document.getElementById("logout-button").addEventListener("click", logout);
+    document.getElementById("search-button").addEventListener("click", search);
     getMessages();
     getOnlineUsers()
     window.setInterval(function(){
@@ -17,6 +18,7 @@ window.onbeforeunload = function(e) {
     logout();
 };
 
+// Check if theres a user logged in
 function checkSession(){
     fetch("http://localhost:8080/session", {
         method: "GET",
@@ -92,17 +94,11 @@ function getMessages(){
 function addMessage(){
     let username = document.getElementById("username-input").value.trim();
     let body = document.getElementById("body-input").value.trim();
-
     if (body === "") {
         alert("Message may not be empty!");
         return false;
     }
-
     document.getElementById("body-input").value = "";
-
-    console.log("-----")
-    console.log(username);
-    console.log(body);
 
     fetch("http://localhost:8080/message/add", {
         method: "POST",
@@ -122,10 +118,6 @@ function addMessage(){
             console.log(err);
         });
 }
-
-window.addEventListener("DOMContentLoaded", () =>{
-    document.getElementById("search-button").addEventListener("click", search);
-})
 
 function searchUsersByName(query){
     fetch("http://localhost:8080/search/user?query=" + query, {
